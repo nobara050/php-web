@@ -1,0 +1,193 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fc;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+}
+
+.content {
+  width: 85%;
+  padding: 20px;
+}
+
+/*===== Sidebar =====*/
+.sidebar-wrapper {
+  width: 15%;
+  height: 100vh;
+  background-color: #343a40;
+}
+
+.sidebar {
+  background-color: #343a40;
+  color: #fff;
+  padding-top: 2rem;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sidebar .logo span {
+  color: #ffc107;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 20px;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
+  text-align: center;
+}
+
+.sidebar ul li a.active {
+  background-color: #ffc107;
+  color: #333;
+  border-radius: 4px;
+}
+
+.sidebar ul li a:hover {
+  background-color: #ffc107;
+  border-radius: 4px;
+  color: #333;
+}
+
+/* Submenu sidebar */
+.submenu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  border-radius: 4px;
+  background-color: #646464;
+}
+
+.submenu li a {
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.submenu li a:hover {
+  color: #ecf0f1;
+}
+
+/*===== Topbar =====*/
+.topbar {
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.topbar .user-info {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#btnlogout {
+  text-decoration: none;
+  padding: 0.5rem;
+  background-color: #ffc107;
+  border-radius: 10px;
+  color: #333;
+  font-size: small;
+}
+
+/* ========== Ajax ========== */
+.success {
+  color: #45a049;
+  padding: 10px;
+}
+
+.error {
+  color: rgb(255, 69, 69);
+  padding: 10px;
+}
+
+/* ====== Dialog ======== */
+
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-content p {
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-yes {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-yes:hover {
+  background-color: #218838;
+}
+
+.btn-no {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-no:hover {
+  background-color: #c82333;
+}
+
+.hidden {
+  display: none;
+}
+
+.dashboard-title {
+  text-align: center;
+  margin-top: 2rem;
+}

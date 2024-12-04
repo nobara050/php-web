@@ -1,0 +1,85 @@
+/* Tổng quan */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Container */
+.product-form-container {
+  width: 60%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề form */
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Bảng form */
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table td {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+/* Căn chỉnh riêng dòng Mô tả */
+.description-row td:first-child {
+  vertical-align: top; /* Đặt nhãn ở đỉnh */
+  padding-top: 8px; /* Căn thêm khoảng cách cho đẹp */
+}
+
+/* Nhãn */
+.form-table label {
+  font-weight: bold;
+}
+
+/* Trường nhập liệu */
+.input-field,
+.select-field,
+.textarea-field {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.textarea-field {
+  height: 100px;
+  resize: none;
+}
+
+/* Nút gửi */
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.btnsubmit {
+  display: flex;
+  justify-content: center;
+}

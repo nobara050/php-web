@@ -1,0 +1,100 @@
+/* Reset default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #343a40; /* Nền trắng */
+  color: #333; /* Màu chữ tối */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container for centering content */
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Content section */
+#content {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  border: #343a40; /* Viền vàng */
+}
+
+/* Header styling */
+h1 {
+  color: #343a40; /* Vàng */
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Input fields styling */
+.input-group {
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #343a40; /* Viền vàng */
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #343a40; /* Nút vàng */
+  color: #ffffff; /* Màu chữ tối */
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #d6a700; /* Vàng đậm khi hover */
+}
+
+/* Link styling */
+.button a {
+  color: #000000;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.button a:hover {
+  color: #d6a700; /* Vàng đậm khi hover */
+}
+
+.success {
+  color: #45a049;
+  padding: 10px;
+}
+
+.error {
+  color: rgb(255, 69, 69);
+  padding: 10px;
+}

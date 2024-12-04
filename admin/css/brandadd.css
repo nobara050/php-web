@@ -1,0 +1,52 @@
+/* Wrapper cho form */
+.brand-form-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.brand-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* .form-block {
+margin-top: 10px;
+} */
+
+.form-table {
+  width: 100%;
+  border-spacing: 10px;
+}
+
+.form-table td {
+  padding: 10px 0;
+}
+
+.input-medium {
+  width: 95%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
