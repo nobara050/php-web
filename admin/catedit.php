@@ -27,7 +27,7 @@
             }
           ?>
           <?php 
-            $get_cate_name = $cat->getcatbyID($id);
+            $get_cate_name = $cat->getcatbyId($id);
             if($get_cate_name) {
                 while($result = $get_cate_name->fetch_assoc()){
             

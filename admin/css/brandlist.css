@@ -44,15 +44,11 @@
 }
 
 .brand-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.brand-table tr:nth-child(odd) {
-  background-color: #fff;
-}
-
-.brand-row:hover {
   background-color: #f9f9f9;
+}
+
+.brand-table tr:hover {
+  background-color: #f1f1f1;
 }
 
 .action-link {

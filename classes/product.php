@@ -39,59 +39,178 @@
                 $query = "INSERT INTO tbl_product(productName,catID,brandId,product_desc,price,type, image) 
                 VALUES('$productName','$category','$brand','$product_desc','$price','$type','$unique_image')";
                 $result =$this->db->insert($query);
-                if($result){
-                    $alert = "<span class='success'>Thêm sản phẩm thành công</span>";
-                    return $alert;
+                
+
+
+                if ($result) {
+                    // Lấy ID sản phẩm vừa thêm bằng cách sử dụng LAST_INSERT_ID()
+                    $queryLastId = "SELECT LAST_INSERT_ID() as lastId";
+                    $getLastIdResult = $this->db->select($queryLastId);
+                    if ($getLastIdResult) {
+                        $row = $getLastIdResult->fetch_assoc();
+                        $productId = $row['lastId'];
+                
+                        // Lưu thông số kỹ thuật vào tbl_measure
+                        if (!empty($data['measureName']) && !empty($data['measureValue'])) {
+                            foreach ($data['measureName'] as $key => $measureName) {
+                                $measureValue = $data['measureValue'][$key];
+                                if (!empty($measureName) && !empty($measureValue)) {
+                                    $measureQuery = "INSERT INTO tbl_measure(productId, measureName, measureValue) 
+                                                     VALUES('$productId', '$measureName', '$measureValue')";
+                                    $this->db->insert($measureQuery);
+                                }
+                            }
+                        }
+                        return "<span class='success'>Thêm sản phẩm thành công</span>";
+                    } else {
+                        return "<span class='error'>Không thể lấy ID sản phẩm vừa thêm</span>";
+                    }
                 } else {
-                    $alert = "<span class='error'>Thêm sản phẩm không thành công</span>";
-                    return $alert;
+                    return "<span class='error'>Thêm sản phẩm không thành công</span>";
                 }
             }
         }
 
-        // public function update_category($catName,$id) {
-        //     $catName = $this->fm->validation($catName);
-        //     $catName = mysqli_real_escape_string($this->db->link, $catName);
-        //     $id = mysqli_real_escape_string($this->db->link, $id);
+        public function get_measures_by_product($productId) {
+            $query = "SELECT measureName, measureValue 
+                      FROM tbl_measure 
+                      WHERE productId = '$productId'";
+            $result = $this->db->select($query);
+            return $result;
+        }
 
-        //     if(empty($catName)) {
-        //         $alert = "<span class='error'>Tên danh mục không được để trống</span>";
-        //         return $alert;
-        //     } else {
-        //         $query = "UPDATE tbl_category SET catName = '$catName' WHERE catId = '$id'";
-        //         $result =$this->db->insert($query);
-        //         if($result){
-        //             $alert = "<span class='success'>Sửa danh mục thành công</span>";
-        //             return $alert;
-        //         } else {
-        //             $alert = "<span class='error'>Sửa danh mục không thành công</span>";
-        //             return $alert;
-        //         }
-        //     }
-        // }
+        public function show_product() {
+            $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+                      FROM tbl_product
+                      INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId
+                      INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+                      ORDER BY tbl_product.productId DESC";        
+            $result = $this->db->select($query);
+            return $result;
+        }
 
-        // public function del_category($id){
-        //     $query = "DELETE FROM tbl_category WHERE catId = '$id'";
-        //     $result =$this->db->delete($query);
-        //     if($result) {
-        //         $alert = "<span class='success'>Xóa danh mục thành công</span>";
-        //         return $alert;
-        //     } else {
-        //         $alert = "<span class='error'>Xóa danh mục không thành công</span>";
-        //         return $alert;
-        //     } 
-        // }
+        public function getproductbyId($id) {
+            $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
+            $result =$this->db->select($query);
+            return $result;
+        }
 
-        // public function show_category() {
-        //     $query = "SELECT * FROM tbl_category ORDER BY catName ASC";
-        //     $result =$this->db->select($query);
-        //     return $result;
-        // }
+        public function update_product($data,$files,$id) {
+            
+            $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
+            $category = mysqli_real_escape_string($this->db->link, $data['category']);
+            $brand = mysqli_real_escape_string($this->db->link, $data['brand']);
+            $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
+            $price = mysqli_real_escape_string($this->db->link, $data['price']);
+            $type = mysqli_real_escape_string($this->db->link, $data['type']);
+            
+            $permitted = array('jpg', 'jpeg', 'png', 'gif');
+            
+            $file_name = $_FILES['image']['name'];
+            $file_size = $_FILES['image']['size'];
+            $file_temp = $_FILES['image']['tmp_name'];
+            
+            $div = explode('.', $file_name);
+            $file_ext = strtolower(end($div));
+            $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
+            $uploaded_image = "./upload/" . $unique_image;
 
-        // public function getcatbyID($id) {
-        //     $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
-        //     $result =$this->db->select($query);
-        //     return $result;
-        // }
+            if($productName =="" || $category =="" || $brand =="" || $product_desc =="" || 
+               $price =="" || $type =="") {
+                $alert = "<span class='error'>Không được để trống thông tin</span>";
+                return $alert;
+            } else {
+                if (!empty($file_name)) {
+                    // Nếu người dùng sửa xong chọn ảnh mới
+                    if ($file_size > 1048567) {
+                        $alert = "<span class='error'>Độ phân giải ảnh quá 10MB</span>";
+                        return $alert;
+                    } elseif (!in_array($file_ext, $permitted)) {
+                        $alert = "<span class='error'>Bạn chỉ có thể upload file: ".implode(',', $permitted) . "</span>";
+                        return $alert;
+                    }
+                    
+                    $query = "UPDATE tbl_product 
+                              SET 
+                                productName = '$productName',
+                                catId = '$category',
+                                brandId = '$brand',
+                                product_desc = '$product_desc',
+                                price = '$price',
+                                image = '$unique_image',
+                                type = '$type'
+                              WHERE productId = '$id'";
+                } else {
+                    // Nếu người dùng sửa xong không chọn ảnh mới
+                    $query = "UPDATE tbl_product 
+                              SET 
+                                productName = '$productName',
+                                catId = '$category',
+                                brandId = '$brand',
+                                product_desc = '$product_desc',
+                                price = '$price',
+                                type = '$type'
+                              WHERE productId = '$id'";
+                    
+                }
+                // Xử lý cập nhật thông số kỹ thuật
+                $measureNames = $data['measureName'];
+                $measureValues = $data['measureValue'];
+
+                $measureUpdateSuccess = true; // Cờ theo dõi trạng thái
+
+                if (!empty($measureNames) && !empty($measureValues)) {
+                    // Xóa tất cả thông số kỹ thuật cũ liên quan đến sản phẩm
+                    $delete_query = "DELETE FROM tbl_measure WHERE productId = '$id'";
+                    $delete_result = $this->db->delete($delete_query);
+
+                    if ($delete_result) {
+                        // Thêm lại các thông số mới
+                        foreach ($measureNames as $index => $measureName) {
+                            $measureValue = $measureValues[$index];
+                            if (!empty($measureName) && !empty($measureValue)) {
+                                $insert_query = "INSERT INTO tbl_measure (productId, measureName, measureValue)
+                                                VALUES ('$id', '$measureName', '$measureValue')";
+                                $insert_result = $this->db->insert($insert_query);
+
+                                // Nếu một insert thất bại, gán cờ thất bại
+                                if (!$insert_result) {
+                                    $measureUpdateSuccess = false;
+                                    break;
+                                }
+                            }
+                        }
+                    } else {
+                        $measureUpdateSuccess = false;
+                    }
+                }
+
+                $result =$this->db->update($query);
+                if ($result && $measureUpdateSuccess) {
+                    $alert = "<span class='success'>Sửa sản phẩm và thông số kỹ thuật thành công</span>";
+                } elseif ($result) {
+                    $alert = "<span class='error'>Sản phẩm đã được cập nhật nhưng thông số kỹ thuật không thể sửa</span>";
+                } elseif ($measureUpdateSuccess) {
+                    $alert = "<span class='error'>Thông số kỹ thuật đã được sửa nhưng sản phẩm không thể cập nhật</span>";
+                } else {
+                    $alert = "<span class='error'>Cập nhật sản phẩm và thông số kỹ thuật thất bại</span>";
+                }
+                return $alert;
+                
+            }
+        }
+
+        public function del_product($id){
+            $query = "DELETE FROM tbl_product WHERE productId = '$id'";
+            $result =$this->db->delete($query);
+            if($result) {
+                $alert = "<span class='success'>Xóa sản phẩm thành công</span>";
+                return $alert;
+            } else {
+                $alert = "<span class='error'>Xóa sản phẩm không thành công</span>";
+                return $alert;
+            } 
+        }
+
     }
  ?>

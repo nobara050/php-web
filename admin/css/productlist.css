@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 95%;
+  margin: 20px auto;
+}
+
+/* Frame ngoài cùng */
+.product-list-box {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.product-table th,
+.product-table td {
+  font-size: small;
+  padding: 5px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.product-table th {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.product-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Tinh chỉnh cột table */
+.product-row a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.product-row a:hover {
+  color: #0056b3;
+}
+
+.product-image {
+  max-width: 50px;
+}
+
+/* Độ đo */
+.measure-item {
+  display: inline-block;
+  background-color: #f0f8ff; /* Màu nền nhẹ */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 2px;
+  font-size: 14px;
+  color: #333;
+}

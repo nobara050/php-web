@@ -72,7 +72,7 @@
             return $result;
         }
 
-        public function getbrandbyID($id) {
+        public function getbrandbyId($id) {
             $query = "SELECT * FROM tbl_brand WHERE brandId = '$id'";
             $result =$this->db->select($query);
             return $result;
