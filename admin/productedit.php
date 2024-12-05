@@ -112,11 +112,6 @@
                                 }
                             } 
                             ?>
-                            <div class="measure-row">
-                                <input type="text" name="measureName[]" placeholder="Tên thông số" class="input-field measure-name">
-                                <input type="text" name="measureValue[]" placeholder="Giá trị thông số" class="input-field measure-value">
-                                <button type="button" onclick="removeMeasure(this)">Xóa</button>
-                            </div>
                         </div>
                         <button type="button" onclick="addMeasure()">Thêm thông số</button>
                     </td>
