@@ -52,12 +52,12 @@
                                 if ($measures) {
                                     while ($measure = $measures->fetch_assoc()) {
                                         // Hiển thị từng độ đo
-                                        echo "<div class='measure-item'>";
+                                        echo "<div class='measure-item'><span>";
                                         echo $measure['measureName'] . ": " . $measure['measureValue'];
-                                        echo "</div>";
+                                        echo "</span></div>";
                                     }
                                 } else {
-                                    echo "Không có độ đo";
+                                    echo "<span>Không có độ đo</span>";
                                 }
                                 ?>
                             </td>

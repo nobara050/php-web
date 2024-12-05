@@ -221,16 +221,16 @@
                 $old_image = $row['image']; // Lưu ảnh cũ vào biến
             }
         
-            $file_name = $_FILES['image']['name'];
-            $file_size = $_FILES['image']['size'];
-            $file_temp = $_FILES['image']['tmp_name'];
-            
-            if ($productName == "" || $category == "" || $brand == "" || $product_desc == "" || $price == "" || $type == "") {
+            // Kiểm tra các trường bắt buộc (trừ product_desc)
+            if ($productName == "" || $category == "" || $brand == "" || $price == "" || $type == "") {
                 $alert = "<span class='error'>Không được để trống thông tin</span>";
                 return $alert;
             } else {
-                if (!empty($file_name)) {
-                    // Nếu người dùng sửa xong chọn ảnh mới
+                // Nếu có ảnh mới
+                if (!empty($files['image']['name'])) {
+                    $file_name = $files['image']['name'];
+                    $file_size = $files['image']['size'];
+                    $file_temp = $files['image']['tmp_name'];
                     $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
                     $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
                     $uploaded_image = "./upload/" . $unique_image;
@@ -276,36 +276,36 @@
                               WHERE productId = '$id'";
                 }
         
-                // Xử lý cập nhật thông số kỹ thuật
-                $measureNames = $data['measureName'];
-                $measureValues = $data['measureValue'];
-        
+                // Kiểm tra nếu có thông số kỹ thuật (measureName và measureValue)
                 $measureUpdateSuccess = true; // Cờ theo dõi trạng thái
-        
-                if (!empty($measureNames) && !empty($measureValues)) {
+
+                // Kiểm tra nếu mảng thông số kỹ thuật có dữ liệu
+                if (isset($data['measureName']) && isset($data['measureValue'])) {
+                    $measureNames = $data['measureName'];
+                    $measureValues = $data['measureValue'];
                     // Xóa tất cả thông số kỹ thuật cũ
                     $delete_query = "DELETE FROM tbl_measure WHERE productId = '$id'";
                     $delete_result = $this->db->delete($delete_query);
-        
-                    if ($delete_result) {
-                        // Thêm lại các thông số mới
-                        foreach ($measureNames as $index => $measureName) {
-                            $measureValue = $measureValues[$index];
-                            if (!empty($measureName) && !empty($measureValue)) {
-                                $insert_query = "INSERT INTO tbl_measure (productId, measureName, measureValue)
-                                                 VALUES ('$id', '$measureName', '$measureValue')";
-                                $insert_result = $this->db->insert($insert_query);
-        
-                                // Nếu một insert thất bại, gán cờ thất bại
-                                if (!$insert_result) {
-                                    $measureUpdateSuccess = false;
-                                    break;
-                                }
+
+                    // Thêm lại các thông số mới
+                    foreach ($measureNames as $index => $measureName) {
+                        $measureValue = $measureValues[$index];
+                        if (!empty($measureName) && !empty($measureValue)) {
+                            $insert_query = "INSERT INTO tbl_measure (productId, measureName, measureValue)
+                                            VALUES ('$id', '$measureName', '$measureValue')";
+                            $insert_result = $this->db->insert($insert_query);
+
+                            // Nếu một insert thất bại, gán cờ thất bại
+                            if (!$insert_result) {
+                                $measureUpdateSuccess = false;
+                                break;
                             }
                         }
-                    } else {
-                        $measureUpdateSuccess = false;
                     }
+                } else {
+                    // Nếu không có độ đo nào được gửi, xóa tất cả thông số kỹ thuật cũ
+                    $delete_query = "DELETE FROM tbl_measure WHERE productId = '$id'";
+                    $delete_result = $this->db->delete($delete_query);
                 }
         
                 // Cập nhật sản phẩm
@@ -321,8 +321,7 @@
                 }
                 return $alert;
             }
-        }
-        
+        }        
 
         public function del_product($id){
             $query = "DELETE FROM tbl_product WHERE productId = '$id'";

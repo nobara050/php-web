@@ -32,7 +32,7 @@ body {
 .product-table th,
 .product-table td {
   font-size: small;
-  padding: 5px;
+  padding: 10px;
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
@@ -74,6 +74,8 @@ body {
   border-radius: 4px;
   padding: 4px 8px;
   margin: 2px;
-  font-size: 14px;
-  color: #333;
+}
+
+.measure-item span {
+  font-size: 12px;
 }
