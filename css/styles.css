@@ -271,13 +271,19 @@ nav {
 .category-child-banphim-warpper-log span {
   display: block;
 }
-
+.wrapper-banner {
+  margin: 0 auto;
+  max-width: 1080px;
+  width: 95%;
+  margin-top: 1rem;
+}
 /* wrapper */
 .wrapper {
   margin: 0 auto;
   max-width: 1080px;
-  width: 100%;
+  width: 95%;
   margin-top: 1rem;
+  min-height: 100vh;
 }
 
 /* banner */
@@ -354,6 +360,17 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100px;
+}
+
+.card-info {
+  min-height: 63px;
+  max-height: 63px;
+}
+
+.card-name {
+  min-height: 34px;
+  max-height: 34px;
 }
 
 .card-info .card-name {

@@ -32,11 +32,13 @@
         ?>
         <form action="" method="post" 
               enctype="multipart/form-data" class="product-form">
+        <div class="noti">  
         <?php
             if(isset($updateProduct)){
             echo $updateProduct;
             }
         ?>
+        </div>
             <table class="form-table">
                 <tr>
                     <td><label for="product-name">Tên sản phẩm</label></td>

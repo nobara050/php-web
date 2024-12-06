@@ -1,0 +1,11 @@
+.frame-404 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frame-404 img {
+  width: 50%;
+  overflow: cover;
+}

@@ -122,12 +122,14 @@ body {
 /* ========== Ajax ========== */
 .success {
   color: #45a049;
-  padding: 10px;
 }
 
 .error {
   color: rgb(255, 69, 69);
-  padding: 10px;
+}
+
+.noti {
+  margin: 10px;
 }
 
 /* ====== Dialog ======== */

@@ -15,11 +15,13 @@
       <h1 class="dashboard-title">Thêm danh mục</h1>
       <div class="category-form-wrapper">
         <div class="category-box">
-          <?php
-            if(isset($insertCat)){
-              echo $insertCat;
-            }
-          ?>
+          <div class="noti">
+            <?php
+              if(isset($insertCat)){
+                echo $insertCat;
+              }
+            ?>
+          </div>
           <form action="catadd.php" method="post">
             <table class="form-table">
               <tr>

@@ -1,6 +1,7 @@
 <?php
-    include_once '../lib/database.php';
-    include_once '../helpers/format.php';
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/database.php');
+    include_once ($filepath.'/../helpers/format.php');
  ?>
  
  <?php 
@@ -13,6 +14,9 @@
             $this->fm =new Format();
         }
 
+        // ================================================
+        //            Insert sản phẩm trong admin
+        // ================================================
         public function insert_product($data,$files) {
             $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
             $category = mysqli_real_escape_string($this->db->link, $data['category']);
@@ -30,7 +34,7 @@
             $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
             $uploaded_image = "./upload/" . $unique_image;
 
-            if($productName =="" || $category =="" || $brand =="" || $product_desc =="" || 
+            if($productName =="" || $category =="" || $brand =="" || 
                $price =="" || $type =="" || $file_name = "" ) {
                 $alert = "<span class='error'>Không được để trống thông tin</span>";
                 return $alert;
@@ -79,6 +83,9 @@
             return $result;
         }
 
+        // ================================================
+        //              Hiện list sản phẩm 
+        // ================================================
         public function show_product() {
             $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
                       FROM tbl_product
@@ -89,119 +96,18 @@
             return $result;
         }
 
+        // ================================================
+        //           Lấy sản phẩm theo Id
+        // ================================================
         public function getproductbyId($id) {
             $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
             $result =$this->db->select($query);
             return $result;
         }
 
-        // public function update_product($data,$files,$id) {
-            
-        //     $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
-        //     $category = mysqli_real_escape_string($this->db->link, $data['category']);
-        //     $brand = mysqli_real_escape_string($this->db->link, $data['brand']);
-        //     $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
-        //     $price = mysqli_real_escape_string($this->db->link, $data['price']);
-        //     $type = mysqli_real_escape_string($this->db->link, $data['type']);
-            
-        //     $permitted = array('jpg', 'jpeg', 'png', 'gif');
-            
-        //     $file_name = $_FILES['image']['name'];
-        //     $file_size = $_FILES['image']['size'];
-        //     $file_temp = $_FILES['image']['tmp_name'];
-            
-        //     $div = explode('.', $file_name);
-        //     $file_ext = strtolower(end($div));
-        //     $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
-        //     $uploaded_image = "./upload/" . $unique_image;
-
-        //     if($productName =="" || $category =="" || $brand =="" || $product_desc =="" || 
-        //        $price =="" || $type =="") {
-        //         $alert = "<span class='error'>Không được để trống thông tin</span>";
-        //         return $alert;
-        //     } else {
-        //         if (!empty($file_name)) {
-        //             // Nếu người dùng sửa xong chọn ảnh mới
-        //             if ($file_size > 1048567) {
-        //                 $alert = "<span class='error'>Độ phân giải ảnh quá 10MB</span>";
-        //                 return $alert;
-        //             } elseif (!in_array($file_ext, $permitted)) {
-        //                 $alert = "<span class='error'>Bạn chỉ có thể upload file: ".implode(',', $permitted) . "</span>";
-        //                 return $alert;
-        //             }
-
-        //             move_uploaded_file($file_temp, $uploaded_image);
-
-        //             $query = "UPDATE tbl_product 
-        //                       SET 
-        //                         productName = '$productName',
-        //                         catId = '$category',
-        //                         brandId = '$brand',
-        //                         product_desc = '$product_desc',
-        //                         price = '$price',
-        //                         image = '$unique_image',
-        //                         type = '$type'
-        //                       WHERE productId = '$id'";
-        //         } else {
-        //             // Nếu người dùng sửa xong không chọn ảnh mới
-        //             $query = "UPDATE tbl_product 
-        //                       SET 
-        //                         productName = '$productName',
-        //                         catId = '$category',
-        //                         brandId = '$brand',
-        //                         product_desc = '$product_desc',
-        //                         price = '$price',
-        //                         type = '$type'
-        //                       WHERE productId = '$id'";
-                    
-        //         }
-        //         // Xử lý cập nhật thông số kỹ thuật
-        //         $measureNames = $data['measureName'];
-        //         $measureValues = $data['measureValue'];
-
-        //         $measureUpdateSuccess = true; // Cờ theo dõi trạng thái
-
-        //         if (!empty($measureNames) && !empty($measureValues)) {
-        //             // Xóa tất cả thông số kỹ thuật cũ liên quan đến sản phẩm
-        //             $delete_query = "DELETE FROM tbl_measure WHERE productId = '$id'";
-        //             $delete_result = $this->db->delete($delete_query);
-
-        //             if ($delete_result) {
-        //                 // Thêm lại các thông số mới
-        //                 foreach ($measureNames as $index => $measureName) {
-        //                     $measureValue = $measureValues[$index];
-        //                     if (!empty($measureName) && !empty($measureValue)) {
-        //                         $insert_query = "INSERT INTO tbl_measure (productId, measureName, measureValue)
-        //                                         VALUES ('$id', '$measureName', '$measureValue')";
-        //                         $insert_result = $this->db->insert($insert_query);
-
-        //                         // Nếu một insert thất bại, gán cờ thất bại
-        //                         if (!$insert_result) {
-        //                             $measureUpdateSuccess = false;
-        //                             break;
-        //                         }
-        //                     }
-        //                 }
-        //             } else {
-        //                 $measureUpdateSuccess = false;
-        //             }
-        //         }
-
-        //         $result =$this->db->update($query);
-        //         if ($result && $measureUpdateSuccess) {
-        //             $alert = "<span class='success'>Sửa sản phẩm và thông số kỹ thuật thành công</span>";
-        //         } elseif ($result) {
-        //             $alert = "<span class='error'>Sản phẩm đã được cập nhật nhưng thông số kỹ thuật không thể sửa</span>";
-        //         } elseif ($measureUpdateSuccess) {
-        //             $alert = "<span class='error'>Thông số kỹ thuật đã được sửa nhưng sản phẩm không thể cập nhật</span>";
-        //         } else {
-        //             $alert = "<span class='error'>Cập nhật sản phẩm và thông số kỹ thuật thất bại</span>";
-        //         }
-        //         return $alert;
-                
-        //     }
-        // }
-
+        // ================================================
+        //            Update sản phẩm trong admin
+        // ================================================
         public function update_product($data, $files, $id) {
             $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
             $category = mysqli_real_escape_string($this->db->link, $data['category']);
@@ -279,7 +185,8 @@
                 // Kiểm tra nếu có thông số kỹ thuật (measureName và measureValue)
                 $measureUpdateSuccess = true; // Cờ theo dõi trạng thái
 
-                // Kiểm tra nếu mảng thông số kỹ thuật có dữ liệu
+                // Kiểm tra nếu mảng thông số kỹ thuật có dữ liệu không 
+                // (nếu có tức thì sẽ đổi thực hiện lại, dù người dùng không update thì vẫn sẽ gửi form mới)
                 if (isset($data['measureName']) && isset($data['measureValue'])) {
                     $measureNames = $data['measureName'];
                     $measureValues = $data['measureValue'];
@@ -303,12 +210,12 @@
                         }
                     }
                 } else {
-                    // Nếu không có độ đo nào được gửi, xóa tất cả thông số kỹ thuật cũ
+                // Nếu xóa hết độ đo thì không có độ đo nào được gửi, xóa tất cả thông số kỹ thuật cũ
                     $delete_query = "DELETE FROM tbl_measure WHERE productId = '$id'";
                     $delete_result = $this->db->delete($delete_query);
                 }
         
-                // Cập nhật sản phẩm
+                // Thực hiện query
                 $result = $this->db->update($query);
                 if ($result && $measureUpdateSuccess) {
                     $alert = "<span class='success'>Sửa sản phẩm và thông số kỹ thuật thành công</span>";
@@ -322,18 +229,86 @@
                 return $alert;
             }
         }        
-
-        public function del_product($id){
+        
+        // ================================================
+        //            Delete sản phẩm trong admin
+        // ================================================
+        // public function del_product($id){
+        //     $delete_query = "DELETE FROM tbl_measure WHERE productId = '$id'";
+        //     $delete_result = $this->db->delete($delete_query);
+        //     $query = "DELETE FROM tbl_product WHERE productId = '$id'";
+        //     $result =$this->db->delete($query);
+        //     if($result && $delete_result) {
+        //         $alert = "<span class='success'>Xóa sản phẩm thành công</span>";
+        //         return $alert;
+        //     } else {
+        //         $alert = "<span class='error'>Xóa sản phẩm không thành công</span>";
+        //         return $alert;
+        //     } 
+        // }
+        public function del_product($id) {
+            // Bước 1: Lấy đường dẫn ảnh của sản phẩm từ cơ sở dữ liệu
+            $query = "SELECT image FROM tbl_product WHERE productId = '$id'";
+            $image_result = $this->db->select($query);
+            
+            // Kiểm tra nếu có kết quả và lấy đường dẫn ảnh
+            if ($image_result) {
+                $image_data = $image_result->fetch_assoc();
+                $image_name = $image_data['image']; // Giả sử cột 'image' chứa tên file ảnh
+                $image_path = './upload/' . $image_name; // Kết hợp với thư mục upload
+                
+                // Bước 2: Kiểm tra nếu ảnh tồn tại trên server và xóa
+                if (file_exists($image_path)) {
+                    unlink($image_path); // Xóa file ảnh
+                }
+            }
+        
+            // Bước 3: Xóa bản ghi trong bảng tbl_measure (nếu có)
+            $delete_query = "DELETE FROM tbl_measure WHERE productId = '$id'";
+            $delete_result = $this->db->delete($delete_query);
+        
+            // Bước 4: Xóa bản ghi sản phẩm trong bảng tbl_product
             $query = "DELETE FROM tbl_product WHERE productId = '$id'";
-            $result =$this->db->delete($query);
-            if($result) {
+            $result = $this->db->delete($query);
+        
+            // Kiểm tra kết quả và trả về thông báo
+            if ($result && $delete_result) {
                 $alert = "<span class='success'>Xóa sản phẩm thành công</span>";
                 return $alert;
             } else {
                 $alert = "<span class='error'>Xóa sản phẩm không thành công</span>";
                 return $alert;
-            } 
+            }
+        }
+        // ================================================
+        //    Hiển thị sản phẩm nổi bật trên front end
+        // ================================================
+        public function getproduct_featured($limit = 5) {
+            $query = "SELECT * FROM tbl_product WHERE type = '1' LIMIT $limit";
+            $result = $this->db->select($query);
+            return $result;
         }
 
+        // ================================================
+        //    Hiển thị sản phẩm mới trên front end
+        // ================================================
+        public function getproduct_new($limit = 5) {
+            $query = "SELECT * FROM tbl_product ORDER BY productId DESC LIMIT $limit";
+            $result = $this->db->select($query);
+            return $result;
+        }
+    
+        // ================================================
+        //           Hiển thị chi tiết sản phẩm 
+        // ================================================
+        public function get_details($id) {
+            $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+                      FROM tbl_product
+                      INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId
+                      INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId 
+                      WHERE tbl_product.productId = '$id'";        
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
  ?>

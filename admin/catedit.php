@@ -21,11 +21,13 @@
       <h1 class="dashboard-title">Sửa danh mục</h1>
       <div class="category-form-wrapper">
         <div class="category-box">
-          <?php
-            if(isset($updateCat)){
-              echo $updateCat;
-            }
-          ?>
+          <div class="noti">
+            <?php
+              if(isset($updateCat)){
+                echo $updateCat;
+              }
+            ?>
+          </div>
           <?php 
             $get_cate_name = $cat->getcatbyId($id);
             if($get_cate_name) {

@@ -17,11 +17,13 @@
         <h1 class="form-title">Thêm Sản Phẩm</h1>
         <form action="productadd.php" method="post" 
               enctype="multipart/form-data" class="product-form">
-        <?php
-            if(isset($insertProduct)){
-            echo $insertProduct;
-            }
-        ?>
+            <div class="noti">
+                <?php
+                    if(isset($insertProduct)){
+                    echo $insertProduct;
+                }
+                ?>
+            </div>
             <table class="form-table">
                 <tr>
                     <td><label for="product-name">Tên sản phẩm</label></td>

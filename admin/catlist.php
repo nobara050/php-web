@@ -14,11 +14,13 @@
 <h1 class="dashboard-title">Danh sách danh mục</h1>
 <div class="category-list-wrapper">
   <div class="category-box">
-  <?php
-    if(isset($delCat)){
-      echo $delCat;
-    }
-  ?>
+    <div class="noti">
+      <?php
+        if(isset($delCat)){
+          echo $delCat;
+        }
+      ?>
+    </div>
     <div class="table-wrapper">
       <table class="category-table" id="category-table">
         <thead>

@@ -1,8 +1,9 @@
-<link rel="stylesheet" href="css/cart.css">
-<script src="../js/index.js"></script>
 <?php
     include 'inc/header.php';
 ?>
+
+<link rel="stylesheet" href="css/cart.css">
+
 <!-- wrapper for content -->
 <div class="wrapper">
   <div class="wraper-cart-title">

@@ -9,11 +9,22 @@
 <?php 
   $pd = new product();
   $fm = new Format();
+  if (isset($_GET['productid'])) {
+      $id = $_GET['productid'];
+      $delProduct = $pd->del_product($id);
+  }
 ?>
   <link rel="stylesheet" href="css/productlist.css">
       <h1 class="dashboard-title">Danh sách sản phẩm</h1>
       <div class="container">
         <div class="box product-list-box">
+          <div class="noti">
+          <?php
+            if(isset($delProduct)) {
+              echo $delProduct;
+            }
+          ?>
+          </div>
             <div class="table-container">
                 <table class="product-table">
                     <thead>
@@ -74,7 +85,7 @@
                             <td>
                               <a href="productedit.php?productid=<?php echo $result['productId'] ?>">Edit</a> 
                               | 
-                              <a href="productedit.php?productid=<?php echo $result['productId'] ?>">Delete</a>
+                              <a href="?productid=<?php echo $result['productId'] ?>" class="action-link confirmable" data-message="Bạn có muốn xóa sản phẩm này?">Delete</a>
                             </td>
                         </tr>
                       <?php 

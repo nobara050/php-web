@@ -21,11 +21,13 @@
       <h1 class="dashboard-title">Sửa thương hiệu</h1>
       <div class="brand-form-wrapper">
         <div class="brand-box">
-          <?php
-            if(isset($updateBrand)){
-              echo $updateBrand;
-            }
-          ?>
+          <div class="noti">
+            <?php
+              if(isset($updateBrand)){
+                echo $updateBrand;
+              }
+            ?>
+          </div>
           <?php 
             $get_brand_name = $brand->getbrandbyId($id);
             if($get_brand_name) {

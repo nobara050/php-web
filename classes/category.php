@@ -1,6 +1,7 @@
 <?php
-    include_once '../lib/database.php';
-    include_once '../helpers/format.php';
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/database.php');
+    include_once ($filepath.'/../helpers/format.php');
  ?>
  
  <?php
@@ -13,6 +14,9 @@
             $this->fm =new Format();
         }
 
+        // ================================================
+        //            Insert danh mục trong admin
+        // ================================================        
         public function insert_category($catName) {
             $catName = $this->fm->validation($catName);
             $catName = mysqli_real_escape_string($this->db->link, $catName);
@@ -33,6 +37,9 @@
             }
         }
 
+        // ================================================
+        //            Update danh mục trong admin
+        // ================================================
         public function update_category($catName,$id) {
             $catName = $this->fm->validation($catName);
             $catName = mysqli_real_escape_string($this->db->link, $catName);
@@ -54,6 +61,9 @@
             }
         }
 
+        // ================================================
+        //            Delete danh mục trong admin
+        // ================================================
         public function del_category($id){
             $query = "DELETE FROM tbl_category WHERE catId = '$id'";
             $result =$this->db->delete($query);
@@ -66,12 +76,18 @@
             } 
         }
 
+        // ================================================
+        //              Hiện list danh mục
+        // ================================================
         public function show_category() {
             $query = "SELECT * FROM tbl_category ORDER BY catName ASC";
             $result =$this->db->select($query);
             return $result;
         }
 
+        // ================================================
+        //            Lấy danh mục theo Id
+        // ================================================
         public function getcatbyId($id) {
             $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
             $result =$this->db->select($query);

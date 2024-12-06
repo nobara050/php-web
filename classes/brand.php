@@ -1,7 +1,8 @@
 <?php
-    include_once '../lib/database.php';
-    include_once '../helpers/format.php';
- ?>
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/database.php');
+    include_once ($filepath.'/../helpers/format.php');
+?>
  
  <?php
     class brand {
@@ -13,6 +14,9 @@
             $this->fm =new Format();
         }
 
+        // ================================================
+        //          Insert thương hiệu trong admin
+        // ================================================
         public function insert_brand($brandName) {
             $brandName = $this->fm->validation($brandName);
             $brandName = mysqli_real_escape_string($this->db->link, $brandName);
@@ -33,6 +37,9 @@
             }
         }
 
+        // ================================================
+        //          Update thương hiệu trong admin
+        // ================================================
         public function update_brand($brandName,$id) {
             $brandName = $this->fm->validation($brandName);
             $brandName = mysqli_real_escape_string($this->db->link, $brandName);
@@ -54,6 +61,9 @@
             }
         }
 
+        // ================================================
+        //          Delete thương hiệu trong admin
+        // ================================================
         public function del_brand($id){
             $query = "DELETE FROM tbl_brand WHERE brandId = '$id'";
             $result =$this->db->delete($query);
@@ -66,12 +76,18 @@
             } 
         }
 
+        // ================================================
+        //               Hiện list thương hiệu 
+        // ================================================
         public function show_brand() {
             $query = "SELECT * FROM tbl_brand ORDER BY brandName ASC";
             $result =$this->db->select($query);
             return $result;
         }
 
+        // ================================================
+        //            Lấy thương hiệu theo Id
+        // ================================================
         public function getbrandbyId($id) {
             $query = "SELECT * FROM tbl_brand WHERE brandId = '$id'";
             $result =$this->db->select($query);

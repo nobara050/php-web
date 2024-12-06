@@ -1,0 +1,271 @@
+/* Khung Frame */
+.product-detail {
+  border-radius: 0.75rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-overview {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  padding: 2rem;
+  box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+/* Ảnh */
+.image-gallery {
+  width: 40%;
+  height: 300px;
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-gallery img {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin: 0.25rem;
+}
+
+/* Tên, giá, tăng giảm số lượng, thương hiệu nhãn hàng */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.product-title {
+  font-weight: 600;
+  font-size: x-large;
+  display: -webkit-box; /* Thiết lập chế độ hiển thị cho WebKit */
+  -webkit-box-orient: vertical; /* Định hướng chiều dọc cho các box */
+  -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị là 2 */
+  overflow: hidden; /* Ẩn phần nội dung vượt quá */
+  text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi nội dung bị cắt */
+}
+
+.product-price {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-size: xx-large;
+  color: #3188ea;
+  font-weight: 500;
+}
+
+.product-meta {
+  display: flex;
+  gap: 0.25rem;
+  font-size: medium;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-meta li {
+  color: #3188ea;
+}
+
+.btn-sales {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* CSS chung cho cả hai nút */
+.buy-now,
+.add-to-cart {
+  cursor: pointer;
+  width: 48%;
+  height: 100%;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
+    0 1px 2px -1px rgba(148, 148, 148, 0.1);
+  display: flex; /* Để căn chỉnh các phần tử bên trong nút */
+  justify-content: center; /* Căn giữa chữ trong nút */
+  align-items: center; /* Đảm bảo chiều cao các nút bằng nhau */
+}
+
+/* Nút thêm vào giỏ */
+.add-to-cart {
+  background: #3188ea;
+  border: #f1f8fe;
+}
+
+/* Nút mua ngay */
+.buy-now {
+  background: #f56565;
+  border: #f1f8fe;
+}
+
+/* ===================== */
+/* Định dạng chung cho form */
+.quantity-form {
+  margin: 0.5rem;
+  margin-bottom: 1rem;
+}
+/* Định dạng label */
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Định dạng container chứa các nút và ô nhập liệu */
+.quantity-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+/* Định dạng các nút tăng/giảm */
+.quantity-btn {
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+  background-color: #d1d1d1;
+}
+
+/* Định dạng nút giảm */
+.decrement-btn {
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  height: 1.9rem;
+}
+
+/* Định dạng nút tăng */
+.increment-btn {
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  height: 1.9rem;
+}
+
+.quantity-input {
+  max-width: 50px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #cc7c19;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  outline: none;
+  height: 1.8rem;
+}
+
+/* Tạo hiệu ứng khi hover */
+.quantity-btn:hover,
+.quantity-input:focus {
+  border-color: #007bff;
+}
+
+/* Định dạng icon trong các nút */
+.icon {
+  width: 12px;
+  height: 10px;
+  padding-bottom: 7px;
+  fill: #333;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield; /* Chrome, Safari, Edge */
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spec-list-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.product-desc-measure {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.product-desc {
+  width: 70%;
+}
+
+.product-measure {
+  width: 30%;
+  margin-top: 2rem;
+}
+
+.product-desc-measure h2 {
+  font-size: large;
+}
+
+.product-desc-tittle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.product-desc-tittle h2 {
+  font-size: x-large;
+}
+
+.spec-list {
+  background: #ebeaea;
+  border-radius: 1rem;
+  box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+}
+
+.product-desc {
+  padding: 2rem;
+  text-align: justify;
+}
+
+.p_desc img {
+  display: block;
+  margin: 20px auto; /* Căn giữa hình ảnh */
+  max-width: 100%; /* Đảm bảo hình ảnh không vượt quá chiều rộng của div */
+  height: auto;
+}

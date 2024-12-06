@@ -15,11 +15,13 @@
       <h1 class="dashboard-title">Thêm thương hiệu</h1>
       <div class="brand-form-wrapper">
         <div class="brand-box">
-          <?php
-            if(isset($insertBrand)){
-              echo $insertBrand;
-            }
-          ?>
+          <div class="noti">
+            <?php
+              if(isset($insertBrand)){
+                echo $insertBrand;
+              }
+            ?>
+          </div>
           <form action="brandadd.php" method="post">
             <table class="form-table">
               <tr>

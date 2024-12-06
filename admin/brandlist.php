@@ -14,11 +14,13 @@
 <h1 class="dashboard-title">Danh sách thương hiệu</h1>
 <div class="brand-list-wrapper">
   <div class="brand-box">
-  <?php
-    if(isset($delBrand)){
-      echo $delBrand;
-    }
-  ?>
+    <div class="noti">
+    <?php
+      if(isset($delBrand)){
+        echo $delBrand;
+      }
+    ?>
+    </div>
     <div class="table-wrapper">
       <table class="brand-table" id="brand-table">
         <thead>
