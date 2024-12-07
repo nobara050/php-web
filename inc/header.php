@@ -1,4 +1,5 @@
 <?php 
+  ob_start(); 
   include 'lib/session.php';
   Session::init();
 ?>
@@ -47,10 +48,21 @@
             <span>Đăng nhập</span>
           </a>
         </li>
-        <li class="nav-hover">
+        <li class="nav-hover cart-note-relative">
           <a href="cart.php">
             <img src="img/nav_cart.png" alt="icon" />
             <span>Giỏ hàng</span>
+          </a>
+          <a href="cart.php" class="cart-note-absolute">
+            <?php
+              $check_cart = $ct->check_cart();
+              if($check_cart){
+                $qty = Session::get('qty');
+                echo $qty;
+              } else {
+                echo '0';
+              }
+            ?>
           </a>
         </li>
       </ul>

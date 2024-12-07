@@ -455,3 +455,29 @@ nav {
   border-top: 0.0625rem solid #ddd; /* 1px */
   margin-top: 1.25rem; /* 20px */
 }
+
+.success {
+  color: #45a049;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.error {
+  margin: 1rem;
+  color: rgb(255, 69, 69);
+}
+
+/* cart note */
+.cart-note-relative {
+  position: relative;
+}
+
+.cart-note-absolute {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: #ffc421;
+  border-radius: 20px;
+  font-size: small;
+  padding: 0.25rem;
+}

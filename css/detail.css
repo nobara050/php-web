@@ -80,9 +80,12 @@
 }
 
 .btn-sales {
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
+  /* height: 100%; */
 }
 
 /* CSS chung cho cả hai nút */
@@ -91,8 +94,9 @@
   cursor: pointer;
   width: 48%;
   height: 100%;
+  max-height: 55px;
   margin-top: 0.5rem;
-  padding: 1rem;
+  padding: 0.25rem;
   font-weight: 700;
   color: #ffffff;
   border-radius: 1rem;
@@ -119,7 +123,8 @@
 /* Định dạng chung cho form */
 .quantity-form {
   margin: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
+  margin-left: 0rem;
 }
 /* Định dạng label */
 .form-label {
@@ -261,6 +266,7 @@
 .product-desc {
   padding: 2rem;
   text-align: justify;
+  line-height: 1.6; /* Điều chỉnh khoảng cách giữa các dòng */
 }
 
 .p_desc img {

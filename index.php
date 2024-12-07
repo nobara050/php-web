@@ -30,7 +30,7 @@
                         <a href="details.php?proid=<?php echo $result['productId'] ?>">
                         <span class="card-name"><?php echo $measureText; ?></span>
                         </a>
-                        <span class="card-price"><?php echo $result['price'] ?> VND</span>
+                        <span class="card-price"><?php echo number_format($result['price'], 0, ',', '.') ?>đ</span>
                     </div>
                     <button class="btnMua" onclick="addToCart(this)">Mua ngay</button>
                 </div>
@@ -78,7 +78,7 @@
                     <a href="details.php?proid=<?php echo $result_new['productId'] ?>">
                     <span class="card-name"><?php echo $measureText; ?></span>
                     </a>
-                    <span class="card-price"><?php echo $result_new['price'] ?> VND</span>
+                    <span class="card-price"><?php echo number_format($result_new['price'], 0, ',', '.'); ?>đ</span>
                 </div>
                 <button class="btnMua" onclick="addToCart(this)">Mua ngay</button>
             </div>

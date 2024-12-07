@@ -21,7 +21,8 @@
 
 .wrapper-cart-items {
   background: white;
-  max-width: 600px;
+  width: 400px;
+  max-width: 400px;
   padding: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
@@ -30,6 +31,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
+    0 1px 2px -1px rgba(148, 148, 148, 0.1);
 }
 
 .cart-item-info-button {
@@ -48,10 +51,10 @@
 }
 
 .cart-item-image {
-  max-width: 90px;
+  width: 100%;
+  max-width: 80px;
   max-height: 80px;
   margin-right: 1.25rem;
-  width: 25%;
 }
 
 .cart-item-image img {
@@ -62,22 +65,25 @@
 
 .cart-item-name-image {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start; /* Hoặc 'space-between' */
+  align-items: center;
 }
 
 .cart-item-name {
   font-weight: 450;
   font-size: 1rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* Limit text to 2 lines */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word; /* Break long words to fit within the limit */
-  max-width: 350px;
+  display: -webkit-box; /* Sử dụng WebKit box để cắt văn bản */
+  -webkit-box-orient: vertical; /* Đặt hướng của các dòng là dọc */
+  -webkit-line-clamp: 2; /* Giới hạn văn bản hiển thị tối đa 2 dòng */
+  text-overflow: ellipsis; /* Thêm dấu ba chấm cho văn bản bị cắt */
+  word-wrap: break-word; /* Ngắt từ khi cần thiết để vừa với chiều rộng */
+  max-width: 350px; /* Giới hạn độ rộng của phần tử */
+  height: 2.4rem; /* Giới hạn chiều cao để vừa với 2 dòng */
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   margin-right: 1.5rem;
+  overflow: hidden; /* Ẩn phần văn bản thừa */
+  line-height: 1.2rem; /* Đảm bảo dòng không bị quá cao */
 }
 
 .cart-item-price {
@@ -147,12 +153,64 @@
   margin-right: 1.5rem;
 }
 
-.reset-this-item:hover {
+.reset-this-item a:hover {
   color: #3b82f6;
 }
 
 hr {
   width: 100%;
-  margin: 1.5rem;
+  margin: 1rem;
   border: 1px solid #f0f0f0; /* Optional: adjust thickness and color */
+}
+
+/* Ẩn mũi tên trên các trình duyệt Webkit (Chrome, Safari) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Ẩn các mũi tên */
+  margin: 0; /* Loại bỏ khoảng cách */
+}
+
+/* Ẩn mũi tên trên Firefox */
+input[type="number"] {
+  -moz-appearance: textfield; /* Loại bỏ mũi tên trên Firefox */
+}
+
+/* Tùy chọn: Cung cấp kiểu dáng đẹp cho input */
+input[type="number"] {
+  -webkit-appearance: none; /* Tắt mũi tên trong Webkit */
+  -moz-appearance: textfield; /* Tắt mũi tên trong Firefox */
+  appearance: none; /* Tắt mũi tên trong các trình duyệt khác */
+}
+
+.total {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25rem;
+}
+
+.vat {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25rem;
+}
+
+.grandtotal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25rem;
+}
+
+.not-choose {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-choose img {
+  max-width: 100%;
+  object-fit: cover;
 }
