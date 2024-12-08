@@ -11,6 +11,11 @@
     $quantity = $_POST['quantity'];  // Lấy quantity từ POST
     $update_quantity_cart = $ct->update_quantity_cart($quantity, $cartId);
   }  
+
+  $check_cart_reset = $ct->check_cart();
+  if($check_cart){
+    Session::get('qty');
+  }
 ?>
 
 

@@ -22,7 +22,7 @@
             $adminPass = $this->fm->validation($adminPass);
 
             $adminUser =mysqli_real_escape_string($this->db->link, $adminUser);
-            $adminPass =mysqli_real_escape_string($this->db->link, $adminPass);
+            $adminPass =mysqli_real_escape_string($this->db->link, ($adminPass));
 
             if(empty($adminUser) || empty($adminPass)) {
                 $alert = "Tài khoản và mật khẩu không được để trống";

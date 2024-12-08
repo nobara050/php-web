@@ -4,7 +4,7 @@
 
 <?php
     if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
-        echo "<script>window.location = '404.php'</script>";
+        echo "<script>window.location = 'page404.php'</script>";
     } else {
         $id = $_GET['proid'];
     }
@@ -49,9 +49,17 @@
                 ?>
                 </h1>
                 <ul class="product-meta">
-                    <li><strong>Thương hiệu: </strong> <?php echo $result_details['brandName']; ?></li>
-                    <li><p>|</p> </li>
-                    <li> <?php echo $result_details['catName']; ?></li>
+                <li><strong>Thương hiệu: </strong>
+                    <a href="getproduct.php?type=brand&id=<?php echo $result_details['brandId']; ?>">
+                        <?php echo $result_details['brandName']; ?>
+                    </a>
+                </li>                    
+                <li><p>|</p> </li>
+                <li> 
+                    <a href="getproduct.php?type=cat&id=<?php echo $result_details['catId']; ?>">
+                        <?php echo $result_details['catName']; ?> 
+                    </a>
+                </li>
                 </ul>
                 <p class="product-price"><?php echo number_format($result_details['price'], 0, ',', '.'); ?>đ</p>
                 

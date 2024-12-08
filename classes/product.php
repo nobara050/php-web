@@ -246,6 +246,7 @@
         //         return $alert;
         //     } 
         // }
+
         public function del_product($id) {
             // Bước 1: Lấy đường dẫn ảnh của sản phẩm từ cơ sở dữ liệu
             $query = "SELECT image FROM tbl_product WHERE productId = '$id'";
@@ -307,6 +308,18 @@
                       INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId
                       INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId 
                       WHERE tbl_product.productId = '$id'";        
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function get_product_by_cat($id) {
+            $query = "SELECT * FROM tbl_product WHERE catId = '$id' order by catId desc";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function get_product_by_brand($id) {
+            $query = "SELECT * FROM tbl_product WHERE brandId = '$id' order by brandId desc";
             $result = $this->db->select($query);
             return $result;
         }

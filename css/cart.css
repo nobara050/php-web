@@ -87,7 +87,7 @@
 }
 
 .cart-item-price {
-  color: #d92e2b;
+  color: red;
   display: flex;
   padding: 1rem;
 }

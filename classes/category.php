@@ -89,9 +89,10 @@
         //            Lấy danh mục theo Id
         // ================================================
         public function getcatbyId($id) {
-            $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
+            $query = "SELECT * FROM tbl_category WHERE catId = '$id' LIMIT 1";
             $result =$this->db->select($query);
             return $result;
         }
+
     }
  ?>

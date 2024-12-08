@@ -75,7 +75,7 @@
   margin-bottom: 1rem;
 }
 
-.product-meta li {
+.product-meta li a {
   color: #3188ea;
 }
 
@@ -88,35 +88,44 @@
   /* height: 100%; */
 }
 
-/* CSS chung cho cả hai nút */
-.buy-now,
+/* Nút thêm vào giỏ */
 .add-to-cart {
-  cursor: pointer;
   width: 48%;
   height: 100%;
   max-height: 55px;
   margin-top: 0.5rem;
   padding: 0.25rem;
-  font-weight: 700;
-  color: #ffffff;
   border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  border: #f1f8fe;
+  color: #37754b;
+  background: #bbf7d1;
   box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
     0 1px 2px -1px rgba(148, 148, 148, 0.1);
-  display: flex; /* Để căn chỉnh các phần tử bên trong nút */
-  justify-content: center; /* Căn giữa chữ trong nút */
-  align-items: center; /* Đảm bảo chiều cao các nút bằng nhau */
-}
-
-/* Nút thêm vào giỏ */
-.add-to-cart {
-  background: #3188ea;
-  border: #f1f8fe;
 }
 
 /* Nút mua ngay */
 .buy-now {
-  background: #f56565;
+  width: 48%;
+  height: 100%;
+  max-height: 55px;
+  margin-top: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
   border: #f1f8fe;
+  color: #3188ea;
+  background: #f1f8fe;
+  box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
+    0 1px 2px -1px rgba(148, 148, 148, 0.1);
 }
 
 /* ===================== */
@@ -144,7 +153,7 @@
 
 /* Định dạng các nút tăng/giảm */
 .quantity-btn {
-  background-color: #e0e0e0;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   padding: 10px;
   cursor: pointer;
@@ -152,7 +161,7 @@
 }
 
 .quantity-btn:hover {
-  background-color: #d1d1d1;
+  background-color: #f1f8fe;
 }
 
 /* Định dạng nút giảm */
@@ -175,7 +184,7 @@
   text-align: center;
   justify-content: center;
   font-size: 16px;
-  color: #cc7c19;
+  color: #333;
   border: 1px solid #ccc;
   background-color: #fff;
   outline: none;
@@ -185,7 +194,7 @@
 /* Tạo hiệu ứng khi hover */
 .quantity-btn:hover,
 .quantity-input:focus {
-  border-color: #007bff;
+  border-color: #53a6ff;
 }
 
 /* Định dạng icon trong các nút */

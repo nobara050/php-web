@@ -15,6 +15,7 @@
             $this->fm = new Format();
         }
 
+        // Dùng thêm sản phẩm trong detail vào cart
         public function add_to_cart($quantity, $id, $buy_now = false){
             $quantity = $this->fm->validation($quantity);
             $quantity = mysqli_real_escape_string($this->db->link, $quantity);
@@ -48,7 +49,6 @@
                 $query_insert = "INSERT INTO tbl_cart(productId, quantity, sId, price, image, productName) 
                                  VALUES ('$id', '$quantity', '$sId', '$price', '$image', '$productName')";
                 $insert_cart = $this->db->insert($query_insert);
-                $this->update_cart_qty();
                 if ($insert_cart) {
                     // Thông báo sản phẩm đã được thêm vào giỏ hàng
                     $_SESSION['cart_message'] = 'Đã thêm sản phẩm vào giỏ hàng';
@@ -61,23 +61,9 @@
             // Nếu nhấn "Mua ngay", chuyển hướng đến giỏ hàng
             if ($buy_now) {
                 unset($_SESSION['cart_message']);
+                $this->update_cart_qty();
                 header('Location: cart.php');
                 exit();
-            }
-        }
-        
-        public function update_quantity_cart($quantity, $cartId) {
-            $quantity = mysqli_real_escape_string($this->db->link, $quantity);
-            $cartId = mysqli_real_escape_string($this->db->link, $cartId);
-            $query = "UPDATE tbl_cart SET quantity = '$quantity' WHERE cartId = '$cartId'";
-            $result = $this->db->update($query);
-            if($result){
-                $msg = "Cập nhật thành công.";
-                $this->update_cart_qty();
-                return $msg;
-            } else {
-                $msg = "Cập nhật không thành công.";
-                return $msg;
             }
         }
 
@@ -86,7 +72,7 @@
             $query = "DELETE FROM tbl_cart WHERE cartId = '$cartid'";
             $result = $this->db->delete($query);
             if($result){
-                $this->update_cart_qty();
+                // $this->update_cart_qty();
                 header('Location:cart.php');
                 exit; 
             } else {

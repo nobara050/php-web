@@ -17,6 +17,8 @@
   $us = new user();
   $cat = new category();
   $product = new product();
+  $brand = new brand();
+  $cs = new customer();
 ?>
 
 <?php
@@ -41,13 +43,43 @@
         <img src="img/logo.png" alt="Logo" />
       </a>
       <input class="nav-search" type="text" placeholder="Bạn tìm gì..." />
+      <?php
+        if(isset($_GET['customerid'])) {
+          Session::destroy();
+          header("Location: index.php");
+        }
+      ?>
       <ul class="nav-option">
-        <li class="nav-hover">
-          <a href="admin/login.php">
-            <img src="img/nav_user.png" alt="icon" />
-            <span>Đăng nhập</span>
-          </a>
-        </li>
+      <?php
+        $login_check = Session::get('customer_login');
+        if($login_check == false){
+          echo "  
+            <li class='nav-hover'>
+              <a href='login.php'> 
+                <img src='img/nav_user.png' alt='icon' />
+                <span>Đăng nhập</span>
+              </a>
+            </li>";
+        } else {
+          echo "
+            <li class='nav-hover nav-login-hover-relative'>
+              <a>
+                <img src='img/nav_user.png' alt='icon' />
+                <span>". Session::get('customer_name'). "</span>
+              </a>
+              <div class='nav-login-hover-absolute'>
+                <ul class='nav-login-hover-absolute-element'>
+                  <li><a href='user.php'>Tài khoản</a></li>
+                  <li><a href='order.php'>Đơn hàng</a></li>
+                  <li>
+                    <a href='?customerid=" . Session::get('customer_id') . "'>Đăng xuất</a>
+                  </li>
+                </ul>
+              </div>
+            </li> 
+          ";
+        }
+      ?>
         <li class="nav-hover cart-note-relative">
           <a href="cart.php">
             <img src="img/nav_cart.png" alt="icon" />
