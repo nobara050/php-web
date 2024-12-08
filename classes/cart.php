@@ -67,6 +67,25 @@
             }
         }
 
+
+        // Hàm này chỉ dùng trong tăng giảm số lượng cart.php
+        public function update_quantity_cart($quantity, $cartId) {
+            $quantity = mysqli_real_escape_string($this->db->link, $quantity);
+            $cartId = mysqli_real_escape_string($this->db->link, $cartId);
+            $query = "UPDATE tbl_cart SET quantity = '$quantity' WHERE cartId = '$cartId'";
+            $result = $this->db->update($query);
+            if($result){
+                $msg = "Cập nhật thành công.";
+                // $this->update_cart_qty();
+                header('Location:cart.php');
+                return $msg;
+            } else {
+                $msg = "Cập nhật không thành công.";
+                return $msg;
+            }
+        }
+
+        
         public function del_product_cart($cartid) {
             $cartid = mysqli_real_escape_string($this->db->link, $cartid);
             $query = "DELETE FROM tbl_cart WHERE cartId = '$cartid'";
