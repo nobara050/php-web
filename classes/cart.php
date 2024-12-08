@@ -15,7 +15,9 @@
             $this->fm = new Format();
         }
 
-        // Dùng thêm sản phẩm trong detail vào cart
+        // ================================================
+        //              Thêm sản phẩm vào giỏ
+        // ================================================
         public function add_to_cart($quantity, $id, $buy_now = false){
             $quantity = $this->fm->validation($quantity);
             $quantity = mysqli_real_escape_string($this->db->link, $quantity);
@@ -67,8 +69,10 @@
             }
         }
 
-
-        // Hàm này chỉ dùng trong tăng giảm số lượng cart.php
+        // Hàm này chỉ có cart.php dùng
+        // =========================================================
+        //             Tăng giảm số lượng trong giỏ hàng
+        // =========================================================
         public function update_quantity_cart($quantity, $cartId) {
             $quantity = mysqli_real_escape_string($this->db->link, $quantity);
             $cartId = mysqli_real_escape_string($this->db->link, $cartId);
@@ -85,7 +89,9 @@
             }
         }
 
-        
+        // =========================================================
+        //               Xóa sản phẩm trong giỏ hàng
+        // =========================================================  
         public function del_product_cart($cartid) {
             $cartid = mysqli_real_escape_string($this->db->link, $cartid);
             $query = "DELETE FROM tbl_cart WHERE cartId = '$cartid'";
@@ -100,6 +106,9 @@
             }
         }
 
+        // =========================================================
+        //          Cập nhật số lượng sản phẩm trong giỏ
+        // =========================================================
         public function update_cart_qty() {
             $qty = 0;
             $get_product_cart = $this->get_product_cart();
@@ -113,6 +122,9 @@
             Session::set('qty', $qty);
         }
 
+        // =========================================================
+        //              Kiểm tra giỏ có sản phẩm không
+        // =========================================================
         public function check_cart(){
             $sId = session_id();
             $query = "SELECT * FROM tbl_cart WHERE sId='$sId'";
@@ -120,6 +132,9 @@
             return $result;
         }
 
+        // =========================================================
+        //              Lấy sản phẩm từ giỏ hàng ra
+        // =========================================================
         public function get_product_cart(){
             $sId = session_id();
             $query = "SELECT * FROM tbl_cart WHERE sId='$sId'";

@@ -1,3 +1,6 @@
+// =============================================================================
+//                      Chỉnh tấm nền cho login đẹp
+// =============================================================================
 const container = document.getElementById("container");
 const overlayCon = document.getElementById("overlayCon");
 const overlayBtn = document.getElementById("overlayBtn");

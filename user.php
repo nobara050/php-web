@@ -6,6 +6,9 @@
   }
 ?>
 
+<!-- ============================================================================== -->
+<!--                 Xử lý khi nhận được submit sửa profile                         -->
+<!-- ============================================================================== -->
 <?php
     $id = Session::get('customer_id');
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateprofile'])) {
@@ -15,7 +18,10 @@
 
 <link rel="stylesheet" href="css/user.css">
 
-<!-- wrapper for content -->
+<!-- ============================================================================== -->
+<!--                   Load thông tin người dùng lên                                -->
+<!-- ============================================================================== -->
+<!-- Nội dung trang -->
 <div class="wrapper">
     <?php
         $id = Session::get('customer_id');
@@ -25,6 +31,9 @@
     ?>
         <div class="user-info-wrapper">
             <h3>Thông tin tài khoản</h3>
+
+
+            <!-- ============================================================================== -->
             <form action="" method="post">
                 <table style="border-collapse: collapse">
                     <tr>
@@ -88,6 +97,8 @@
                         </td>
                     </tr>
                 </table>
+
+                <!-- Xuất thông báo khi sửa đổi và nút sửa đổi -->
                 <div class="div-update-profile">
                 <?php
                     if(isset($updatecustomer)){
@@ -97,12 +108,14 @@
                     <input type="submit" name="updateprofile" class="save-btn" value="Sửa thông tin" />
                 </div>
             </form>
+            <!-- ============================================================================== -->
+
+
         </div>
     <?php
             }
         }
     ?>
-    <!-- ========================================= -->
 </div>
 <?php
     include 'inc/footer.php';

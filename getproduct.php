@@ -2,7 +2,9 @@
     include 'inc/header.php';
 ?>
 
+<!-- Trang này thực hiện việc lấy sản phẩm theo category hoặc brand -->
 <?php 
+    // Xử lý Get khi nhận được từ trang details.php gửi qua
     if (!isset($_GET['type']) || !isset($_GET['id']) || $_GET['id'] == NULL) {
         echo "<script>window.location = 'page404.php'</script>";
     } else {
@@ -11,9 +13,13 @@
     }
 ?> 
 
-<!-- wrapper for content -->
+<!-- Nội dung trang -->
 <div class="wrapper">
+    <!-- ============================================================================== -->
+    <!--                             Title của trang                                    -->
+    <!-- ============================================================================== -->
     <?php
+        // Xuất title là Category hay Brand tùy theo type lấy được ở trên
         if ($type === 'cat') {
             $nameData = $cat->getcatbyId($id);
             $titlePrefix = "Danh mục: ";
@@ -22,6 +28,7 @@
             $titlePrefix = "Thương hiệu: ";
         }
 
+        // Xuất ra title 
         if ($nameData) {
             while ($result_name = $nameData->fetch_assoc()) {
     ?>
@@ -30,15 +37,21 @@
             }
         }
     ?>
+
+    <!-- ============================================================================== -->
+    <!--                          List card sản phẩm                                    -->
+    <!-- ============================================================================== -->
     <div class="listcard-button">
         <div class="listcard">
             <?php
+                // Nếu type là category thì get_product_by_cat theo id của category
                 if ($type === 'cat') {
                     $products = $product->get_product_by_cat($id);
                 } elseif ($type === 'brand') {
                     $products = $product->get_product_by_brand($id);
                 }
-
+            
+                // Nếu type là brand thì get_product_by_brand theo id của brand
                 if ($products) {
                     while ($result = $products->fetch_assoc()) {
                         $measures = $product->get_measures_by_product($result['productId']);
@@ -49,6 +62,7 @@
                             }
                         }
             ?>
+                <!-- Xuất các phẩn tử card -->
                 <!-- card here -->
                 <div class="card">
                     <div class="card-img">

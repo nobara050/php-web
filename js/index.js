@@ -1,3 +1,7 @@
+// =============================================================================
+//                      Chỉnh chiều cao footer cho đẹp
+// =============================================================================
+
 function adjustWrapperMinHeight() {
   const navHeight = document.querySelector("nav").offsetHeight; // Chiều cao của <nav>
   const footerHeight = document.querySelector("footer").offsetHeight; // Chiều cao của <footer>

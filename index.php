@@ -1,9 +1,12 @@
 <?php
     include 'inc/header.php';
+    // Một cái banner nữa ở đây, banner này admin đổi ảnh được
     include 'inc/slider.php';
 ?>
 <div class="wrapper">
-    <!-- List Card -->
+    <!-- ============================================================================== -->
+    <!--                         List card sản phẩm hot                                 -->
+    <!-- ============================================================================== -->
     <span class="list_title">Sản phẩm hot</span>
     <div class="listcard-button">
         <div class="listcard">
@@ -22,6 +25,7 @@
                 <!-- card here -->
                 <div class="card">
                     <div class="card-img">
+                        <!-- Mỗi card đều gửi về cho details productid -->
                         <a href="details.php?proid=<?php echo $result['productId'] ?>">
                         <img src="admin/upload/<?php echo $result['image'] ?>" alt="Hình ảnh sản phẩm" />
                         </a>
@@ -44,14 +48,20 @@
             <button class="btn-xemthem">Xem thêm sản phẩm</button>
         </div>
     </div>
-    <!-- Banner -->
+
+    <!-- ============================================================================== -->
+    <!--                          Banner tự build PC                                    -->
+    <!-- ============================================================================== -->
     <span class="list_title">Tự build PC</span>
     <div class="banner">
         <a href="#">
             <img src="img/banner2.jpg" alt="banner1" />
         </a>
     </div>
-    <!-- List Card -->
+
+    <!-- ============================================================================== -->
+    <!--                      List card sản phẩm mới                                    -->
+    <!-- ============================================================================== -->
     <span class="list_title">Sản phẩm mới</span>
     <div class="listcard-button">
         <div class="listcard">

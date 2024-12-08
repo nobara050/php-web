@@ -233,20 +233,6 @@
         // ================================================
         //            Delete sản phẩm trong admin
         // ================================================
-        // public function del_product($id){
-        //     $delete_query = "DELETE FROM tbl_measure WHERE productId = '$id'";
-        //     $delete_result = $this->db->delete($delete_query);
-        //     $query = "DELETE FROM tbl_product WHERE productId = '$id'";
-        //     $result =$this->db->delete($query);
-        //     if($result && $delete_result) {
-        //         $alert = "<span class='success'>Xóa sản phẩm thành công</span>";
-        //         return $alert;
-        //     } else {
-        //         $alert = "<span class='error'>Xóa sản phẩm không thành công</span>";
-        //         return $alert;
-        //     } 
-        // }
-
         public function del_product($id) {
             // Bước 1: Lấy đường dẫn ảnh của sản phẩm từ cơ sở dữ liệu
             $query = "SELECT image FROM tbl_product WHERE productId = '$id'";
@@ -281,6 +267,7 @@
                 return $alert;
             }
         }
+
         // ================================================
         //    Hiển thị sản phẩm nổi bật trên front end
         // ================================================
@@ -312,12 +299,18 @@
             return $result;
         }
 
+        // ================================================
+        //           Hiển thị sản phẩm theo cat
+        // ================================================
         public function get_product_by_cat($id) {
             $query = "SELECT * FROM tbl_product WHERE catId = '$id' order by catId desc";
             $result = $this->db->select($query);
             return $result;
         }
 
+        // ================================================
+        //           Hiển thị sản phẩm theo brand
+        // ================================================
         public function get_product_by_brand($id) {
             $query = "SELECT * FROM tbl_product WHERE brandId = '$id' order by brandId desc";
             $result = $this->db->select($query);

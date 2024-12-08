@@ -1,6 +1,6 @@
-// ==========================================
-//         NÚT TĂNG GIẢM SỐ LƯỢNG CART
-// ==========================================
+// =============================================================================
+//                      NÚT TĂNG GIẢM SỐ LƯỢNG CART
+// =============================================================================
 document.addEventListener("DOMContentLoaded", function () {
   // Xử lý click sự kiện tăng giảm
   document.body.addEventListener("click", function (event) {
@@ -23,5 +23,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-// =================================

@@ -13,6 +13,9 @@
             $this->fm = new Format();
         }
         
+        // =========================================================
+        //          Thêm người dùng, đùng khi đăng ký
+        // =========================================================
         public function insert_customer($data) {
             $name = mysqli_real_escape_string($this->db->link, $data['name']);
             $email = mysqli_real_escape_string($this->db->link, $data['email']);
@@ -40,6 +43,9 @@
             }
         }
 
+        // =========================================================
+        //    Khi người dùng login, lưu session đăng nhập là true
+        // =========================================================
         public function login_customer($data){
             $email = mysqli_real_escape_string($this->db->link, $data['email']);
             $password = mysqli_real_escape_string($this->db->link, md5($data['password']));
@@ -60,12 +66,18 @@
             }
         }
 
+        // =========================================================
+        //           Hiện thông tin khách hàng theo id
+        // =========================================================
         public function show_customer($id){
             $query = "SELECT * FROM tbl_customer WHERE id = '$id'";
             $result = $this->db->select($query);
             return $result;
         }
 
+        // =========================================================
+        //          Cập nhật thông tin khách hàng
+        // =========================================================
         public function update_customer($data, $id) {
             // Kết nối đến database
             $name = isset($data['name']) ? mysqli_real_escape_string($this->db->link, $data['name']) : null;

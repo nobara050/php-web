@@ -1,3 +1,7 @@
+<!-- ============================================================================== -->
+<!--                Phần header do không include file login                         -->
+<!-- ============================================================================== -->
+<!-- Lý do không include header cho file này là vì giao diện nó khác mấy trang trước -->
 <?php 
   ob_start(); 
   include 'lib/session.php';
@@ -42,7 +46,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng nhập || Đăng kí</title>
-    <!-- font awesome icons -->
+  
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -52,11 +56,30 @@
     />
   </head>
 
+<!-- ============================================================================== -->
+<!--                          Kết thúc phần header                                  -->
+<!-- ============================================================================== -->
+
+
+
+
+
+
+
+
+<!-- ============================================================================== -->
+<!--                  Xử lý khi nhận được submit đăng ký                            -->
+<!-- ============================================================================== -->
 <?php 
   if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
       $insertCustomer = $cs->insert_customer($_POST);
   }
 ?>
+
+
+<!-- ============================================================================== -->
+<!--                  Xử lý khi nhận được submit đăng nhập                          -->
+<!-- ============================================================================== -->
 <?php 
   if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
       $loginCustomer = $cs->login_customer($_POST);
@@ -68,8 +91,9 @@
       <?php 
       
       ?>
-      <!-- ========================================= -->
-       <!-- Đăng ký -->
+    <!-- ============================================================================== -->
+    <!--                            Form đăng ký                                        -->
+    <!-- ============================================================================== -->
       <div class="form-container sign-up-container">
         <form action="" method="post">
           <h1>Tạo tài khoản</h1>
@@ -95,8 +119,10 @@
           <input class="btn-submit" type="submit" name="submit" value="ĐĂNG KÍ"></input>
         </form>
       </div>
-      <!-- ========================================= -->
-      <!-- Đăng nhập -->
+
+    <!-- ============================================================================== -->
+    <!--                           Form đăng nhập                                       -->
+    <!-- ============================================================================== -->
       <div class="form-container sign-in-container">
         <form action="" method="post">
           <h1>Đăng nhập</h1>
@@ -127,8 +153,10 @@
         </form>
         
       </div>
-      <!-- ========================================= -->
 
+    <!-- ============================================================================== -->
+    <!--                          Tấm nền để cho đẹp                                    -->
+    <!-- ============================================================================== -->
       <div class="overlay-container" id="overlayCon">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
