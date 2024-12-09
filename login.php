@@ -19,7 +19,6 @@
   $db = new Database();
   $fm = new Format();
   $ct = new cart();
-  $us = new user();
   $cat = new category();
   $product = new product();
   $brand = new brand();

@@ -75,6 +75,13 @@
   margin-bottom: 1rem;
 }
 
+.product-meta li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+}
+
 .product-meta li a {
   color: #3188ea;
 }
@@ -283,4 +290,7 @@
   margin: 20px auto; /* Căn giữa hình ảnh */
   max-width: 100%; /* Đảm bảo hình ảnh không vượt quá chiều rộng của div */
   height: auto;
+}
+
+@media screen and (max-width: 600px) {
 }

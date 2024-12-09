@@ -20,14 +20,23 @@
         public function insert_brand($brandName) {
             $brandName = $this->fm->validation($brandName);
             $brandName = mysqli_real_escape_string($this->db->link, $brandName);
-
+        
             if(empty($brandName)) {
                 $alert = "<span class='error'>Tên thương hiệu không được để trống</span>";
                 return $alert;
             } else {
+                // Kiểm tra xem thương hiệu đã tồn tại chưa
+                $query_check = "SELECT * FROM tbl_brand WHERE brandName = '$brandName'";
+                $result_check = $this->db->select($query_check);
+                if ($result_check) {
+                    $alert = "<span class='error'>Thương hiệu này đã tồn tại. Vui lòng chọn tên khác.</span>";
+                    return $alert;
+                }
+        
+                // Nếu không có trùng lặp, thực hiện thêm mới
                 $query = "INSERT INTO tbl_brand(brandName) VALUES('$brandName')";
-                $result =$this->db->insert($query);
-                if($result){
+                $result = $this->db->insert($query);
+                if ($result) {
                     $alert = "<span class='success'>Thêm thương hiệu thành công</span>";
                     return $alert;
                 } else {
@@ -36,6 +45,7 @@
                 }
             }
         }
+        
 
         // ================================================
         //          Update thương hiệu trong admin

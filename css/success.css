@@ -1,0 +1,9 @@
+.frame-success {
+  padding: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

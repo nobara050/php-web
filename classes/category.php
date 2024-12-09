@@ -20,14 +20,23 @@
         public function insert_category($catName) {
             $catName = $this->fm->validation($catName);
             $catName = mysqli_real_escape_string($this->db->link, $catName);
-
+        
             if(empty($catName)) {
                 $alert = "<span class='error'>Tên danh mục không được để trống</span>";
                 return $alert;
             } else {
+                // Kiểm tra xem danh mục đã tồn tại chưa
+                $query_check = "SELECT * FROM tbl_category WHERE catName = '$catName'";
+                $result_check = $this->db->select($query_check);
+                if ($result_check) {
+                    $alert = "<span class='error'>Danh mục này đã tồn tại. Vui lòng chọn tên khác.</span>";
+                    return $alert;
+                }
+        
+                // Nếu không có trùng lặp, thực hiện thêm mới
                 $query = "INSERT INTO tbl_category(catName) VALUES('$catName')";
-                $result =$this->db->insert($query);
-                if($result){
+                $result = $this->db->insert($query);
+                if ($result) {
                     $alert = "<span class='success'>Thêm danh mục thành công</span>";
                     return $alert;
                 } else {
@@ -36,6 +45,7 @@
                 }
             }
         }
+        
 
         // ================================================
         //            Update danh mục trong admin

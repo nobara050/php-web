@@ -32,7 +32,6 @@
 <link rel="stylesheet" href="css/cart.css">
 
 <!-- Nội dung trang -->
-<form method="POST" action="">
 <div class="wrapper">
   <div class="wraper-cart-title">
     <span class="cart-title">Giỏ hàng</span>
@@ -73,7 +72,7 @@
       <!-- ============================================================================== -->
         <!-- Phần thông tin -->
           <!-- ============================================================================== -->
-          <!-- <form method="POST" action=""> -->
+          <form method="POST" action="">
           <div class="cart-item-info-button">
             <div class="cart-item-info">
               <div class="cart-item-name-image">
@@ -129,7 +128,7 @@
                 </button>
               </div>
             </div>
-          <!-- </form> -->
+          </form>
           <hr>
       <!-- ============================================================================== -->
     <?php
@@ -174,20 +173,13 @@
             <p>Tổng:</p>
             <p id="grandtotal"><?php echo number_format($grandtotal, 0, ',', '.'); ?>đ</p> <!-- ID để JavaScript có thể cập nhật -->
           </div>
-          <div class="title-method"><h3>Hình thức thanh toán</h3></div>
-          <div class="list-method">
-            <input type="radio" id="direct" name="method" value="direct">
-            <label for="direct">Thanh toán trực tiếp</label><br>
-
-            <input type="radio" id="non-direct" name="method" value="nondirect">
-            <label for="non-direct">Thanh toán online</label><br>
-          </div>
           <div class="div-thanhtoan">
-            <button class="thanhtoanbtn" name="thanhtoan">Đặt mua</button>
+            <a class="thanhtoanbtn" href="payment.php">
+              Đặt mua
+            </a>
           </div>
         </div>
       </div>
-    </form>
     <!-- ============================================================================== -->
     <!--  Trường hợp nếu không có sản phẩm trong giỏ hàng thì sẽ xuất ra giỏ hàng trống -->
     <!-- ============================================================================== -->

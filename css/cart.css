@@ -235,27 +235,6 @@ input[type="number"] {
   margin: 0.25rem;
 }
 
-.title-method {
-  width: 100%;
-  margin-bottom: 0.25rem;
-}
-
-.title-method h3 {
-  font-size: medium;
-}
-
-.list-method input {
-  margin-top: 0.5rem;
-}
-
-.list-method {
-  width: 98%;
-}
-
-input[type="radio"] {
-  accent-color: #3b82f6;
-}
-
 .div-thanhtoan {
   width: 100%;
   margin-top: 0.5rem;
@@ -280,3 +259,5 @@ input[type="radio"] {
   box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
     0 1px 2px -1px rgba(148, 148, 148, 0.1);
 }
+
+/* ============= */

@@ -82,31 +82,33 @@
             // Kết nối đến database
             $name = isset($data['name']) ? mysqli_real_escape_string($this->db->link, $data['name']) : null;
             $email = isset($data['email']) ? mysqli_real_escape_string($this->db->link, $data['email']) : null;
-            $address = isset($data['address']) ? mysqli_real_escape_string($this->db->link, $data['address']) : null;
+            $address = isset($data['address']) ? mysqli_real_escape_string($this->db->link, $data['address']) : '';
             $phone = isset($data['phone']) ? mysqli_real_escape_string($this->db->link, $data['phone']) : null;
             $city = isset($data['city']) ? mysqli_real_escape_string($this->db->link, $data['city']) : null;
             $country = isset($data['country']) ? mysqli_real_escape_string($this->db->link, $data['country']) : null;
-
+        
             // Kiểm tra các giá trị bắt buộc
             if ($name == "" || $email == "" || $phone == "") {
                 return "<span class='error'>Không được để trống thông tin bắt buộc</span>";
-            } else{
-        
+            } else {
                 // Danh sách các trường cần cập nhật
                 $fields = [];
-                if ($address) $fields[] = "address='$address'";
+                
+                // Nếu có giá trị địa chỉ, cập nhật thông tin, nếu không, để trống
+                $fields[] = "address='$address'"; // Đảm bảo nếu trống, sẽ lưu giá trị trống vào database
+                
                 if ($city) $fields[] = "city='$city'";
                 if ($country) $fields[] = "country='$country'";
-            
+        
                 // Nếu không có trường nào cần cập nhật, trả về thông báo không có thay đổi
                 if (empty($fields)) {
                     return "<span class='error'>Không có thay đổi nào để cập nhật</span>";
                 }
-            
+        
                 // Xây dựng câu lệnh SQL
                 $fields_sql = implode(', ', $fields);
                 $query = "UPDATE tbl_customer SET $fields_sql WHERE id='$id'";
-            
+        
                 // Thực hiện truy vấn
                 $result = $this->db->update($query);
                 if ($result) {
@@ -114,8 +116,8 @@
                 } else {
                     return "<span class='error'>Cập nhật thất bại, vui lòng thử lại sau!</span>";
                 }
-            }  
-        
+            }
         }
+        
     }
 ?>

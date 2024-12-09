@@ -310,7 +310,7 @@ nav {
   background: white;
   display: grid; /* Thiết lập phần tử thành grid */
   gap: 0.75rem;
-  grid-template-columns: repeat(5, 1fr); /* Chia thành 6 cột bằng nhau */
+  grid-template-columns: repeat(5, 1fr); /* Chia thành 5 cột bằng nhau */
 }
 .list_title {
   font-size: 1.5rem;
@@ -522,5 +522,43 @@ nav {
   .nav-login-hover-absolute {
     position: absolute;
     display: block;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .category {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .listcard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cart-note-absolute {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .listcard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .nav-hover span {
+    display: none;
+  }
+  .nav-login-hover-absolute {
+    width: 100px;
+    left: -90%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .nav-logo img {
+    min-width: 160px;
+    min-height: 35px;
   }
 }

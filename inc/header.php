@@ -14,7 +14,6 @@
   $db = new Database();
   $fm = new Format();
   $ct = new cart();
-  $us = new user();
   $cat = new category();
   $product = new product();
   $brand = new brand();
@@ -69,7 +68,7 @@
               </a>
               <div class='nav-login-hover-absolute'>
                 <ul class='nav-login-hover-absolute-element'>
-                  <li><a href='user.php'>Tài khoản</a></li>
+                  <li><a href='customer.php'>Tài khoản</a></li>
                   <li><a href='order.php'>Đơn hàng</a></li>
                   <li>
                     <a href='?customerid=" . Session::get('customer_id') . "'>Đăng xuất</a>

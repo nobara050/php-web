@@ -141,5 +141,81 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        // =========================================================
+        //              Đổ sản phẩm từ cart vào order
+        // =========================================================
+        public function insertOrder($customer_id, $data) {
+            $sId = session_id();
+            $receiverName = mysqli_real_escape_string($this->db->link, $data['receiverName']);
+            $receiverPhone = mysqli_real_escape_string($this->db->link, $data['receiverPhone']);
+            $shippingAddress = mysqli_real_escape_string($this->db->link, $data['shippingAddress']);
+            $paymentMethod = isset($data['method']) ? mysqli_real_escape_string($this->db->link, $data['method']) : null;
+            $notes = mysqli_real_escape_string($this->db->link, $data['notes']); // Thêm ghi chú
+        
+            // Kiểm tra các trường không được để trống
+            if (empty($receiverName) || empty($receiverPhone) || empty($shippingAddress) || empty($paymentMethod)) {
+                return "<span class='error'>Không được để trống thông tin bắt buộc</span>";
+            }
+        
+            $orderDate = date('Y-m-d H:i:s');
+            $paymentStatus = 'pending';
+            $status = 'pending';
+            $discount = 0; // Nếu có giảm giá, cần tính toán thêm
+        
+            // Lấy danh sách sản phẩm từ giỏ hàng
+            $query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
+            $get_products = $this->db->select($query);
+        
+            if ($get_products) {
+                // Tính tổng số tiền
+                $totalAmount = 0;
+                while ($product = $get_products->fetch_assoc()) {
+                    $totalAmount += $product['quantity'] * $product['price'];
+                }
+        
+                // Chèn dữ liệu vào bảng tbl_order
+                $query_order = "INSERT INTO tbl_order (
+                    customerId, orderDate, shippingAddress, paymentMethod, paymentStatus, totalAmount, discount, status, notes, receiverName, receiverPhone
+                ) VALUES (
+                    '$customer_id', '$orderDate', '$shippingAddress', '$paymentMethod', '$paymentStatus', '$totalAmount', '$discount', '$status', '$notes', '$receiverName', '$receiverPhone'
+                )";
+        
+                $insert_order = $this->db->insert($query_order);
+        
+                if ($insert_order) {
+                    // Lấy ID của đơn hàng vừa tạo
+                    $orderId = $this->db->link->insert_id;
+        
+                    // Thêm sản phẩm vào bảng tbl_order_details
+                    $get_products->data_seek(0); // Reset con trỏ kết quả để duyệt lại
+                    while ($product = $get_products->fetch_assoc()) {
+                        $productId = $product['productId'];
+                        $quantity = $product['quantity'];
+                        $unitPrice = $product['price'];
+                        $totalPrice = $quantity * $unitPrice;
+        
+                        $query_order_details = "INSERT INTO tbl_order_details (
+                            orderId, productId, quantity, unitPrice, totalPrice
+                        ) VALUES (
+                            '$orderId', '$productId', '$quantity', '$unitPrice', '$totalPrice'
+                        )";
+        
+                        $this->db->insert($query_order_details);
+                    }
+        
+                    // Xóa giỏ hàng sau khi đặt hàng thành công
+                    $this->db->delete("DELETE FROM tbl_cart WHERE sId = '$sId'");
+        
+                    return "<span class='success'>Đơn hàng đã được tạo thành công!</span>";
+                } else {
+                    return "<span class='error'>Lỗi khi tạo đơn hàng. Vui lòng thử lại!</span>";
+                }
+            } else {
+                return "<span class='error'>Giỏ hàng trống. Không thể tạo đơn hàng!</span>";
+            }
+        }
+        
+
     }
 ?>
