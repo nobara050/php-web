@@ -183,6 +183,7 @@ input[type="number"] {
 }
 
 .total {
+  font-weight: 350;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -190,13 +191,6 @@ input[type="number"] {
 }
 
 .vat {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 0.25rem;
-}
-
-.grandtotal {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -213,4 +207,76 @@ input[type="number"] {
 .not-choose img {
   max-width: 100%;
   object-fit: cover;
+}
+
+/* ================= */
+/* method thanh toán */
+.wrapper-cart-items-method {
+  background: white;
+  width: 400px;
+  max-width: 400px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
+    0 1px 2px -1px rgba(148, 148, 148, 0.1);
+}
+
+.grandtotal {
+  font-weight: 700;
+  font-size: large;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25rem;
+}
+
+.title-method {
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.title-method h3 {
+  font-size: medium;
+}
+
+.list-method input {
+  margin-top: 0.5rem;
+}
+
+.list-method {
+  width: 98%;
+}
+
+input[type="radio"] {
+  accent-color: #3b82f6;
+}
+
+.div-thanhtoan {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thanhtoanbtn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 700;
+  border: #fc7600;
+  color: #fc7600;
+  background: #ffdec2;
+  box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
+    0 1px 2px -1px rgba(148, 148, 148, 0.1);
 }

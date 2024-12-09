@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="css/cart.css">
 
 <!-- Nội dung trang -->
+<form method="POST" action="">
 <div class="wrapper">
   <div class="wraper-cart-title">
     <span class="cart-title">Giỏ hàng</span>
@@ -72,7 +73,7 @@
       <!-- ============================================================================== -->
         <!-- Phần thông tin -->
           <!-- ============================================================================== -->
-          <form method="POST" action="">
+          <!-- <form method="POST" action=""> -->
           <div class="cart-item-info-button">
             <div class="cart-item-info">
               <div class="cart-item-name-image">
@@ -128,7 +129,7 @@
                 </button>
               </div>
             </div>
-          </form>
+          <!-- </form> -->
           <hr>
       <!-- ============================================================================== -->
     <?php
@@ -156,19 +157,37 @@
             echo number_format($subtotal, 0, ',', '.'); 
           ?>đ</p>
       </div>
-      <div class="vat">
+      <!-- <div class="vat">
         <p>Thuế:</p>
-        <p id="vat">10%</p> <!-- ID để JavaScript có thể cập nhật -->
-      </div>
+        <p id="vat">10%</p> 
+      </div> -->
     <?php 
       $grandtotal = $subtotal * 110 / 100;
       Session::set('qty',$qty);
     ?>
-      <div class="grandtotal">
-        <p>Tổng:</p>
-        <p id="grandtotal"><?php echo number_format($grandtotal, 0, ',', '.'); ?>đ</p> <!-- ID để JavaScript có thể cập nhật -->
       </div>
-      
+      <!-- ============================================= -->
+      <!--  Kết thúc phần giỏ, đây là phần thanh toán    -->
+      <!-- ============================================= -->
+        <div class="wrapper-cart-items-method">
+          <div class="grandtotal">
+            <p>Tổng:</p>
+            <p id="grandtotal"><?php echo number_format($grandtotal, 0, ',', '.'); ?>đ</p> <!-- ID để JavaScript có thể cập nhật -->
+          </div>
+          <div class="title-method"><h3>Hình thức thanh toán</h3></div>
+          <div class="list-method">
+            <input type="radio" id="direct" name="method" value="direct">
+            <label for="direct">Thanh toán trực tiếp</label><br>
+
+            <input type="radio" id="non-direct" name="method" value="nondirect">
+            <label for="non-direct">Thanh toán online</label><br>
+          </div>
+          <div class="div-thanhtoan">
+            <button class="thanhtoanbtn" name="thanhtoan">Đặt mua</button>
+          </div>
+        </div>
+      </div>
+    </form>
     <!-- ============================================================================== -->
     <!--  Trường hợp nếu không có sản phẩm trong giỏ hàng thì sẽ xuất ra giỏ hàng trống -->
     <!-- ============================================================================== -->
@@ -176,11 +195,9 @@
       } else {
         echo "<div class='not-choose'><img src='img/cart-empty.png' alt=''></div>";
         echo "Giỏ hàng chưa có gì.";
+        echo "</div></div></form>";
       }
     ?>
-
-  </div>
-</div>
 
 <script src="js/cart.js"></script>
 <?php
