@@ -242,6 +242,10 @@ input[type="radio"] {
     /* padding: 1rem; */
     max-width: 90%;
   }
+
+  .delivery-info-error {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 600px) {
