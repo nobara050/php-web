@@ -78,9 +78,9 @@
                         <td>Thành phố:</td>
                         <td>
                             <input
-                            name="city"
+                            name="province"
                             type="text"
-                            value = '<?php echo $result['city'] ?>'
+                            value = '<?php echo $result['province'] ?>'
                             />
                         </td>
                     </tr>
@@ -88,9 +88,9 @@
                         <td>Quận huyện:</td>
                         <td>
                             <input
-                            name="country"
+                            name="district"
                             type="text"
-                            value = '<?php echo $result['country'] ?>'
+                            value = '<?php echo $result['district'] ?>'
                             />
                         </td>
                     </tr>

@@ -80,12 +80,12 @@
 
                 <tr class="description-row">
                     <td><label for="description">Mô tả</label></td>
-                    <td><textarea id="description" name="product_desc" class="textarea-field"></textarea></td>
+                    <td><textarea id="description" name="productDesc" class="textarea-field"></textarea></td>
                 </tr>
 
                 <tr>
-                    <td><label for="price">Giá</label></td>
-                    <td><input type="text" id="price" name="price" placeholder="Nhập giá..." class="input-field"></td>
+                    <td><label for="productPrice">Giá</label></td>
+                    <td><input type="text" id="productPrice" name="productPrice" placeholder="Nhập giá..." class="input-field"></td>
                 </tr>
                 <!-- ============================================== -->
                 <tr>

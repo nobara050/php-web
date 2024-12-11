@@ -74,7 +74,7 @@
                         <a href="details.php?proid=<?php echo $result['productId'] ?>">
                         <span class="card-name"><?php echo $measureText; ?></span>
                         </a>
-                        <span class="card-price"><?php echo number_format($result['price'], 0, ',', '.') ?>đ</span>
+                        <span class="card-price"><?php echo number_format($result['productPrice'], 0, ',', '.') ?>đ</span>
                     </div>
                     <button class="btnMua" onclick="addToCart(this)">Mua ngay</button>
                 </div>

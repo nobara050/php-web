@@ -21,8 +21,8 @@
             $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
             $category = mysqli_real_escape_string($this->db->link, $data['category']);
             $brand = mysqli_real_escape_string($this->db->link, $data['brand']);
-            $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
-            $price = mysqli_real_escape_string($this->db->link, $data['price']);
+            $productDesc = mysqli_real_escape_string($this->db->link, $data['productDesc']);
+            $productPrice = mysqli_real_escape_string($this->db->link, $data['productPrice']);
             $type = mysqli_real_escape_string($this->db->link, $data['type']);
             
             $permitted = array('jpg', 'jpeg', 'png', 'gif');
@@ -35,13 +35,13 @@
             $uploaded_image = "./upload/" . $unique_image;
 
             if($productName =="" || $category =="" || $brand =="" || 
-               $price =="" || $type =="" || $file_name = "" ) {
+               $productPrice =="" || $type =="" || $file_name = "" ) {
                 $alert = "<span class='error'>Không được để trống thông tin</span>";
                 return $alert;
             } else {
                 move_uploaded_file($file_temp,$uploaded_image);
-                $query = "INSERT INTO tbl_product(productName,catID,brandId,product_desc,price,type, image) 
-                VALUES('$productName','$category','$brand','$product_desc','$price','$type','$unique_image')";
+                $query = "INSERT INTO tbl_product(productName,catID,brandId,productDesc,productPrice,type, image) 
+                VALUES('$productName','$category','$brand','$productDesc','$productPrice','$type','$unique_image')";
                 $result =$this->db->insert($query);
                 
 
@@ -112,8 +112,8 @@
             $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
             $category = mysqli_real_escape_string($this->db->link, $data['category']);
             $brand = mysqli_real_escape_string($this->db->link, $data['brand']);
-            $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
-            $price = mysqli_real_escape_string($this->db->link, $data['price']);
+            $productDesc = mysqli_real_escape_string($this->db->link, $data['productDesc']);
+            $productPrice = mysqli_real_escape_string($this->db->link, $data['productPrice']);
             $type = mysqli_real_escape_string($this->db->link, $data['type']);
             
             $permitted = array('jpg', 'jpeg', 'png', 'gif');
@@ -127,8 +127,8 @@
                 $old_image = $row['image']; // Lưu ảnh cũ vào biến
             }
         
-            // Kiểm tra các trường bắt buộc (trừ product_desc)
-            if ($productName == "" || $category == "" || $brand == "" || $price == "" || $type == "") {
+            // Kiểm tra các trường bắt buộc (trừ productDesc)
+            if ($productName == "" || $category == "" || $brand == "" || $productPrice == "" || $type == "") {
                 $alert = "<span class='error'>Không được để trống thông tin</span>";
                 return $alert;
             } else {
@@ -164,8 +164,8 @@
                                 productName = '$productName',
                                 catId = '$category',
                                 brandId = '$brand',
-                                product_desc = '$product_desc',
-                                price = '$price',
+                                productDesc = '$productDesc',
+                                productPrice = '$productPrice',
                                 image = '$unique_image',
                                 type = '$type'
                               WHERE productId = '$id'";
@@ -176,8 +176,8 @@
                                 productName = '$productName',
                                 catId = '$category',
                                 brandId = '$brand',
-                                product_desc = '$product_desc',
-                                price = '$price',
+                                productDesc = '$productDesc',
+                                productPrice = '$productPrice',
                                 type = '$type'
                               WHERE productId = '$id'";
                 }

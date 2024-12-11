@@ -123,13 +123,13 @@
                 <tr class="description-row">
                     <td><label for="description">Mô tả</label></td>
                     <td>
-                        <textarea id="description" name="product_desc"  class="textarea-field"><?php echo $result_product['product_desc'] ?></textarea>
+                        <textarea id="description" name="productDesc"  class="textarea-field"><?php echo $result_product['productDesc'] ?></textarea>
                     </td>
                 </tr>
 
                 <tr>
-                    <td><label for="price">Giá</label></td>
-                    <td><input type="text" id="price" name="price" value="<?php echo $result_product['price'] ?>" class="input-field"></td>
+                    <td><label for="productPrice">Giá</label></td>
+                    <td><input type="text" id="productPrice" name="productPrice" value="<?php echo $result_product['productPrice'] ?>" class="input-field"></td>
                 </tr>
                 <!-- ============================================== -->
                 <tr>

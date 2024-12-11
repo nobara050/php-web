@@ -1,7 +1,9 @@
 <?php 
   ob_start(); 
-  include 'lib/session.php';
+  include_once 'lib/session.php';
   Session::init();
+  header('Content-Type: text/html; charset=utf-8');
+
 ?>
 
 <?php
@@ -25,7 +27,16 @@
   header("Cache-Control: no-cache, must-revalidate");
   header("Pragma: no-cache");
   header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");  
+
 ?>
+
+<?php
+  if(isset($_GET['customerid'])) {
+    Session::destroy();
+    header("Location: index.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,19 +47,18 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.png" />
   </head>
   <body>
+  <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+  
     <!-- nav -->
     <nav>
       <!-- Logo -->
       <a href="index.php" class="nav-logo">
         <img src="img/logo.png" alt="Logo" />
       </a>
-      <input class="nav-search" type="text" placeholder="Bạn tìm gì..." />
-      <?php
-        if(isset($_GET['customerid'])) {
-          Session::destroy();
-          header("Location: index.php");
-        }
-      ?>
+      <input name="search-bar" class="nav-search" type="text" placeholder="Bạn tìm gì..." />
       <ul class="nav-option">
       <?php
         $login_check = Session::get('customer_login');

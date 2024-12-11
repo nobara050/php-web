@@ -23,10 +23,16 @@
   //                  Cập nhật số lượng của bandge giỏ hàng
   // =============================================================================
   $check_cart_reset = $ct->check_cart();
-  if($check_cart){
+  if($check_cart_reset){
     Session::get('qty');
   }
+
+  $login_check = Session::get('customer_login');
+    if($login_check == false){
+      header('Location: login.php');
+    }
 ?>
+
 
 
 <link rel="stylesheet" href="css/cart.css">
@@ -85,7 +91,7 @@
                 <span class="cart-item-name"><?php echo $measureText; ?></span>
               </div>
               <div class="cart-item-price">
-                <?php echo number_format($result['price'], 0, ',', '.'); ?>đ
+                <?php echo number_format($result['productPrice'], 0, ',', '.'); ?>đ
               </div>
             </div>
         <!-- Phần nút xóa và tăng giảm -->
@@ -100,7 +106,7 @@
                 <!-- ========================== -->
                 <!-- Nút giảm -->
                 <button class="minus-item" name="minus" value="minus">
-                  <img src="../img/minus.png" alt="-" />
+                  <img src="img/minus.png" alt="-" />
                 </button>
 
                 <!-- ========================== -->
@@ -124,7 +130,7 @@
                 <!-- ========================== -->
                 <!-- Nút thêm -->
                 <button class="add-item" name="add" value="add">
-                  <img src="../img/plus.png" alt="+" />
+                  <img src="img/plus.png" alt="+" />
                 </button>
               </div>
             </div>
@@ -134,7 +140,7 @@
     <?php
         // Tính tổng tiền = giá mỗi món nhân số lượng
         $qty = $qty + $result['quantity'];
-        $total = $result['price'] * $result['quantity'];
+        $total = $result['productPrice'] * $result['quantity'];
         $subtotal = $subtotal + $total;
         }
       }

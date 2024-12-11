@@ -81,9 +81,9 @@
                         <td>Thành phố:</td>
                         <td>
                             <input
-                            name="city"
+                            name="province"
                             type="text"
-                            value = '<?php echo $result['city'] ?>'
+                            value = '<?php echo $result['province'] ?>'
                             />
                         </td>
                     </tr>
@@ -91,9 +91,9 @@
                         <td>Quận huyện:</td>
                         <td>
                             <input
-                            name="country"
+                            name="district"
                             type="text"
-                            value = '<?php echo $result['country'] ?>'
+                            value = '<?php echo $result['district'] ?>'
                             />
                         </td>
                     </tr>
@@ -117,6 +117,74 @@
             }
         }
     ?>
+
+
+
+<!--  -->
+<?php
+// Replace with your MySQL server settings
+$host = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname = "website_mvc"; 
+
+// Create connection
+$conn = mysqli_connect($host, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+
+
+$sql = "SELECT * FROM province";
+$result = mysqli_query($conn, $sql);
+
+if (isset($_POST['add_sale'])) {
+    echo "<pre>";
+    print_r($_POST);
+    die();
+}
+
+?>
+<form id="myForm" class="mt-5" method="POST">
+            <h1 class="py-5">Chọn địa chỉ khi đặt hàng trong website</h1>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="province">Tỉnh/Thành phố</label>
+                        <select id="province" name="province" class="form-control">
+                            <option value="">Chọn một tỉnh</option>
+                            <!-- populate options with data from your database or API -->
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                                <option value="<?php echo $row['province_id'] ?>"><?php echo $row['name'] ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="district">Quận/Huyện</label>
+                        <select id="district" name="district" class="form-control">
+                            <option value="">Chọn một quận/huyện</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="wards">Phường/Xã</label>
+                        <select id="wards" name="wards" class="form-control">
+                            <option value="">Chọn một xã</option>
+                        </select>
+                    </div>
+                    <input type="submit" name="add_sale" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng">
+
+                </div>
+            </div>
+        </form>
+<!--  -->
+
 </div>
 <?php
     include 'inc/footer.php';

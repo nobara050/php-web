@@ -51,7 +51,7 @@
                         <tr class="product-row">
                             <td><?php echo $i ?></td>
                             <td><?php echo $result['productName'] ?></td>
-                            <td><?php echo number_format($result['price'], 0, ',', '.') ?>đ</td>
+                            <td><?php echo number_format($result['productPrice'], 0, ',', '.') ?>đ</td>
                             <td><img class="product-image" src="./upload/<?php echo $result['image'] ?>" alt=""></td>
                             <td><?php echo $result['catName'] ?></td>
                             <td><?php echo $result['brandName'] ?></td>

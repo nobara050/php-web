@@ -7,7 +7,6 @@
 ?>
 
 <?php
-
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order'])) {
     $customer_id = $_SESSION['customer_id']; // Lấy ID khách hàng từ session
     $order_message = $ct->insertOrder($customer_id, $_POST);
@@ -55,7 +54,7 @@
                         $measureText .= " / " . $measure['measureName'] . " " . $measure['measureValue'];
                     }
                 } 
-                $total = $result['price'] * $result['quantity']; 
+                $total = $result['productPrice'] * $result['quantity']; 
           ?>
             <tr>
               <td class="product-column">
@@ -69,7 +68,7 @@
                 />
               </td>
               <td class="price-column">
-                <?php echo number_format($result['price'], 0, ',', '.'); ?>đ
+                <?php echo number_format($result['productPrice'], 0, ',', '.'); ?>đ
               </td>
               <td class="quantity-column">
                 <?php echo $result['quantity']; ?>

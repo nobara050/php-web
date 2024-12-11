@@ -12,11 +12,16 @@
     
     // Xử lý submit form từ nút Buy now và Add to cart
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+        $login_check = Session::get('customer_login');
+            if($login_check == false){
+            header('Location: login.php');
+        }
         $quantity = $_POST['quantity'];
         // Nếu chọn Buy now thì trong hàm add_to_cart của class cart khi kết thúc sẽ chuyển hướng đến giỏ hàng còn nút Add to cart thì không
         $buy_now = ($_POST['submit'] == 'Buy Now') ? true : false; 
         $AddToCart = $ct->add_to_cart($quantity, $id, $buy_now);
     }
+
 ?>
 
 <link rel="stylesheet" href="css/detail.css">
@@ -71,7 +76,7 @@
                     </li>
                     </ul>
                     <!-- Giá tiền -->
-                    <p class="product-price"><?php echo number_format($result_details['price'], 0, ',', '.'); ?>đ</p>
+                    <p class="product-price"><?php echo number_format($result_details['productPrice'], 0, ',', '.'); ?>đ</p>
                     <!-- Form số lượng sản phẩm và 2 nút Add to cart và Buy now -->
                     <!-- ==================================== -->
                     <form class="quantity-form" action="" method="post">
@@ -119,8 +124,8 @@
                     </div>
                     <p class="p_desc">
                     <?php 
-                        if (!empty($result_details['product_desc'])) {
-                            echo $result_details['product_desc'];
+                        if (!empty($result_details['productDesc'])) {
+                            echo $result_details['productDesc'];
                         } else {
                             echo "<div style='text-align: center'><p>Không có mô tả nào cho sản phẩm này</p></div>";
                         }

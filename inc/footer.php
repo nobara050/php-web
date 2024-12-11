@@ -37,6 +37,7 @@
         <a href="mailto:22520226@gm.uit.edu.vn">22520226@gm.uit.edu.vn</a>.
       </div>
     </footer>
-    <script src="../js/index.js"></script>
+    <script src="js/index.js"></script>
+
   </body>
 </html>
