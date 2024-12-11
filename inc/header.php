@@ -18,6 +18,7 @@
   $product = new product();
   $brand = new brand();
   $cs = new customer();
+  $ord = new order();
 ?>
 
 <?php

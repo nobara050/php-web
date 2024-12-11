@@ -1,0 +1,62 @@
+/* Wrapper for the admin list */
+.admin-list-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f8f9fc;
+}
+
+.admin-box {
+  background-color: #fff;
+  padding: 20px;
+  width: 100%;
+  /* max-width: ; */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-title {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.table-wrapper {
+  margin-top: 10px;
+}
+
+.admin-table {
+  font-size: 14px;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.admin-table th {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.admin-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.admin-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.action-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+}

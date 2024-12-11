@@ -54,8 +54,8 @@
             </ul>
           </li>
           <li><a href="#">Slider</a></li>
-          <li><a href="#">Nội bộ</a></li>
-          <li><a href="#">Khách hàng</a></li>
+          <li><a href="adminlist.php">Nội bộ</a></li>
+          <li><a href="customerlist.php">Khách hàng</a></li>
         </ul>
       </div>
     </div>

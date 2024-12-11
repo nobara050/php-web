@@ -1,0 +1,46 @@
+.custom-table-container {
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  background-color: #ffff; /* Nền trắng */
+  overflow: hidden;
+  box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
+    0 1px 2px -1px rgba(148, 148, 148, 0.1);
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px; /* Cỡ chữ nhỏ */
+  color: #333;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 20px 12px;
+  text-align: center;
+  border: 1px solid #ddd; /* Viền giữa các ô */
+}
+
+.custom-table th {
+  background-color: #f7f7f7; /* Nền của tiêu đề */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.custom-table tr:hover {
+  background-color: #f1f1f1; /* Nền khi hover */
+  .detail-order input {
+    background: #f1f1f1;
+  }
+}
+
+.detail-order input {
+  color: #3188ea;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  border: 0px;
+  background: #ffff;
+  cursor: pointer;
+}

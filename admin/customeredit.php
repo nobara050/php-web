@@ -1,31 +1,28 @@
-<?php
+<?php 
   include 'inc/header.php'; 
-  $login_check = Session::get('customer_login');
-  if($login_check == false){
-    header('Location:login.php');
-  }
+  include '../classes/customer.php';
+  $cs = new customer();
 ?>
 
-<!-- ============================================================================== -->
-<!--                 Xử lý khi nhận được submit sửa profile                         -->
-<!-- ============================================================================== -->
-<?php
-    $id = Session::get('customer_id');
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['updateprofile'])) {
-        $updatecustomer = $cs->update_customer($_POST,$id);
-        // header('Location: customer.php');
+<?php 
+    if (!isset($_GET['customerid']) || $_GET['customerid'] == NULL) {
+        echo "<script>window.location = 'customerlist.php'</script>";
+    } else {
+        $id = $_GET['customerid'];
     }
-?>
 
-<link rel="stylesheet" href="css/user.css">
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $updatecustomer = $cs->update_customer($_POST,$id);
+    }
+?> 
 
-<!-- ============================================================================== -->
-<!--                   Load thông tin người dùng lên                                -->
-<!-- ============================================================================== -->
-<!-- Nội dung trang -->
-<div class="wrapper">
+<link rel="stylesheet" href="css/customeredit.css">
+
+<div class="container">
+    <div>
+        <h1>Sửa đổi thông tin khách hàng</h1>
+    </div>
     <?php
-        $id = Session::get('customer_id');
         $get_customer = $cs->show_customer($id);
         if($get_customer){
             while($result = $get_customer->fetch_assoc()){
@@ -118,6 +115,7 @@
         }
     ?>
 </div>
-<?php
-    include 'inc/footer.php';
+
+<?php 
+  include 'inc/footer.php'; 
 ?>
