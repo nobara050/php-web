@@ -31,14 +31,6 @@
                 header("Location:login.php");
             }
         }
-
-        public static function checkSession_customer() {
-            self::init();
-            if (self::get("login") == false) {
-                self::destroy();
-                header("Location:login.php");
-            }
-        }
     
         public static function checkLogin() {
             self::init();

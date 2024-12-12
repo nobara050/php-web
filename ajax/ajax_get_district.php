@@ -1,21 +1,10 @@
-<?php 
+<?php
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/connection_no_class.php');
 
-    // Replace with your MySQL server settings
-    $host = "localhost"; 
-    $username = "root"; 
-    $password = ""; 
-    $dbname = "website_mvc"; 
+?>
     
-    // Create connection
-    $conn = mysqli_connect($host, $username, $password, $dbname);
-    
-    // Check connection
-    if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-    }
-    
-    // echo "Connected successfully!";
-    
+<?php
     $province_id = $_GET['province_id'];
     
     $sql = "SELECT * FROM `district` WHERE `province_id` = {$province_id}";

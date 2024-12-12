@@ -1,23 +1,11 @@
-<?php 
-    // Replace with your MySQL server settings
-    $host = "localhost"; 
-    $username = "root"; 
-    $password = ""; 
-    $dbname = "website_mvc";  
-    
-    // Create connection
-    $conn = mysqli_connect($host, $username, $password, $dbname);
-    
-    // Check connection
-    if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-    }
-    
-    // echo "Connected successfully!";
+<?php
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/connection_no_class.php');
 
+?>
+
+<?php
     $district_id = $_GET['district_id'];
-
-    // echo $district_id;
     
     $sql = "SELECT * FROM `wards` WHERE `district_id` = {$district_id}";
     $result = mysqli_query($conn, $sql);
