@@ -43,28 +43,32 @@
             }
         }
 
+    
         // =========================================================
         //    Khi người dùng login, lưu session đăng nhập là true
         // =========================================================
-        public function login_customer($data){
+        public function login_customer($data) {
             $email = mysqli_real_escape_string($this->db->link, $data['email']);
             $password = mysqli_real_escape_string($this->db->link, md5($data['password']));
+        
             if ($email == "" || $password == "") {
                 return "<span class='error'>Bạn chưa nhập tài khoản hoặc mật khẩu</span>";
             }
-                $check_login = "SELECT * FROM tbl_customer WHERE email = '$email' and password ='$password' ";
-                $result_check = $this->db->select($check_login);
+        
+            $check_login = "SELECT * FROM tbl_customer WHERE email = '$email' and password ='$password'";
+            $result_check = $this->db->select($check_login);
+        
             if ($result_check != false) {
                 $value = $result_check->fetch_assoc();
                 Session::set('customer_login', true);
                 Session::set('customer_id', $value['id']);
                 Session::set('customer_name', $value['name']);
-                header('location:index.php');
-            } else { 
-                $alert = "<span class='error'>Email và tài khoản không hợp lệ</span>";
-                return $alert;
+                return "<span class='success'>Đăng nhập thành công!</span>";
+            } else {
+                return "<span class='error'>Tài khoản và mật khẩu không chính xác</span>";
             }
         }
+     
 
         // =========================================================
         //           Hiện thông tin khách hàng theo id

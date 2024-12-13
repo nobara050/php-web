@@ -34,6 +34,7 @@
 <!DOCTYPE html>
 <html lang="Việt">
   <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/login.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -72,21 +73,54 @@
 <!-- ============================================================================== -->
 <!--                  Xử lý khi nhận được submit đăng ký                            -->
 <!-- ============================================================================== -->
-<?php 
-  if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-      $insertCustomer = $cs->insert_customer($_POST);
-  }
-?>
+
 
 
 <!-- ============================================================================== -->
 <!--                  Xử lý khi nhận được submit đăng nhập                          -->
 <!-- ============================================================================== -->
-<?php 
-  if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
-      $loginCustomer = $cs->login_customer($_POST);
-  }
-?>
+<script>
+  $(document).ready(function() {
+    $('#loginForm').submit(function(e) {
+      e.preventDefault(); // Ngăn form gửi theo cách truyền thống
+
+      var email = $('#email').val();
+      var password = $('#password').val();
+
+      // Kiểm tra nếu các trường không trống
+      if (email == "" || password == "") {
+        $('#response').html("<span class='error'>Bạn chưa nhập tài khoản hoặc mật khẩu</span>");
+        return;
+      }
+
+      // Gửi dữ liệu đến server bằng AJAX
+      $.ajax({
+        url: './ajax/login_process.php', // File xử lý đăng nhập
+        type: 'POST',
+        data: {
+          email: email,
+          password: password,
+          login: true
+        },
+        success: function(response) {
+          // Kiểm tra xem thông báo có chứa từ "success"
+          if (response.indexOf("Đăng nhập thành công") !== -1) {
+            $('#response').html(response);
+            // Nếu đăng nhập thành công, chuyển hướng đến trang index.php
+            window.location.href = "index.php";
+          } else {
+            // Nếu không thành công, hiển thị thông báo lỗi
+            $('#response').html(response);
+          }
+        },
+        error: function() {
+          $('#response').html("<span class='error'>Đã có lỗi xảy ra, vui lòng thử lại sau.</span>");
+        }
+      });
+    });
+  });
+</script>
+
   <body>
       <div class="container" id="container">
         <?php 
@@ -118,31 +152,20 @@
       <!-- ============================================================================== -->
       <!--                           Form đăng nhập                                       -->
       <!-- ============================================================================== -->
-        <div class="form-container sign-in-container">
-          <form action="" method="post">
-            <h1>Đăng nhập</h1>
-            <div class="infield">
-              <input name="email" type="email" placeholder="Email" name="email" />
-            </div>
-            <div class="infield">
-              <input name="password" type="password" placeholder="Mật khẩu" />
-            </div>
-            <a href="#" class="forgot">Quên mật khẩu?</a>
-            <?php
-              if(isset($insertCustomer)){
-                echo $insertCustomer;
-              }
-            ?>
-            <?php
-              if(isset($loginCustomer)){
-                echo $loginCustomer;
-              }
-            ?>
-            <input class="btn-submit" type="submit" name="login" value="Đăng nhập"></input>
-          </form>
-          
-        </div>
-
+      <div class="form-container sign-in-container">
+  <form id="loginForm">
+    <h1>Đăng nhập</h1>
+    <div class="infield">
+      <input id="email" name="email" type="email" placeholder="Email" />
+    </div>
+    <div class="infield">
+      <input id="password" name="password" type="password" placeholder="Mật khẩu" />
+    </div>
+    <a href="#" class="forgot">Quên mật khẩu?</a>
+    <div id="response"></div> <!-- Chỗ để hiển thị thông báo lỗi hoặc thành công -->
+    <input class="btn-submit" type="submit" value="Đăng nhập" />
+  </form>
+</div>
       <!-- ============================================================================== -->
       <!--                          Tấm nền để cho đẹp                                    -->
       <!-- ============================================================================== -->
