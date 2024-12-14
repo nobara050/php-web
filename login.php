@@ -153,7 +153,7 @@
       <!--                           Form đăng nhập                                       -->
       <!-- ============================================================================== -->
       <div class="form-container sign-in-container">
-  <form id="loginForm">
+  <form id="loginForm" method ="POST">
     <h1>Đăng nhập</h1>
     <div class="infield">
       <input id="email" name="email" type="email" placeholder="Email" />
