@@ -528,6 +528,10 @@ nav {
   .category {
     display: none;
   }
+
+  nav {
+    gap: 0.5rem;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -537,11 +541,17 @@ nav {
   .cart-note-absolute {
     display: none;
   }
+  .nav-search {
+    width: 200px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .listcard {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .nav-search {
+    width: 100px;
   }
 }
 

@@ -83,15 +83,19 @@
                 ? ", adminPass = '" . mysqli_real_escape_string($this->db->link, md5($data['adminPass'])) . "'"
                 : ""; // Nếu mật khẩu trống, không cập nhật cột này
             $level = mysqli_real_escape_string($this->db->link, $data['level']);
+            $province = mysqli_real_escape_string($this->db->link, $data['province']);
+            $district = mysqli_real_escape_string($this->db->link, $data['district']);
+            $wards = mysqli_real_escape_string($this->db->link, $data['wards']);
         
-            if ($adminName == "" || $adminEmail == "" || $adminPhone == "" || $adminUser == "" || $level == "") {
+            if ($adminName == "" || $adminEmail == "" || $adminPhone == "" || $adminUser == "" || $level == ""
+                || $province == "" || $district == "" || $wards == "") {
                 return "<span class='error'>Không được để trống thông tin bắt buộc</span>";
             } else {
                 // Kiểm tra tên tài khoản đã tồn tại chưa
                 $check_user = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' AND adminId != '$id' LIMIT 1";
                 $result_check = $this->db->select($check_user);
                 if ($result_check) {
-                    return "<span class='error'>Tên tài khoản đã được sử dụng, vui lòng chọn tên khác!</span>";
+                    return "<span class='error'>Tài khoản không tồn tại!</span>";
                 }
         
                 // Cập nhật thông tin admin
@@ -100,6 +104,9 @@
                               adminEmail = '$adminEmail', 
                               adminPhone = '$adminPhone', 
                               adminUser = '$adminUser', 
+                              province = '$province',
+                              district = '$district',
+                              wards = '$wards',
                               level = '$level' 
                               $adminPass 
                           WHERE adminId = '$id'";

@@ -77,24 +77,67 @@
                             />
                         </td>
                     </tr>
+                    <?php
+                        // Truy vấn danh sách province
+                        $resultaddress = $prv->get_province();
+                        $resultaddress_provinceName = $prv->getprovincebyId($result['province']);
+                        $resultaddress_districtName = $disc->getdistrictbyId($result['district']);
+                        $resultaddress_wardsName = $wards->getwardsbyId($result['wards']);
+                    ?>
+                    
                     <tr>
-                        <td>Thành phố:</td>
-                        <td>
-                            <input
-                            name="province"
-                            type="text"
-                            value = '<?php echo $result['province'] ?>'
-                            />
+                        <td><label for="province">Tỉnh/Thành phố</label></td>
+                        <td class="td-prv-dis-ward">
+                        <?php
+                            // Kiểm tra nếu có kết quả cho tỉnh
+                            if ($resultaddress_provinceName && $rowtest = $resultaddress_provinceName->fetch_assoc()) {
+                        ?>
+                            <input class="pro-dis-wards" type="text" value="<?php echo $rowtest['name'];?>" readonly>
+                        <?php
+                            }
+                        ?>
+                            <select id="province" name="province" class="form-control">
+                            <option value="">Chọn một tỉnh</option>
+                                <?php
+                                    while ($row = $resultaddress->fetch_assoc()) {
+                                ?>
+                                    <option value="<?php echo $row['province_id'] ?>"><?php echo $row['name'] ?></option>
+                                <?php
+                                    }
+                                ?>                            
+                            </select>
                         </td>
                     </tr>
                     <tr>
-                        <td>Quận huyện:</td>
-                        <td>
-                            <input
-                            name="district"
-                            type="text"
-                            value = '<?php echo $result['district'] ?>'
-                            />
+                        <td><label for="district">Quận/Huyện</label></td>
+                        <td class="td-prv-dis-ward">
+                        <?php
+                            // Kiểm tra nếu có kết quả cho tỉnh
+                            if ($resultaddress_districtName && $rowtest = $resultaddress_districtName->fetch_assoc()) {
+                        ?>
+                            <input class="pro-dis-wards" type="text" value="<?php echo $rowtest['name'];?>" readonly>
+                        <?php
+                            }
+                        ?>
+                            <select id="district" name="district" class="form-control">
+                                <option value="">Chọn một quận/huyện</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="wards">Phường/Xã</label></td>
+                        <td class="td-prv-dis-ward">
+                        <?php
+                            // Kiểm tra nếu có kết quả cho tỉnh
+                            if ($resultaddress_wardsName && $rowtest = $resultaddress_wardsName->fetch_assoc()) {
+                        ?>
+                            <input class="pro-dis-wards" type="text" value="<?php echo $rowtest['name'];?>" readonly>
+                        <?php
+                            }
+                        ?>
+                            <select id="wards" name="wards" class="form-control">
+                                <option value="">Chọn một xã</option>
+                            </select>
                         </td>
                     </tr>
                 </table>
@@ -117,73 +160,6 @@
             }
         }
     ?>
-
-
-
-<!--  -->
-<?php
-// Replace with your MySQL server settings
-$host = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$dbname = "website_mvc"; 
-
-// Create connection
-$conn = mysqli_connect($host, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-
-
-
-$sql = "SELECT * FROM province";
-$result = mysqli_query($conn, $sql);
-
-if (isset($_POST['add_sale'])) {
-    echo "<pre>";
-    print_r($_POST);
-    die();
-}
-
-?>
-<form id="myForm" class="mt-5" method="POST">
-            <h1 class="py-5">Chọn địa chỉ khi đặt hàng trong website</h1>
-            <div class="row">
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="province">Tỉnh/Thành phố</label>
-                        <select id="province" name="province" class="form-control">
-                            <option value="">Chọn một tỉnh</option>
-                            <!-- populate options with data from your database or API -->
-                            <?php
-                            while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
-                                <option value="<?php echo $row['province_id'] ?>"><?php echo $row['name'] ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="district">Quận/Huyện</label>
-                        <select id="district" name="district" class="form-control">
-                            <option value="">Chọn một quận/huyện</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="wards">Phường/Xã</label>
-                        <select id="wards" name="wards" class="form-control">
-                            <option value="">Chọn một xã</option>
-                        </select>
-                    </div>
-                    <input type="submit" name="add_sale" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng">
-
-                </div>
-            </div>
-        </form>
-<!--  -->
 
 </div>
 <?php

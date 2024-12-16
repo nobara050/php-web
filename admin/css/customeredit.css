@@ -1,10 +1,34 @@
+* {
+  box-sizing: border-box;
+}
 .container {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+table td:nth-child(1) {
+  width: 35%;
+}
+
+table td {
+  padding: 5px; /* Điều chỉnh khoảng cách bên trong các ô (cả chiều ngang và chiều dọc) */
+}
+
+table {
+  table-layout: fixed;
+  overflow-x: auto;
+  width: 70%;
 }
 
 table td input {
@@ -15,18 +39,14 @@ table td input {
   transition: 0.2s;
   color: rgb(0, 0, 0);
 }
+
 table td input:focus {
   border: 0.5px;
-
   background-color: rgb(184, 193, 206);
 }
 
-table td {
-  padding: 10px 8px;
-}
-
 input {
-  width: 400px; /* Adjust the width as needed */
+  width: 100%;
   padding: 5px;
 }
 
@@ -55,8 +75,9 @@ input {
   padding: 2rem;
   border-radius: 0.75rem;
   display: flex;
+  /* gap: 2rem; */
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border: 1px solid #ddd;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -80,4 +101,46 @@ input {
 .error {
   color: rgb(255, 69, 69);
   margin-top: 0.25rem;
+}
+
+.div-anh {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-anh img {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.title-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pro-dis-wards {
+  width: 50%;
+}
+
+#province,
+#district,
+#wards {
+  width: 47%;
+  padding: 8px 6px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(225, 231, 240);
+  transition: 0.2s;
+  color: rgb(0, 0, 0);
+}
+
+.td-prv-dis-ward {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

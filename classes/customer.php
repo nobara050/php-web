@@ -84,8 +84,9 @@
             $email = isset($data['email']) ? mysqli_real_escape_string($this->db->link, $data['email']) : null;
             $address = isset($data['address']) ? mysqli_real_escape_string($this->db->link, $data['address']) : null;
             $phone = isset($data['phone']) ? mysqli_real_escape_string($this->db->link, $data['phone']) : null;
-            $city = isset($data['city']) ? mysqli_real_escape_string($this->db->link, $data['city']) : null;
-            $country = isset($data['country']) ? mysqli_real_escape_string($this->db->link, $data['country']) : null;
+            $province = mysqli_real_escape_string($this->db->link, $data['province']);
+            $district = mysqli_real_escape_string($this->db->link, $data['district']);
+            $wards = mysqli_real_escape_string($this->db->link, $data['wards']);
         
             // Kiểm tra các giá trị bắt buộc
             if (empty($name) || empty($email) || empty($phone)) {
@@ -98,8 +99,9 @@
             if (!empty($email)) $fields[] = "email='$email'";
             if (!empty($address)) $fields[] = "address='$address'";
             if (!empty($phone)) $fields[] = "phone='$phone'";
-            if (!empty($city)) $fields[] = "city='$city'";
-            if (!empty($country)) $fields[] = "country='$country'";
+            if (!empty($province)) $fields[] = "province='$province'";
+            if (!empty($district)) $fields[] = "district='$district'";
+            if (!empty($wards)) $fields[] = "wards='$wards'";
         
             // Nếu không có trường nào cần cập nhật, trả về thông báo
             if (empty($fields)) {

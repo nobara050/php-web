@@ -8,7 +8,7 @@
     $district_id = $_GET['district_id'];
     
     $sql = "SELECT * FROM `wards` WHERE `district_id` = {$district_id}";
-    $result = mysqli_query($conn, $sql);
+    $resultaddress = mysqli_query($conn, $sql);
 
 
     $data[0] = [
@@ -16,7 +16,7 @@
         'name' => 'Chọn một xã/phường'
     ];
 
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($resultaddress)) {
         $data[] = [
             'id' => $row['wards_id'],
             'name'=> $row['name']

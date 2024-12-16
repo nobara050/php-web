@@ -21,6 +21,10 @@
   $brand = new brand();
   $cs = new customer();
   $ord = new order();
+  $cs = new customer();
+  $prv = new province();
+  $disc = new district();
+  $wards = new wards();
 ?>
 
 <?php

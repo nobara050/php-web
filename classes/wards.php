@@ -13,10 +13,17 @@
             $this->fm = new Format();
         }
 
-        public function get_wards($id){
-            $query = "SELECT * FROM district WHERE wards_id = '$id'";
+        public function getwardsbyId($id) {
+            // Truy vấn cơ sở dữ liệu
+            $query = "SELECT * FROM wards WHERE wards_id = '$id' ORDER BY name ASC";
             $result = $this->db->select($query);
-            return $result;
+        
+            // Kiểm tra nếu truy vấn thành công và có dữ liệu
+            if ($result && $result->num_rows > 0) {
+                return $result;  // Trả về đối tượng kết quả
+            } else {
+                return null;  // Nếu không có dữ liệu, trả về null
+            }
         }
     }
 ?>

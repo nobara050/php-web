@@ -24,6 +24,10 @@
     <title>Admin</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="img/admin_favicon.png">
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
   </head>
   <body>
     <!-- Sidebar -->
