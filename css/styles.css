@@ -14,37 +14,7 @@ body {
 input:focus {
   outline: none; /* Xóa viền focus mặc định */
 }
-/* thanh search bar */
-.search-container {
-  position: relative;
-}
 
-#search-input {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-#suggestions {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
-  width: 100%;
-  z-index: 1000;
-}
-
-#suggestions a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-}
-
-#suggestions a:hover {
-  background-color: #f0f0f0;
-}
 
 
 
@@ -61,15 +31,44 @@ nav {
   z-index: 99;
 }
 
-.nav-search {
-  font-size: small;
-  padding: 0.5rem;
-  width: 20rem;
-  height: 1.25rem;
-  border-radius: 9999px;
-  border: 2px yellow;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+/* CSS cải thiện cho thanh tìm kiếm */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
+
+/* Style cho ô input tìm kiếm */
+.nav-search {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-search:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-search {
+      font-size: 14px;
+  }
+
+  #suggestions p {
+      font-size: 12px;
+  }
+}
+
 
 .nav-logo img {
   width: 100%;

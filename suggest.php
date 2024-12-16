@@ -8,7 +8,7 @@ $suggestions = [];
 if (!empty($q)) {
     // Sử dụng prepared statement để tránh SQL Injection
     $stmt = $conn->prepare("SELECT productName FROM tbl_cart WHERE productName LIKE ? LIMIT 5");
-    $searchTerm = "$q%";
+    $searchTerm = "%$q%";
     $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
     $result = $stmt->get_result();

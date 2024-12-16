@@ -58,15 +58,16 @@
       <a href="index.php" class="nav-logo">
         <img src="img/logo.png" alt="Logo" />
       </a>
-      <form action="index.php?act=" method = "post">
-        <input name="search-bar" class="nav-search" type="text" placeholder="Bạn tìm gì..." />
-      </form>
+
       
       <!-- Thanh search test (LINH làm để test) -->
-      <div class="search-container">
-        <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." onkeyup="suggestProducts(this.value)">
-        <div id="suggestions"></div>
-      </div>
+       <form action="index.php?act=" method = "post">
+          <div class="search-container">
+            <input class = "nav-search" name = "search-bar" type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." onkeyup="suggestProducts(this.value)">
+            <div id="suggestions"></div>
+          </div>
+       </form>
+      
 <script>
     function suggestProducts(query) {
         if (query.length == 0) {
