@@ -14,6 +14,39 @@ body {
 input:focus {
   outline: none; /* Xóa viền focus mặc định */
 }
+/* thanh search bar */
+.search-container {
+  position: relative;
+}
+
+#search-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#suggestions {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+}
+
+#suggestions a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+#suggestions a:hover {
+  background-color: #f0f0f0;
+}
+
+
 
 /* nav */
 nav {

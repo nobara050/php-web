@@ -105,6 +105,13 @@
             return $result;
         }
 
+        public function getproductbyName($name) {
+            $query = "SELECT * FROM tbl_product WHERE productName = '$name'";
+            $result =$this->db->select($query);
+            return $result;
+        }
+
+
         // ================================================
         //            Update sản phẩm trong admin
         // ================================================
