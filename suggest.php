@@ -1,20 +1,25 @@
-<?php 
-    include 'lib/database.php';
-    include 'helpers/format.php';
+<?php
+// Include kết nối database
+include 'lib/connection_no_class.php';
 
-    $db = new Database();
-    $q = $_GET['q'];
-    $suggestion = [];
-    //câu lệnh này sẽ lấy ra 10 sản phẩm có tên giống với từ khóa mà người dùng nhập vào ô tìm kiếm
-    $query = "SELECT productName FROM tbl_cart WHERE productName LIKE '%$q%' LIMIT 5";
-    //thực thi câu lệnh
-    $result = $db->select($query);
-    //nếu có kết quả thì sẽ thực hiện vòng lặp while để lấy ra tên sản phẩm
+$q = $_GET['q'];
+$suggestions = [];
+
+if (!empty($q)) {
+    // Sử dụng prepared statement để tránh SQL Injection
+    $stmt = $conn->prepare("SELECT productName FROM tbl_cart WHERE productName LIKE ? LIMIT 5");
+    $searchTerm = "$q%";
+    $stmt->bind_param("s", $searchTerm);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     if ($result) {
-        while($row = $result->fetch_assoc()) {
-        $suggestion[] = $row['productName'];
-  }
-} 
-   echo json_encode($suggestion);
+        while ($row = $result->fetch_assoc()) {
+            $suggestions[] = $row;
+        }
+    }
+}
 
+// Trả về kết quả dưới dạng JSON
+echo json_encode($suggestions);
 ?>

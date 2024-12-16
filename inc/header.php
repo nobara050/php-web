@@ -64,30 +64,30 @@
       
       <!-- Thanh search test (LINH làm để test) -->
       <div class="search-container">
-        <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." onkeyup=" suggestProducts(this.value)">
-          <div id="suggestions"></div>
+        <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." onkeyup="suggestProducts(this.value)">
+        <div id="suggestions"></div>
       </div>
-      <script>
-        function suggestProducts(query) {
-          if (query.length == 0) {
-            document.getElementById("suggestions").innerHMTL = "";
+<script>
+    function suggestProducts(query) {
+        if (query.length == 0) {
+            document.getElementById("suggestions").innerHTML = "";
             return;
-          }
-          var xhr = XMLHttpRequest();
-          xhr.onreadystatechange = function () {
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-              var suggestions = JSON.parse(this.responseText);
-              var suggestionsHTML = "";
-              for (var i = 0; i<sugestions.length; i++) {
-                suggestionsHTML += "<a href='details.php?proid=" + suggestions[i].productId + "'>" + suggestions[i].productName + "</a>";
-              }
-              document.getElementById("suggestions").innerHTML = this.responseText;
+                var suggestions = JSON.parse(this.responseText);
+                var suggestionsHTML = "";
+                for (var i = 0; i < suggestions.length; i++) {
+                    suggestionsHTML += "<p>" + suggestions[i].productName + "</p>";
+                }
+                document.getElementById("suggestions").innerHTML = suggestionsHTML;
             }
-          }
-          xhr.open("GET", "suggest.php?q=" + query, true);
-          xhr.send();
-        } 
-      </script>
+        };
+        xhr.open("GET", "suggest.php?q=" + query, true);
+        xhr.send();
+    }
+</script>
 
       <ul class="nav-option">
       <?php
@@ -179,6 +179,9 @@
                 <span>Intel Core i7</span>
               </a>
               <a href="#">
+                <span>Intel Core i9</span>
+              </a>
+              <a href="#">
                 <span>AMD Ryzen</span>
               </a>
             </div>
@@ -195,6 +198,9 @@
           <div class="category-child-maincpu-warpper">
             <div class="category-child-maincpu-warpper-log">
               <span class="category-child-title">Bộ vi xử lý Intel</span>
+              <a href="#">
+                <span>CPU Intel 9</span>
+              </a>
               <a href="#">
                 <span>CPU Intel 7</span>
               </a>
