@@ -168,14 +168,6 @@
                             />
                         </td>
                     </tr>
-                    <tr>
-                        <td>Avatar</td>
-                        <td>
-                            <div class="div-anh">
-                                <img src="../img/lapgaming.png" alt="">
-                            </div>
-                        </td>
-                    </tr>
                 </table>
                 
 
