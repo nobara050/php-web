@@ -2,7 +2,7 @@ table td input {
   padding: 8px 6px;
   border: none;
   border-radius: 6px;
-  background-color: rgb(225, 231, 240);
+  background-color: rgb(242, 247, 255);
   transition: 0.2s;
   color: rgb(0, 0, 0);
 }
@@ -21,12 +21,14 @@ label {
 }
 
 input {
-  width: 400px; /* Adjust the width as needed */
+  /* width: 400px; */
+  width: 100%;
   padding: 5px;
 }
 
 .save-btn {
   border-radius: 6px;
+  margin-top: 1rem;
   padding: 0.5rem;
   max-width: fit-content;
   transition: 0.2s;
@@ -80,4 +82,25 @@ input {
 .error {
   color: rgb(255, 69, 69);
   margin-top: 0.25rem;
+}
+
+.td-prv-dis-ward {
+  align-items: center;
+  justify-content: space-between;
+}
+
+prv-dis-ward {
+  width: 50%;
+}
+
+#province,
+#district,
+#wards {
+  width: 47%;
+  padding: 8px 6px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(242, 247, 255);
+  transition: 0.2s;
+  color: rgb(0, 0, 0);
 }

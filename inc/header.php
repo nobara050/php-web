@@ -21,6 +21,10 @@
   $brand = new brand();
   $cs = new customer();
   $ord = new order();
+  $cs = new customer();
+  $prv = new province();
+  $disc = new district();
+  $wards = new wards();
 ?>
 
 <?php
@@ -126,17 +130,16 @@
             <img src="img/nav_cart.png" alt="icon" />
             <span>Giỏ hàng</span>
           </a>
-          <a href="cart.php" class="cart-note-absolute">
+          <!-- <a href='cart.php' class='cart-note-absolute'></a> -->
             <?php
-              $check_cart = $ct->check_cart();
-              if($check_cart){
-                $qty = Session::get('qty');
-                echo $qty;
-              } else {
-                echo '0';
-              }
+              // $check_cart = $ct->check_cart();
+              // if($check_cart){
+              //   $qty = Session::get('qty');
+              //   echo "<a href='cart.php' class='cart-note-absolute'> </a>";
+              // } else {
+              //   echo "<a href='cart.php' class='cart-note-absolute'> </a>";
+              // }
             ?>
-          </a>
         </li>
       </ul>
     </nav>

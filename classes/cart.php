@@ -215,6 +215,18 @@
             }
         }
         
+            public function number_item($customerId){
+                $query = "SELECT SUM(quantity) AS total_quantity FROM tbl_cart WHERE customerId='$customerId'";
+                $result = $this->db->select($query);
+                
+                // Kiểm tra nếu có kết quả
+                if ($result) {
+                    // Lấy số lượng sản phẩm tổng cộng
+                    $row = $result->fetch_assoc();
+                    return $row['total_quantity']; // Trả về tổng số lượng sản phẩm
+                }
+                return 0; // Nếu không có sản phẩm nào trong giỏ hàng, trả về 0
+            }
+        }
 
-    }
 ?>

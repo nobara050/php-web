@@ -52,7 +52,7 @@
 <?php
   $login_check = Session::get('customer_login');
   if($login_check){
-    header('Location:order.php');
+    header('Location:index.php');
   }
 ?>
 
