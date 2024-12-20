@@ -101,3 +101,26 @@ $(document).ready(function () {
     }
   });
 });
+
+// =============================================================================
+//                      Ajax thanh tìm kiếm
+// =============================================================================
+function suggestProducts(query) {
+  if (query.length == 0) {
+    document.getElementById("suggestions").innerHTML = "";
+    return;
+  }
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var suggestions = JSON.parse(this.responseText);
+      var suggestionsHTML = "";
+      for (var i = 0; i < suggestions.length; i++) {
+        suggestionsHTML += "<p>" + suggestions[i].productName + "</p>";
+      }
+      document.getElementById("suggestions").innerHTML = suggestionsHTML;
+    }
+  };
+  xhr.open("GET", "suggest.php?q=" + query, true);
+  xhr.send();
+}

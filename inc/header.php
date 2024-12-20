@@ -62,7 +62,14 @@
       <a href="index.php" class="nav-logo">
         <img src="img/logo.png" alt="Logo" />
       </a>
-      <input name="search-bar" class="nav-search" type="text" placeholder="Bạn tìm gì..." />
+      <!-- Thanh search test (LINH làm để test) -->
+      <form action="index.php?act=" method = "post">
+          <div class="search-container">
+            <input class = "nav-search" name = "search-bar" type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." onkeyup="suggestProducts(this.value)">
+            <div id="suggestions"></div>
+          </div>
+       </form>
+
       <ul class="nav-option">
       <?php
         $login_check = Session::get('customer_login');

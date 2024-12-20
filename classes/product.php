@@ -316,5 +316,15 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+
+        // ================================================
+        //        Hiển thị sản phẩm theo Tên search
+        // ================================================
+        public function getproductbyName($name) {
+            $query = "SELECT * FROM tbl_product WHERE productName = '$name'";
+            $result =$this->db->select($query);
+            return $result;
+        }
     }
  ?>
