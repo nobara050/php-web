@@ -60,10 +60,16 @@
             <?php
                     }
                 } else {
-                    echo "<img src='./img/cart-empty.png' alt='Không có sản phẩm'>";
+                    echo "  <div></div>
+                            <div></div>
+                            <div class='img-out-product'><img src='./img/outproduct.png' alt='Không có sản phẩm'></div>
+                            <div></div>
+                            <div></div>";
                     $btn = false;
                 }
             ?>
+            
+            <div class='img-out-product'></div>
         </div>
         <?php
             if (isset($btn) && $btn == true) {

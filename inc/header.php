@@ -62,7 +62,6 @@
       <a href="index.php" class="nav-logo">
         <img src="img/logo.png" alt="Logo" />
       </a>
-
       <!--  -->
       <!-- Thanh search test (LINH làm để test) -->
       <form action="index.php?act=" method = "post">
@@ -189,14 +188,14 @@
             </div>
             <div class="category-child-maincpu-warpper-log">
               <span class="category-child-title">Bộ vi xử lý AMD</span>
-              <a href="#">
-                <span>AMD X870</span>
+              <a href="catulproduct.php?search=CPU&name=AMD R5">
+                <span>AMD R5</span>
               </a>
-              <a href="#">
-                <span>AMD X670</span>
+              <a href="catulproduct.php?search=CPU&name=AMD R3">
+                <span>AMD R3</span>
               </a>
-              <a href="#">
-                <span>AMD X570</span>
+              <a href="catulproduct.php?search=CPU&name=AMD R7">
+                <span>AMD R7</span>
               </a>
             </div>
             <div class="category-child-maincpu-warpper-log">
@@ -204,7 +203,7 @@
               <a href="catulproduct.php?search=GPU&name=NVIDIA">
                 <span>NVIDIA Quadro</span>
               </a>
-              <a href="catulproduct.php?search=GPU&name=AMD">
+              <a href="catulproduct.php?search=GPU&name=RX">
                 <span>AMD Radeon</span>
               </a>
             </div>
@@ -237,31 +236,31 @@
           <div class="category-child-thenho-warpper">
             <div class="category-child-thenho-warpper-log">
               <span class="category-child-title">Dung lượng RAM</span>
-              <a href="#">
+              <a href="catulproduct.php?search=RAM&name=8">
                 <span>8 GB</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=RAM&name=16">
                 <span>16 GB</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=RAM&name=32">
                 <span>32 GB</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=RAM&name=64">
                 <span>64 GB</span>
               </a>
             </div>
             <div class="category-child-thenho-warpper-log">
               <span class="category-child-title">Ổ cứng</span>
-              <a href="#">
+              <a href="catulproduct.php?search=Ổ cứng&name=120GB">
                 <span>120GB - 128GB</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Ổ cứng&name=250GB">
                 <span>250GB - 256GB</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Ổ cứng&name=480GB">
                 <span>480GB - 512GB</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Ổ cứng&name=1TB">
                 <span>Trên 1TB</span>
               </a>
             </div>
@@ -285,19 +284,19 @@
           <div class="category-child-manhinh-warpper">
             <div class="category-child-manhinh-warpper-log">
               <span class="category-child-title">Thương hiệu</span>
-              <a href="#">
+              <a href="catulproduct.php?search=Màn hình&name=MSI">
                 <span>MSI</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Màn hình&name=LENOVO">
                 <span>Lenovo</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Màn hình&name=SAMSUNG">
                 <span>Samsung</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Màn hình&name=PHILIPS">
                 <span>Philips</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Màn hình&name=E-DRA">
                 <span>E-Dra</span>
               </a>
             </div>
@@ -329,16 +328,16 @@
           <div class="category-child-chuot-warpper">
             <div class="category-child-chuot-warpper-log">
               <span class="category-child-title">Thương hiệu</span>
-              <a href="#">
+              <a href="catulproduct.php?search=Chuột&name=Logitech">
                 <span>Logitech</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Chuột&name=Razer">
                 <span>Razer</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Chuột&name=Corsair">
                 <span>Corsair</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Chuột&name=Pulsar">
                 <span>Pulsar</span>
               </a>
               <a href="#">

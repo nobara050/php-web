@@ -571,7 +571,6 @@ nav {
   }
 }
 
-
 .search-container {
   position: relative;
 }
@@ -583,7 +582,15 @@ nav {
   border-radius: 10px;
 }
 
-#suggestions p {}
+.img-out-product {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#suggestions p {
+}
 
 #suggestions p:hover {
   background-color: #fff5de;
