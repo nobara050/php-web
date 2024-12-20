@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <style>
+    .chart-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .chart {
+      width: 45%;
+      min-width: 300px;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
   
@@ -17,12 +29,16 @@
 ?>
       <h1 class="dashboard-title">Dashboard</h1>
       <p>Chào mừng bạn đến với trang quản trị!</p>
-      <p>Thống kê năm và tổng số tiền:</p>
-      <div id="linechart" style="height: 250px;"></div>
-      <br>
-      <p>Thống kê năm và tổng số đơn hàng:</p>
-      <div id="barchart" style="height: 250px;"></div>
-    
+      <div class="chart-container">
+        <div class="chart">
+          <p>Thống kê năm và tổng số tiền:</p>
+          <div id="linechart" style="height: 250px;"></div>
+        </div>
+        <div class="chart">
+          <p>Thống kê số lượng khách hàng của mỗi tỉnh:</p>
+          <div id="customerChart" style="height: 250px;"></div>
+        </div>
+      </div>
 
 <?php 
   include 'inc/footer.php'; 
@@ -48,23 +64,14 @@
     });
   </script>
  
+  <!-- Biểu đồ thống kê số lượng khách hàng theo tỉnh (donut chart biểu đồ tròn) -->
  <script>
-    new Morris.Line({
+    new Morris.Donut({
       // ID of the element in which to draw the chart.
-      element: 'linechart',
+      element: 'customerChart',
       // Chart data records -- each entry in this array corresponds to a point on
       // the chart.
       data: chartData2,
-      // The name of the data record attribute that contains x-values.
-      xkey: 'year',
-      // A list of names of data record attributes that contain y-values.
-      ykeys: ['value'],
-      // Labels for the ykeys -- will be displayed when you hover over the
-      // chart.
-      labels: ['Value']
+      formatter: function (x) { return x + " khách hàng"}
     });
   </script>
- 
-
-
-  

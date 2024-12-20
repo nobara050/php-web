@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 12, 2024 lúc 11:22 AM
+-- Thời gian đã tạo: Th12 20, 2024 lúc 03:30 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -837,7 +837,6 @@ CREATE TABLE `tbl_admin` (
   `adminUser` varchar(255) NOT NULL,
   `adminPass` varchar(255) NOT NULL,
   `adminPhone` varchar(15) NOT NULL,
-  `adminAvatar` varchar(255) DEFAULT NULL,
   `province` varchar(255) NOT NULL,
   `district` varchar(255) NOT NULL,
   `wards` varchar(255) NOT NULL,
@@ -849,8 +848,8 @@ CREATE TABLE `tbl_admin` (
 -- Đang đổ dữ liệu cho bảng `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminEmail`, `adminUser`, `adminPass`, `adminPhone`, `adminAvatar`, `province`, `district`, `wards`, `level`, `lastLogin`) VALUES
-(4, 'Nguyễn Tiến Đạt', 'nguyentiendat050@gmail.com', 'admin', '1', '374242682', NULL, '0', '', '', 0, '2024-12-11 20:08:09');
+INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminEmail`, `adminUser`, `adminPass`, `adminPhone`, `province`, `district`, `wards`, `level`, `lastLogin`) VALUES
+(4, 'Nguyễn Tiến Đạt', 'nguyentiendat050@gmail.com', 'admin', '1', '374242682', '50', '568', '8941', 0, '2024-12-16 17:30:26');
 
 -- --------------------------------------------------------
 
@@ -892,15 +891,6 @@ CREATE TABLE `tbl_cart` (
   `image` varchar(200) NOT NULL,
   `subtotal` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `tbl_cart`
---
-
-INSERT INTO `tbl_cart` (`cartId`, `productId`, `customerId`, `productName`, `productPrice`, `quantity`, `image`, `subtotal`) VALUES
-(127, 14, 0, 'Laptop Gaming Acer Nitro 5 ', 13990000, 5, '5b03ecc2f5.png', 0),
-(128, 11, 0, 'Chuột gaming ASUS ROG Gladius III ', 2490000, 2, 'effd5f0bc5.jpg', 0),
-(132, 13, 0, 'Card màn hình ASUS Dual Radeon RX 6500', 3790000, 2, '7f1ecef431.png', 0);
 
 -- --------------------------------------------------------
 
@@ -955,8 +945,12 @@ CREATE TABLE `tbl_customer` (
 --
 
 INSERT INTO `tbl_customer` (`id`, `name`, `address`, `province`, `district`, `wards`, `phone`, `email`, `password`) VALUES
-(3, 'Nguyễn Tiến Đạt', '158 ấp Tân Thới 1 xã Tân Hiệp huyện Hóc Môn', 'TP. Hồ Chí Minh', 'Vietnam', '', '0374242682', 'nguyentiendat050@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(7, 'Duy Linh', 'Long Ann', 'Long An', 'Việt Nam', '', '0123456789', 'duylinh050@gmail.com', '123456789');
+(3, 'Nguyễn Tiến Đạt', '158 ấp Tân Thới 1 xã Tân Hiệp huyện Hóc Môn', '49', '543', '8607', '0374242682', 'nguyentiendat050@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(8, 'Nguyen Van A', '123 Đường ABC, Phường DEF', '49', '543', '8607', '0901234567', 'nguyenvana@example.com', '123456'),
+(9, 'Tran Thi B', '456 Đường GHI, Phường JKL', '49', '543', '8607', '0902345678', 'tranthib@example.com', 'password'),
+(10, 'Le Van C', '789 Đường MNO, Phường PQR', '49', '543', '8607', '0903456789', 'levanc@example.com', 'abc123'),
+(11, 'Pham Thi D', '321 Đường STU, Phường VWX', '49', '543', '8607', '0904567890', 'phamthid@example.com', 'demo123'),
+(12, 'Hoang Van E', '654 Đường YZ, Phường XYZ', '49', '543', '8607', '0905678901', 'hoangvane@example.com', 'simplepwd');
 
 -- --------------------------------------------------------
 
@@ -993,9 +987,9 @@ INSERT INTO `tbl_measure` (`measureId`, `productId`, `measureName`, `measureValu
 (91, 13, 'Chipset', 'Radeon RX 6500 XT'),
 (92, 13, 'Nhân xử lý', '1024'),
 (93, 13, 'Dung lượng', '4GB'),
-(98, 15, 'CPU', 'i3'),
-(99, 15, 'RAM', '8GB'),
-(100, 15, 'SSD', '512GB');
+(107, 15, 'CPU', 'i3'),
+(108, 15, 'RAM', '8GB'),
+(109, 15, 'SSD', '512GB');
 
 -- --------------------------------------------------------
 
@@ -11793,7 +11787,7 @@ ALTER TABLE `tbl_brand`
 -- AUTO_INCREMENT cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`
@@ -11805,13 +11799,13 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT cho bảng `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_measure`
 --
 ALTER TABLE `tbl_measure`
-  MODIFY `measureId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `measureId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_order`
