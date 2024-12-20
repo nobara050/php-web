@@ -68,7 +68,7 @@
        <form action="index.php?act=" method = "post">
           <div class="search-container">
             <input class = "nav-search" name = "search-bar" type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." onkeyup="suggestProducts(this.value)">
-            <div id="suggestions"></div>
+            <div ><a href="" id="suggestions"></a></div>
           </div>
        </form>
       
@@ -84,7 +84,7 @@
                 var suggestions = JSON.parse(this.responseText);
                 var suggestionsHTML = "";
                 for (var i = 0; i < suggestions.length; i++) {
-                    suggestionsHTML += "<p>" + suggestions[i].productName + "</p>";
+                  suggestionsHTML += "<p><a href='details.php?proid=" + suggestions[i].productId + "'>" + suggestions[i].productName + "</a></p>";
                 }
                 document.getElementById("suggestions").innerHTML = suggestionsHTML;
             }

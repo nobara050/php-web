@@ -1,27 +1,24 @@
 <?php
-    include 'inc/header.php';
-?>
+include 'inc/header.php';
 
-<?php
-    // Xử lý khi nhận được productid từ các card sản phẩm, nếu không có productid thì trả về 404
-    if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
-        echo "<script>window.location = 'page404.php'</script>";
-    } else {
-        $id = $_GET['proid'];
-    }
-    
-    // Xử lý submit form từ nút Buy now và Add to cart
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-        $login_check = Session::get('customer_login');
-            if($login_check == false){
-            header('Location: login.php');
-        }
-        $quantity = $_POST['quantity'];
-        // Nếu chọn Buy now thì trong hàm add_to_cart của class cart khi kết thúc sẽ chuyển hướng đến giỏ hàng còn nút Add to cart thì không
-        $buy_now = ($_POST['submit'] == 'Buy Now') ? true : false; 
-        $AddToCart = $ct->add_to_cart($quantity, $id, $buy_now);
-    }
+// Xử lý khi nhận được productid từ các card sản phẩm, nếu không có productid thì trả về 404
+if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
+    echo "<script>window.location = 'page404.php'</script>";
+} else {
+    $id = $_GET['proid'];
+}
 
+// Xử lý submit form từ nút Buy now và Add to cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    $login_check = Session::get('customer_login');
+    if ($login_check == false) {
+        header('Location: login.php');
+    }
+    $quantity = $_POST['quantity'];
+    // Nếu chọn Buy now thì trong hàm add_to_cart của class cart khi kết thúc sẽ chuyển hướng đến giỏ hàng còn nút Add to cart thì không
+    $buy_now = ($_POST['submit'] == 'Buy Now') ? true : false; 
+    $AddToCart = $ct->add_to_cart($quantity, $id, $buy_now);
+}
 ?>
 
 <link rel="stylesheet" href="css/detail.css">
@@ -31,17 +28,17 @@
     <!--                 Lấy từ cơ sở dữ liệu chi tiết của sản phẩm                     -->
     <!-- ============================================================================== -->
     <?php
-        $get_measures_by_product = $product->get_measures_by_product($id);
-        $get_product_details = $product->get_details($id);
-        // Lưu thông số kỹ thuật vào mảng
-        $measures = [];
-        if ($get_measures_by_product) {
-            while ($measure = $get_measures_by_product->fetch_assoc()) {
-                $measures[] = $measure;
-            }
+    $get_measures_by_product = $product->get_measures_by_product($id);
+    $get_product_details = $product->get_details($id);
+    // Lưu thông số kỹ thuật vào mảng
+    $measures = [];
+    if ($get_measures_by_product) {
+        while ($measure = $get_measures_by_product->fetch_assoc()) {
+            $measures[] = $measure;
         }
-        if($get_product_details) {
-            while($result_details = $get_product_details->fetch_assoc()){
+    }
+    if ($get_product_details) {
+        while ($result_details = $get_product_details->fetch_assoc()) {
     ?>
         <div class="product-detail">
             <div class="product-overview">
@@ -149,14 +146,14 @@
             </div>
         </div>
     <?php
-            }
         }
+    }
     ?>
     <!-- Kết thúc lấy detail -->
 </div>
     
-    <!-- Script của nút tăng giảm số lượng sản phẩm khi mua -->
-    <script src="js/detail.js"></script>
+<!-- Script của nút tăng giảm số lượng sản phẩm khi mua -->
+<script src="js/detail.js"></script>
 <?php
-    include 'inc/footer.php';
+include 'inc/footer.php';
 ?>
