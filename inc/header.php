@@ -21,10 +21,6 @@
   $brand = new brand();
   $cs = new customer();
   $ord = new order();
-  $cs = new customer();
-  $prv = new province();
-  $disc = new district();
-  $wards = new wards();
 ?>
 
 <?php
@@ -99,16 +95,17 @@
             <img src="img/nav_cart.png" alt="icon" />
             <span>Giỏ hàng</span>
           </a>
-          <!-- <a href='cart.php' class='cart-note-absolute'></a> -->
+          <a href="cart.php" class="cart-note-absolute">
             <?php
-              // $check_cart = $ct->check_cart();
-              // if($check_cart){
-              //   $qty = Session::get('qty');
-              //   echo "<a href='cart.php' class='cart-note-absolute'> </a>";
-              // } else {
-              //   echo "<a href='cart.php' class='cart-note-absolute'> </a>";
-              // }
+              $check_cart = $ct->check_cart();
+              if($check_cart){
+                $qty = Session::get('qty');
+                echo $qty;
+              } else {
+                echo '0';
+              }
             ?>
+          </a>
         </li>
       </ul>
     </nav>
@@ -124,20 +121,23 @@
           <div class="category-child-laptop-warpper">
             <div class="category-child-laptop-warpper-log">
               <span class="category-child-title">Thương hiệu</span>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=8">
                 <span>ASUS</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=10">
                 <span>ACER</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=3">
                 <span>MSI</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=5">
                 <span>DELL</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=4">
                 <span>LENOVO</span>
+              </a>
+              <a href="getproduct.php?type=brand&id=7">
+                <span>VICTUS</span>
               </a>
             </div>
             <div class="category-child-laptop-warpper-log">
@@ -276,19 +276,19 @@
           <div class="category-child-manhinh-warpper">
             <div class="category-child-manhinh-warpper-log">
               <span class="category-child-title">Thương hiệu</span>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=3">
                 <span>MSI</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=4">
                 <span>Lenovo</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=1">
                 <span>Samsung</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=2">
                 <span>Philips</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=6">
                 <span>E-Dra</span>
               </a>
             </div>
@@ -312,7 +312,7 @@
       </li>
       <!-- Chuột -->
       <li class="category-hover">
-        <a href="#" class="category-hover-click">
+        <a href="getproduct.php?type=cat&id=12" class="category-hover-click">
           <img src="img/category_mouse.png" alt="icon" />
           <span>Chuột</span>
         </a>
@@ -320,16 +320,16 @@
           <div class="category-child-chuot-warpper">
             <div class="category-child-chuot-warpper-log">
               <span class="category-child-title">Thương hiệu</span>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=9">
                 <span>Logitech</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=11">
                 <span>Razer</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=12">
                 <span>Corsair</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=13">
                 <span>Pulsar</span>
               </a>
               <a href="#">
@@ -348,17 +348,17 @@
         <div class="category-child-banphim">
           <div class="category-child-banphim-warpper">
             <div class="category-child-banphim-warpper-log">
-              <span class="category-child-title">Thương hiệu</span>
-              <a href="#">
+            <span class="category-child-title">Thương hiệu</span>
+              <a href="getproduct.php?type=brand&id=14">
                 <span>AKKO</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=15">
                 <span>Dare-U</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=16">
                 <span>Rapoo</span>
               </a>
-              <a href="#">
+              <a href="getproduct.php?type=brand&id=12">
                 <span>Corsair</span>
               </a>
               <a href="#">
