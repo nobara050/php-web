@@ -5,11 +5,11 @@
 <!-- Trang này thực hiện việc lấy sản phẩm theo category hoặc brand -->
 <?php 
     // Xử lý Get khi nhận được từ trang details.php gửi qua
-    if (!isset($_GET['type']) || !isset($_GET['id']) || $_GET['id'] == NULL) {
+    if (!isset($_GET['search']) || !isset($_GET['name']) || $_GET['name'] == NULL) {
         echo "<script>window.location = 'page404.php'</script>";
     } else {
-        $type = $_GET['type']; // Loại tìm kiếm (cat hoặc brand)
-        $id = $_GET['id']; // ID danh mục hoặc thương hiệu
+        $search_cat = $_GET['search'];
+        $search_name = $_GET['name']; 
     }
     
 ?> 
@@ -20,39 +20,17 @@
     <!--                             Title của trang                                    -->
     <!-- ============================================================================== -->
     <?php
-        // Xuất title là Category hay Brand tùy theo type lấy được ở trên
-        if ($type === 'cat') {
-            $nameData = $cat->getcatbyId($id);
-            $titlePrefix = "Danh mục: ";
-        } elseif ($type === 'brand') {
-            $nameData = $brand->getbrandbyId($id);
-            $titlePrefix = "Thương hiệu: ";
-        }
-
-        // Xuất ra title 
-        if ($nameData) {
-            while ($result_name = $nameData->fetch_assoc()) {
+        $titlePrefix = "Tìm kiếm: ";
     ?>
-        <span class="list_title"><?php echo $titlePrefix . ($result_name['catName'] ?? $result_name['brandName']); ?></span>
-    <?php
-            }
-        }
-    ?>
-
+    <span class="list_title"><?php echo $titlePrefix . $search_cat . " " . $search_name ?></span>
     <!-- ============================================================================== -->
     <!--                          List card sản phẩm                                    -->
     <!-- ============================================================================== -->
     <div class="listcard-button">
         <div class="listcard">
             <?php
-                // Nếu type là category thì get_product_by_cat theo id của category
-                if ($type === 'cat') {
-                    $products = $product->get_product_by_cat($id);
-                } elseif ($type === 'brand') {
-                    $products = $product->get_product_by_brand($id);
-                }
+                $products = $product->get_product_by_search($search_name, $search_cat);
             
-                // Nếu type là brand thì get_product_by_brand theo id của brand
                 if ($products) {
                     while ($result = $products->fetch_assoc()) {
                         $measures = $product->get_measures_by_product($result['productId']);
@@ -83,12 +61,19 @@
                     }
                 } else {
                     echo "<img src='./img/cart-empty.png' alt='Không có sản phẩm'>";
+                    $btn = false;
                 }
             ?>
         </div>
-        <div class="btn-xemthem-wrapper">
-            <button class="btn-xemthem">Xem thêm sản phẩm</button>
-        </div>
+        <?php
+            if (isset($btn) && $btn == true) {
+        ?>
+            <div class="btn-xemthem-wrapper">
+                <button class="btn-xemthem">Xem thêm sản phẩm</button>
+            </div>
+        <?php
+            } 
+        ?>
     </div>
 </div>
 <?php

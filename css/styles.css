@@ -3,16 +3,20 @@
   margin: 0;
   text-decoration: none;
   list-style: none;
-  color: black; /* Màu chữ đen */
+  color: black;
+  /* Màu chữ đen */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
 body {
   background: #eaecef;
 }
+
 input:focus {
-  outline: none; /* Xóa viền focus mặc định */
+  outline: none;
+  /* Xóa viền focus mặc định */
 }
 
 /* nav */
@@ -48,6 +52,7 @@ nav {
   display: flex;
   gap: 1rem;
 }
+
 .nav-option .nav-hover {
   padding: 0.5rem;
 }
@@ -56,12 +61,14 @@ nav {
   background: #f5ebba;
   border-radius: 9999px;
 }
+
 .nav-hover a {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
 }
+
 .nav-hover a img {
   max-width: 1.25rem;
 }
@@ -120,10 +127,12 @@ nav {
   justify-content: center;
   gap: 2rem;
 }
+
 .category-child-title {
   font-weight: 600;
   color: #4e430d;
 }
+
 .category-child-laptop-warpper-log span {
   display: block;
 }
@@ -149,10 +158,12 @@ nav {
   justify-content: center;
   gap: 2rem;
 }
+
 .category-child-title {
   font-weight: 600;
   color: #4e430d;
 }
+
 .category-child-maincpu-warpper-log span {
   display: block;
 }
@@ -178,13 +189,16 @@ nav {
   justify-content: center;
   gap: 2rem;
 }
+
 .category-child-title {
   font-weight: 600;
   color: #4e430d;
 }
+
 .category-child-thenho-warpper-log span {
   display: block;
 }
+
 /* màn hình */
 .category-hover .category-child-manhinh {
   position: absolute;
@@ -206,10 +220,12 @@ nav {
   justify-content: center;
   gap: 2rem;
 }
+
 .category-child-title {
   font-weight: 600;
   color: #4e430d;
 }
+
 .category-child-manhinh-warpper-log span {
   display: block;
 }
@@ -235,10 +251,12 @@ nav {
   justify-content: center;
   gap: 2rem;
 }
+
 .category-child-title {
   font-weight: 600;
   color: #4e430d;
 }
+
 .category-child-chuot-warpper-log span {
   display: block;
 }
@@ -264,19 +282,23 @@ nav {
   justify-content: center;
   gap: 2rem;
 }
+
 .category-child-title {
   font-weight: 600;
   color: #4e430d;
 }
+
 .category-child-banphim-warpper-log span {
   display: block;
 }
+
 .wrapper-banner {
   margin: 0 auto;
   max-width: 1080px;
   width: 95%;
   margin-top: 1rem;
 }
+
 /* wrapper */
 .wrapper {
   margin: 0 auto;
@@ -305,12 +327,16 @@ nav {
   margin-bottom: 1.5rem;
   border-radius: 0.75rem;
 }
+
 .listcard {
   background: white;
-  display: grid; /* Thiết lập phần tử thành grid */
+  display: grid;
+  /* Thiết lập phần tử thành grid */
   gap: 0.75rem;
-  grid-template-columns: repeat(5, 1fr); /* Chia thành 5 cột bằng nhau */
+  grid-template-columns: repeat(5, 1fr);
+  /* Chia thành 5 cột bằng nhau */
 }
+
 .list_title {
   font-size: 1.5rem;
   font-weight: 550;
@@ -348,6 +374,7 @@ nav {
   border: 2px;
   box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
+
 .card-img a img {
   max-width: 100%;
   object-fit: cover;
@@ -375,13 +402,20 @@ nav {
 .card-info .card-name {
   font-weight: 500;
   font-size: small;
-  display: -webkit-box; /* Thiết lập chế độ hiển thị cho WebKit */
-  -webkit-box-orient: vertical; /* Định hướng chiều dọc cho các box */
-  -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị là 2 */
-  overflow: hidden; /* Ẩn phần nội dung vượt quá */
-  text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi nội dung bị cắt */
-  margin-bottom: 0.5rem; /* Khoảng cách dưới */
-  margin-top: 0.5rem; /* Khoảng cách dưới */
+  display: -webkit-box;
+  /* Thiết lập chế độ hiển thị cho WebKit */
+  -webkit-box-orient: vertical;
+  /* Định hướng chiều dọc cho các box */
+  -webkit-line-clamp: 2;
+  /* Giới hạn số dòng hiển thị là 2 */
+  overflow: hidden;
+  /* Ẩn phần nội dung vượt quá */
+  text-overflow: ellipsis;
+  /* Hiển thị dấu ba chấm (...) khi nội dung bị cắt */
+  margin-bottom: 0.5rem;
+  /* Khoảng cách dưới */
+  margin-top: 0.5rem;
+  /* Khoảng cách dưới */
 }
 
 .card-info .card-price {
@@ -406,7 +440,8 @@ nav {
 /* Footer Styles */
 .footer {
   background-color: #f9f9f9;
-  padding: 1.25rem; /* 20px */
+  padding: 1.25rem;
+  /* 20px */
   padding-bottom: 0px;
   font-family: Arial, sans-serif;
   color: #333;
@@ -417,28 +452,35 @@ nav {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 75rem; /* 1200px */
+  max-width: 75rem;
+  /* 1200px */
   margin: auto;
 }
 
 .footer-section {
-  margin: 0.625rem; /* 10px */
+  margin: 0.625rem;
+  /* 10px */
   margin-left: 4rem;
-  flex: 1 1 18.75rem; /* 300px */
+  flex: 1 1 18.75rem;
+  /* 300px */
 }
 
 .footer-section h3 {
   color: #000;
-  font-size: 1rem; /* 16px */
-  margin-bottom: 0.625rem; /* 10px */
+  font-size: 1rem;
+  /* 16px */
+  margin-bottom: 0.625rem;
+  /* 10px */
 }
 
 .footer-section p,
 .footer-section a {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem;
+  /* 14px */
   color: #333;
   text-decoration: none;
-  margin: 0.3125rem 0; /* 5px 0 */
+  margin: 0.3125rem 0;
+  /* 5px 0 */
 }
 
 .footer-section a {
@@ -448,11 +490,15 @@ nav {
 .footer-bottom {
   text-align: center;
   align-items: center;
-  padding: 0.625rem; /* 10px */
-  font-size: 0.75rem; /* 12px */
+  padding: 0.625rem;
+  /* 10px */
+  font-size: 0.75rem;
+  /* 12px */
   color: #666;
-  border-top: 0.0625rem solid #ddd; /* 1px */
-  margin-top: 1.25rem; /* 20px */
+  border-top: 0.0625rem solid #ddd;
+  /* 1px */
+  margin-top: 1.25rem;
+  /* 20px */
 }
 
 .success {
@@ -486,6 +532,7 @@ nav {
 .nav-login-hover-relative {
   position: relative;
 }
+
 .nav-login-hover-absolute {
   position: absolute;
   display: none;
@@ -524,6 +571,25 @@ nav {
   }
 }
 
+
+.search-container {
+  position: relative;
+}
+
+#suggestions {
+  position: absolute;
+  top: 100%;
+  background-color: #ffff;
+  border-radius: 10px;
+}
+
+#suggestions p {}
+
+#suggestions p:hover {
+  background-color: #fff5de;
+  border-radius: 20px;
+}
+
 @media screen and (max-width: 1080px) {
   .category {
     display: none;
@@ -538,9 +604,11 @@ nav {
   .listcard {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .cart-note-absolute {
     display: none;
   }
+
   .nav-search {
     width: 200px;
   }
@@ -550,6 +618,7 @@ nav {
   .listcard {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .nav-search {
     width: 100px;
   }
@@ -559,6 +628,7 @@ nav {
   .nav-hover span {
     display: none;
   }
+
   .nav-login-hover-absolute {
     width: 100px;
     left: -90%;

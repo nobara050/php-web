@@ -9,11 +9,11 @@
     } else {
         $id = $_GET['proid'];
     }
-    
+
     // Xử lý submit form từ nút Buy now và Add to cart
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         $login_check = Session::get('customer_login');
-            if($login_check == false){
+        if ($login_check == false) {
             header('Location: login.php');
         }
         $quantity = $_POST['quantity'];

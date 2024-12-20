@@ -319,11 +319,20 @@
 
 
         // ================================================
-        //        Hiển thị sản phẩm theo Tên search
+        //           Hiển thị sản phẩm theo search
         // ================================================
-        public function getproductbyName($name) {
-            $query = "SELECT * FROM tbl_product WHERE productName = '$name'";
-            $result =$this->db->select($query);
+        public function get_product_by_search($search_name, $danhmuc){
+            $query = "SELECT distinct * 
+                        FROM tbl_product 
+                        JOIN tbl_category ON tbl_product.catID = tbl_category.catID
+                        JOIN tbl_brand ON tbl_product.brandID = tbl_brand.brandID
+                        JOIN tbl_measure ON tbl_product.productID = tbl_measure.productID
+                        WHERE tbl_category.catName LIKE '$danhmuc' AND (tbl_product.productName LIKE '$search_name'
+                        OR tbl_category.catName LIKE '$search_name'
+                        OR tbl_brand.brandName LIKE '$search_name' 
+                        OR tbl_measure.measureName LIKE '$search_name'
+                        OR tbl_measure.measureValue LIKE '$search_name') LIMIT 5";
+            $result = $this->db->select($query);
             return $result;
         }
     }
