@@ -62,7 +62,16 @@
       <a href="index.php" class="nav-logo">
         <img src="img/logo.png" alt="Logo" />
       </a>
-      <input name="search-bar" class="nav-search" type="text" placeholder="Bạn tìm gì..." />
+
+      <!--  -->
+      <!-- Thanh search test (LINH làm để test) -->
+      <form action="index.php?act=" method = "post">
+          <div class="search-container">
+            <input class = "nav-search" name = "search-bar" type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." onkeyup="suggestProducts(this.value)">
+            <div id="suggestions"></div>
+          </div>
+       </form>
+      <!--  -->
       <ul class="nav-option">
       <?php
         $login_check = Session::get('customer_login');
@@ -124,34 +133,34 @@
           <div class="category-child-laptop-warpper">
             <div class="category-child-laptop-warpper-log">
               <span class="category-child-title">Thương hiệu</span>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=ASUS">
                 <span>ASUS</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=ACER">
                 <span>ACER</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=MSI">
                 <span>MSI</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=DELL">
                 <span>DELL</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=LENOVO">
                 <span>LENOVO</span>
               </a>
             </div>
             <div class="category-child-laptop-warpper-log">
               <span class="category-child-title">CPU Intel - AMD</span>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=I3">
                 <span>Intel Core i3</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=I5">
                 <span>Intel Core i5</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=I7">
                 <span>Intel Core i7</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Laptop&name=AMD">
                 <span>AMD Ryzen</span>
               </a>
             </div>
@@ -168,13 +177,13 @@
           <div class="category-child-maincpu-warpper">
             <div class="category-child-maincpu-warpper-log">
               <span class="category-child-title">Bộ vi xử lý Intel</span>
-              <a href="#">
+              <a href="catulproduct.php?search=CPU&name=I7">
                 <span>CPU Intel 7</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=CPU&name=I5">
                 <span>CPU Intel 5</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=CPU&name=I3">
                 <span>CPU Intel 3</span>
               </a>
             </div>
@@ -192,19 +201,19 @@
             </div>
             <div class="category-child-maincpu-warpper-log">
               <span class="category-child-title">VGA-Card màn hình</span>
-              <a href="#">
+              <a href="catulproduct.php?search=GPU&name=NVIDIA">
                 <span>NVIDIA Quadro</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=GPU&name=AMD">
                 <span>AMD Radeon</span>
               </a>
             </div>
             <div class="category-child-maincpu-warpper-log">
               <span class="category-child-title">Bo mạch chủ</span>
-              <a href="#">
+              <a href="catulproduct.php?search=Main&name=Intel">
                 <span>Intel</span>
               </a>
-              <a href="#">
+              <a href="catulproduct.php?search=Main&name=AMD">
                 <span>AMD</span>
               </a>
             </div>
