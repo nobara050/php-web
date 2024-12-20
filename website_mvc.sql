@@ -874,7 +874,17 @@ INSERT INTO `tbl_brand` (`brandId`, `brandName`) VALUES
 (4, 'Lenovo'),
 (9, 'Logitech'),
 (3, 'MSI'),
+<<<<<<< HEAD
 (7, 'Victus');
+=======
+(2, 'Philips'),
+(13, 'Pulsar'),
+(16, 'Rapoo'),
+(11, 'Razer'),
+(7, 'Victus'),
+(1, 'Samsung');
+
+>>>>>>> e63c036 (chuyen trang khi chon thuong hieu)
 
 -- --------------------------------------------------------
 
