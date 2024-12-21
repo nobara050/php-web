@@ -14,6 +14,29 @@
             $this->fm =new Format();
         }
 
+        public function getLatestDellProduct() {
+            $query = "SELECT * FROM tbl_product 
+            JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+            WHERE tbl_brand.brandName LIKE 'Dell' LIMIT 1";
+            $result = $this->db->select($query);
+            return $result;
+        }
+    
+        public function getLatestAsusProduct() {
+            $query = "SELECT * FROM tbl_product 
+            JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+            WHERE tbl_brand.brandName LIKE 'Asus' LIMIT 1";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function getLatestHpProduct() {
+            $query = "SELECT * FROM tbl_product 
+            JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+            WHERE tbl_brand.brandName LIKE 'HP' LIMIT 1";
+            $result = $this->db->select($query);
+            return $result;
+        }
         // ================================================
         //            Insert sản phẩm trong admin
         // ================================================
@@ -83,6 +106,83 @@
             return $result;
         }
 
+        //Thêm slider
+        public function insert_slider($data, $files) {
+            $sliderName = mysqli_real_escape_string($this->db->link, $data['sliderName']);
+            $type = mysqli_real_escape_string($this->db->link, $data['type']);
+            
+            //Kiểm tra hình ảnh và lấy hình ảnh cho vào folder upload
+            
+            $permitted = array('jpg', 'jpeg', 'png', 'gif');
+            
+            // Kiểm tra các trường bắt buộc
+            if ($sliderName == "" || $type == "") {
+                $alert = "<span class='error'>Không được để trống thông tin</span>";
+                return $alert;
+            } else {
+                // Nếu có ảnh mới
+                if (!empty($files['image']['name'])) {
+                    $file_name = $files['image']['name'];
+                    $file_size = $files['image']['size'];
+                    $file_temp = $files['image']['tmp_name'];
+                    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+                    $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
+                    $uploaded_image = "./upload/" . $unique_image;
+        
+                    // Kiểm tra kích thước và định dạng ảnh
+                    if ($file_size > 1048567) {
+                        $alert = "<span class='error'>Độ phân giải ảnh quá 10MB</span>";
+                        return $alert;
+                    } elseif (!in_array($file_ext, $permitted)) {
+                        $alert = "<span class='error'>Bạn chỉ có thể upload file: ".implode(',', $permitted) . "</span>";
+                        return $alert;
+                    }
+        
+                    // Move ảnh mới vào thư mục upload
+                    move_uploaded_file($file_temp, $uploaded_image);
+        
+                    // Thực hiện query
+                    $query = "INSERT INTO tbl_slider(sliderName, sliderType, sliderImage) 
+                              VALUES('$sliderName', '$type', '$unique_image')";
+                    $result = $this->db->insert($query);
+        
+                    if ($result) {
+                        return "<span class='success'>Thêm slider thành công</span>";
+                    } else {
+                        return "<span class='error'>Thêm slider không thành công</span>";
+                    }
+                } else {
+                    $alert = "<span class='error'>Vui lòng chọn hình ảnh</span>";
+                    return $alert;
+                }
+            }
+        }
+        //Hiện slider
+        public function show_slider() {
+            $query = "SELECT * FROM tbl_slider ORDER BY sliderId DESC";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function update_type_slider($id, $type) {
+            $type = mysqli_real_escape_string($this->db->link, $type);
+            $query = "UPDATE tbl_slider SET sliderType = '$type' WHERE sliderID = '$id'";
+            $result = $this->db->update($query);
+            return $result;
+        }
+
+        public function del_slider($id){
+            $query = "DELETE FROM tbl_slider WHERE sliderId = '$id'";
+            $result = $this->db->delete($query);
+            if($result) {
+                $alert = "<span class='success'>Xóa slider thành công</span>";
+                return $alert;
+            } else {
+                $alert = "<span class='error'>Xóa slider không thành công</span>";
+                return $alert;
+            }
+        }
+            
         // ================================================
         //              Hiện list sản phẩm 
         // ================================================

@@ -1,7 +1,7 @@
 <?php
 include 'inc/header.php';
 
-<?php
+    // Kiểm tra nếu không có productid thì chuyển hướng đến trang 404
     // Xử lý khi nhận được productid từ các card sản phẩm, nếu không có productid thì trả về 404
     if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
         echo "<script>window.location = 'page404.php'</script>";

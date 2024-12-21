@@ -4,13 +4,17 @@
   justify-content: center;
   padding: 20px;
   background-color: #f8f9fc;
+  margin: 20px auto;
+  max-width: 90%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .admin-box {
   background-color: #fff;
   padding: 20px;
   width: 100%;
-  /* max-width: ; */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -30,6 +34,7 @@
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #ddd;
+  margin: 20px 0;
 }
 
 .admin-table th,
@@ -40,8 +45,10 @@
 }
 
 .admin-table th {
-  background-color: #343a40;
-  color: #fff;
+  background-color: #000000;
+  color: white;
+  padding: 12px 8px;
+  text-align: left;
 }
 
 .admin-table tr:nth-child(even) {
@@ -55,8 +62,65 @@
 .action-link {
   color: #007bff;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .action-link:hover {
+  color: #0056b3;
   text-decoration: underline;
+}
+
+/* Thiết kế tổng thể cho tiêu đề dashboard */
+.dashboard-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* Hộp thông báo */
+.noti {
+  margin-bottom: 15px;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Xác nhận xóa */
+.confirmable {
+  cursor: pointer;
+}
+
+/* Thiết kế hàng trong bảng */
+.admin-row td {
+  vertical-align: middle;
+}
+
+/* Responsive cho bảng */
+@media (max-width: 768px) {
+  .admin-table, .admin-table thead, .admin-table tbody, .admin-table th, .admin-table td, .admin-table tr {
+      display: block;
+  }
+
+  .admin-table tr {
+      margin-bottom: 15px;
+  }
+
+  .admin-table th {
+      background-color: #f4f4f4;
+      color: #333;
+      font-size: 14px;
+  }
+
+  .admin-table td {
+      font-size: 14px;
+      text-align: right;
+  }
+
+  .admin-table td:before {
+      content: attr(data-label);
+      font-weight: bold;
+      float: left;
+      text-transform: capitalize;
+  }
 }
