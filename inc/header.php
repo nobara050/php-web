@@ -107,16 +107,14 @@
             <img src="img/nav_cart.png" alt="icon" />
             <span>Giỏ hàng</span>
           </a>
-          <!-- <a href='cart.php' class='cart-note-absolute'></a> -->
-            <?php
-              // $check_cart = $ct->check_cart();
-              // if($check_cart){
-              //   $qty = Session::get('qty');
-              //   echo "<a href='cart.php' class='cart-note-absolute'> </a>";
-              // } else {
-              //   echo "<a href='cart.php' class='cart-note-absolute'> </a>";
-              // }
-            ?>
+          <a href='cart.php' id='cart-note-absolute'><?php 
+            $absolute_number_cart = $ct->number_item(Session::get('customer_id'));
+            if($absolute_number_cart){
+              echo $absolute_number_cart;
+            } else {
+              echo 0;
+            }
+            ?></a>
         </li>
       </ul>
     </nav>

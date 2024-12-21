@@ -27,18 +27,19 @@
         $AddToCart = $ct->add_to_cart($quantity, $product_id, false);
         if ($_SESSION['cart_message']!=""){
             $message = $_SESSION['cart_message'];
+            $numberItems = $ct->number_item(Session::get('customer_id'));
         }
     }
     if ($action == 'buy') {
         $ct = new cart();
         $AddToCart = $ct->add_to_cart($quantity, $product_id, false);
         $message = "Đang chuyển hướng giỏ hàng...";
-        echo json_encode(['success' => true, 'message' => $message, 'redirect' => 'cart.php']);
+        $numberItems = $ct->number_item(Session::get('customer_id'));
+        echo json_encode(['success' => true, 'message' => $message, 'redirect' => 'cart.php', 'numberItems' => $numberItems]);
         exit;
-        
     }
     
 
     // Trả về phản hồi cho client
-    echo json_encode(['success' => true, 'message' => $message]);
+    echo json_encode(['success' => true, 'message' => $message, 'numberItems' => $numberItems]);
 ?>

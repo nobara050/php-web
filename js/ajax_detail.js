@@ -41,6 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.redirect) {
             window.location.href = response.redirect; // Chuyển hướng nếu có
           }
+          if (response.numberItems) {
+            document.getElementById("cart-note-absolute").innerHTML =
+              response.numberItems;
+          }
         } else {
           document.getElementById("cartMessage").innerHTML =
             "<span class='error'>Lỗi: " + response.message + "</span>";

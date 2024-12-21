@@ -517,7 +517,7 @@ nav {
   position: relative;
 }
 
-.cart-note-absolute {
+#cart-note-absolute {
   position: absolute;
   top: -5px;
   right: -10px;
@@ -612,7 +612,7 @@ nav {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .cart-note-absolute {
+  #cart-note-absolute {
     display: none;
   }
 
