@@ -292,5 +292,9 @@
   height: auto;
 }
 
+#cartMessage {
+  margin-top: 0.75rem;
+}
+
 @media screen and (max-width: 600px) {
 }

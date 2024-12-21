@@ -2,6 +2,8 @@
     include 'inc/header.php';
 ?>
 
+<script src="js/ajax_detail.js"></script>
+
 <?php
     // Xử lý khi nhận được productid từ các card sản phẩm, nếu không có productid thì trả về 404
     if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
@@ -10,17 +12,6 @@
         $id = $_GET['proid'];
     }
 
-    // Xử lý submit form từ nút Buy now và Add to cart
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-        $login_check = Session::get('customer_login');
-        if ($login_check == false) {
-            header('Location: login.php');
-        }
-        $quantity = $_POST['quantity'];
-        // Nếu chọn Buy now thì trong hàm add_to_cart của class cart khi kết thúc sẽ chuyển hướng đến giỏ hàng còn nút Add to cart thì không
-        $buy_now = ($_POST['submit'] == 'Buy Now') ? true : false; 
-        $AddToCart = $ct->add_to_cart($quantity, $id, $buy_now);
-    }
 
 ?>
 
@@ -79,38 +70,19 @@
                     <p class="product-price"><?php echo number_format($result_details['productPrice'], 0, ',', '.'); ?>đ</p>
                     <!-- Form số lượng sản phẩm và 2 nút Add to cart và Buy now -->
                     <!-- ==================================== -->
-                    <form class="quantity-form" action="" method="post">
+                    <form id="addToCartForm" method="post">
                         <label for="quantity-input" class="form-label">Chọn số lượng:</label>
                         <div class="quantity-container">
-                            <!-- Nút giảm số lượng -->
-                            <button type="button" id="decrement-button" class="quantity-btn decrement-btn">
-                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 2">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-                                </svg>
-                            </button>
-                            <!-- Input số lượng -->
+                            <button type="button" id="decrement-button" class="quantity-btn decrement-btn">-</button>
                             <input name="quantity" type="number" id="quantity-input" class="quantity-input" value="1" min="1" required />
-                            <!-- Nút tăng số lượng -->
-                            <button type="button" id="increment-button" class="quantity-btn increment-btn">
-                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </button>
+                            <button type="button" id="increment-button" class="quantity-btn increment-btn">+</button>
                         </div>
-                        
-                        <!-- Hiển thị thông báo thêm thành công nếu có tồn tại việc thực hiện bấm nút -->
-                        <?php
-                            if (isset($_SESSION['cart_message'])) {
-                                echo "<div class='success'><span class='success'>" . $_SESSION['cart_message'] . "</span></div>";
-                                unset($_SESSION['cart_message']); // Xóa thông báo sau khi đã hiển thị
-                            }
-                        ?>
-                        
+                        <!-- In giá trị proid từ PHP vào input -->
+                        <input type="text" id="proid" value="<?php echo $id; ?>" hidden />
+                        <div id="cartMessage"></div>
                         <div class="btn-sales">
-                            <!-- Thêm vào giỏ hàng -->
-                            <button type="submit" name="submit" value="Add to Cart" class="add-to-cart">Thêm vào giỏ hàng</button>
-                            <!-- Mua ngay và chuyển hướng tới giỏ hàng -->
-                            <button type="submit" name="submit" value="Buy Now" class="buy-now">Mua ngay</button>
+                            <button type="button" id="addToCartButton" class="add-to-cart" data-action="add">Thêm vào giỏ hàng</button>
+                            <button type="button" id="buyNowButton" class="buy-now" data-action="buy">Mua ngay</button>
                         </div>
                     </form>
                     <!-- ==================================== -->

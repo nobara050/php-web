@@ -129,3 +129,5 @@ function suggestProducts(query) {
   xhr.open("GET", "suggest.php?q=" + query, true);
   xhr.send();
 }
+
+
