@@ -157,13 +157,17 @@
                 }
             }
         }
+        
         //Hiện slider
         public function show_slider() {
             $query = "SELECT * FROM tbl_slider ORDER BY sliderId DESC";
             $result = $this->db->select($query);
             return $result;
         }
-
+        
+        //Hàm update slider type, có 2 loại On và Off
+        //On thì sẽ hiển thị lên Banner của trang web
+        //Off thì không hiển thị
         public function update_type_slider($id, $type) {
             $type = mysqli_real_escape_string($this->db->link, $type);
             $query = "UPDATE tbl_slider SET sliderType = '$type' WHERE sliderID = '$id'";
@@ -171,6 +175,27 @@
             return $result;
         }
 
+        //hàm lấy slider theo id
+        public function get_slider_by_id($id) {
+            $query = "SELECT * FROM tbl_slider WHERE sliderID = '$id'";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        //Hàm update slider
+        public function update_slider($id, $sliderName, $sliderType, $sliderImage) {
+            $sliderName = $this->fm->validation($sliderName);
+            $sliderType = $this->fm->validation($sliderType);
+            $sliderImage = $this->fm->validation($sliderImage);
+        
+            $query = "UPDATE tbl_slider
+                      SET sliderName = '$sliderName', sliderType = '$sliderType', sliderImage = '$sliderImage'
+                      WHERE sliderID = '$id'";
+            $updated_row = $this->db->update($query);
+            return $updated_row;
+        }
+        
+        //Hàm xóa slider
         public function del_slider($id){
             $query = "DELETE FROM tbl_slider WHERE sliderId = '$id'";
             $result = $this->db->delete($query);
