@@ -47,9 +47,9 @@
             <td><?php echo $result['address'] ?></td>
             <td><?php echo $result['email'] ?></td>
             <td><?php echo $result['phone'] ?></td>
-            <td>
+            <td  class="flex_td">
               <a href="customeredit.php?customerid=<?php echo $result['id']; ?>" class="action-link">Sửa</a> 
-              || 
+              
               <a href="?delid=<?php echo $result['id']; ?>" class="action-link confirmable" data-message="Bạn có muốn xóa danh mục này?">Xóa</a>
             </td>
           </tr>

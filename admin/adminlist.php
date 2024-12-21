@@ -51,9 +51,8 @@
             <td><?php echo $result['adminPhone'] ?></td>
             <td><?php echo $result['level'] ?></td>
             <td><?php echo date("H:i d/m/Y", strtotime($result['lastLogin'])); ?></td>
-            <td>
+            <td class="flex_td">
               <a href="adminedit.php?adminid=<?php echo $result['adminId']; ?>" class="action-link">Sửa</a> 
-              || 
               <a href="?delid=<?php echo $result['adminId']; ?>" class="action-link confirmable" data-message="Bạn có muốn xóa danh mục này?">Xóa</a>
             </td>
           </tr>

@@ -42,8 +42,8 @@
                 $alert = "<span class='error'>ID đơn hàng không hợp lệ</span>";
                 return $alert;
             } else {
-                // Câu lệnh SQL để cập nhật trạng thái đơn hàng thành 'cancelled'
-                $query = "UPDATE tbl_order SET status = 'cancelled' WHERE orderId = '$orderId'";
+                // Câu lệnh SQL để cập nhật trạng thái đơn hàng thành 'cancel'
+                $query = "UPDATE tbl_order SET status = 'cancel' WHERE orderId = '$orderId'";
                 // Gọi hàm thực thi câu lệnh SQL
                 $result = $this->db->update($query); // Hàm insert của bạn sẽ thực thi câu lệnh này
         
@@ -70,30 +70,30 @@
             return false; // Trả về false nếu không có kết quả
         }
         
-        public function repending_order($orderId){
-            // Xử lý đầu vào (kiểm tra và bảo vệ dữ liệu)
-            $orderId = mysqli_real_escape_string($this->db->link, $orderId);
+        // public function repending_order($orderId){
+        //     // Xử lý đầu vào (kiểm tra và bảo vệ dữ liệu)
+        //     $orderId = mysqli_real_escape_string($this->db->link, $orderId);
         
-            // Kiểm tra nếu orderId không rỗng
-            if (empty($orderId)) {
-                $alert = "<span class='error'>ID đơn hàng không hợp lệ</span>";
-                return $alert;
-            } else {
-                // Câu lệnh SQL để cập nhật trạng thái đơn hàng thành 'cancelled'
-                $query = "UPDATE tbl_order SET status = 'pending' WHERE orderId = '$orderId'";
-                // Gọi hàm thực thi câu lệnh SQL
-                $result = $this->db->update($query); // Hàm insert của bạn sẽ thực thi câu lệnh này
+        //     // Kiểm tra nếu orderId không rỗng
+        //     if (empty($orderId)) {
+        //         $alert = "<span class='error'>ID đơn hàng không hợp lệ</span>";
+        //         return $alert;
+        //     } else {
+        //         // Câu lệnh SQL để cập nhật trạng thái đơn hàng thành 'cancel'
+        //         $query = "UPDATE tbl_order SET status = 'pending' WHERE orderId = '$orderId'";
+        //         // Gọi hàm thực thi câu lệnh SQL
+        //         $result = $this->db->update($query); // Hàm insert của bạn sẽ thực thi câu lệnh này
         
-                // Kiểm tra nếu cập nhật thành công
-                if ($result) {
-                    $alert = "<span class='success'>Đơn hàng đã được đặt lại thành công</span>";
-                    return $alert;
-                } else {
-                    $alert = "<span class='error'>Có lỗi xảy ra khi đặt lại đơn hàng</span>";
-                    return $alert;
-                }
-            }
-        }
+        //         // Kiểm tra nếu cập nhật thành công
+        //         if ($result) {
+        //             $alert = "<span class='success'>Đơn hàng đã được đặt lại thành công</span>";
+        //             return $alert;
+        //         } else {
+        //             $alert = "<span class='error'>Có lỗi xảy ra khi đặt lại đơn hàng</span>";
+        //             return $alert;
+        //         }
+        //     }
+        // }
         
     }
 ?>

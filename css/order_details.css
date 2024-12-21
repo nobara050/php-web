@@ -44,6 +44,7 @@
 }
 
 .btn-cancel-wrp .btrepending {
+  font-size: 14px;
   width: 30%;
   height: 100%;
   max-height: 55px;
@@ -53,11 +54,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   font-weight: 700;
-  border: #f3fef1;
-  color: #29c529;
-  background: #f5fef1;
+  border: #fef1f1;
+  color: #ea3131;
+  background: #fef1f1;
   box-shadow: 0 1px 1px 0 rgba(196, 195, 195, 0.1),
     0 1px 2px -1px rgba(148, 148, 148, 0.1);
 }

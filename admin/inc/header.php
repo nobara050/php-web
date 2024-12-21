@@ -57,10 +57,16 @@
               <li><a href="productlist.php">Danh sách sản phẩm</a></li>
             </ul>
           </li>
-          <li><a href="#">Slider</a></li>
+          <li>
+            <a class="menuitem">Slider</a>
+            <ul class="submenu">
+              <li><a href="brandadd.php">Thêm slider</a></li>
+              <li><a href="brandlist.php">Danh sách</a></li>
+            </ul>
+          </li>
           <li><a href="adminlist.php">Nội bộ</a></li>
           <li><a href="customerlist.php">Khách hàng</a></li>
-          <li><a href="customerlist.php">Đơn đặt hàng</a></li>
+          <li><a href="order.php">Đơn đặt hàng</a></li>
         </ul>
       </div>
     </div>

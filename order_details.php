@@ -25,13 +25,13 @@
         exit();
     } 
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['repending'])) {
-        $id = Session::get('orderId');
-        // Gọi hàm cancel_order từ đối tượng của bạn
-        $repending_order = $ord->repending_order($id);
-        header("Location: order_details.php");
-        exit();
-    } 
+    // if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['repending'])) {
+    //     $id = Session::get('orderId');
+    //     // Gọi hàm cancel_order từ đối tượng của bạn
+    //     $repending_order = $ord->repending_order($id);
+    //     header("Location: order_details.php");
+    //     exit();
+    // } 
 
     $id = Session::get('orderId');
     if ($id !== false) {
@@ -103,24 +103,25 @@
             // Gọi hàm check_cancel để lấy status
             $status = $ord->check_cancel($id);
             // Kiểm tra giá trị status và xử lý hiển thị form
-            if ($status === 'cancelled') {
-                // Nếu đơn hàng đã bị hủy, hiển thị thông báo hủy đơn
-                echo "
-                <form action='' method='post'>
-                    <div class='btn-cancel-wrp'>
-                        <input class='btrepending' name='repending' type='submit' value='Đặt lại'>
-                    </div>
-                </form>";
-            } else {
-                // Nếu đơn hàng chưa bị hủy, hiển thị nút hủy đơn
-                echo "
-                <form action='' method='post'>
-                    <div class='btn-cancel-wrp'>
-                        <input class='btnhuy' name='cancel' type='submit' value='Hủy đơn'>
-                    </div>
-                </form>
-                ";
-                
+            if ($status !== 'completed'){
+                if ($status === 'cancelled') {
+                    // Nếu đơn hàng đã bị hủy, hiển thị thông báo hủy đơn
+                    echo "
+                        <div class='btn-cancel-wrp'>
+                            <div class='btrepending'>Đơn hàng đã bị hủy</div>
+                        </div>
+                    ";
+                } else {
+                    // Nếu đơn hàng chưa bị hủy, hiển thị nút hủy đơn
+                    echo "
+                    <form action='' method='post'>
+                        <div class='btn-cancel-wrp'>
+                            <input class='btnhuy' name='cancel' type='submit' value='Hủy đơn'>
+                        </div>
+                    </form>
+                    ";
+                    
+                }
             }
 
         

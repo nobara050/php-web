@@ -41,31 +41,16 @@
 
                     switch ($status) {
                         case 'pending':
-                            echo '<span style="color: green;">Chờ xử lý</span>';
-                            break;
-                        case 'processing':
                             echo '<span style="color: green;">Đang xử lý</span>';
                             break;
-                        case 'shipped':
-                            echo '<span style="color: green;">Đã giao hàng</span>';
+                        case 'shipping':
+                            echo '<span style="color: orange;">Đang giao hàng</span>';
                             break;
-                        case 'delivered':
+                        case 'completed':
                             echo '<span style="color: green;">Đã giao</span>';
                             break;
-                        case 'cancelled':
+                        case 'cancel':
                             echo '<span style="color: red;">Đã hủy</span>';
-                            break;
-                        case 'refunded':
-                            echo '<span style="color: red;">Hoàn tiền</span>';
-                            break;
-                        case 'failed':
-                            echo '<span style="color: red;">Thất bại</span>';
-                            break;
-                        case 'on_hold':
-                            echo '<span style="color: red;">Tạm giữ</span>';
-                            break;
-                        case 'returned':
-                            echo '<span style="color: darkorange;">Đã trả lại</span>';
                             break;
                         default:
                             echo '<span style="color: black;">Không xác định</span>';

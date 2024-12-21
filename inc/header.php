@@ -108,11 +108,15 @@
             <span>Giỏ hàng</span>
           </a>
           <a href='cart.php' id='cart-note-absolute'><?php 
-            $absolute_number_cart = $ct->number_item(Session::get('customer_id'));
-            if($absolute_number_cart){
-              echo $absolute_number_cart;
-            } else {
+            if(!Session::get('customer_login')){
               echo 0;
+            } else {
+              $absolute_number_cart = $ct->number_item(Session::get('customer_id'));
+              if($absolute_number_cart){
+                echo $absolute_number_cart;
+              } else {
+                echo 0;
+              }
             }
             ?></a>
         </li>

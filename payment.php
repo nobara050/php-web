@@ -168,7 +168,7 @@
               type="radio"
               id="non-direct"
               name="method"
-              value="nondirect"
+              value="online"
             />
             <label for="non-direct">Thanh toán online</label><br />
           </div>

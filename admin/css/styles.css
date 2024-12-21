@@ -193,3 +193,8 @@ body {
   text-align: center;
   margin-top: 2rem;
 }
+
+.flex_td {
+  display: flex;
+  flex-direction: column;
+}
