@@ -7,8 +7,8 @@
 
 :root {
   --linear-grad: linear-gradient(to right, #141e30, #243b55);
-  --grad-clr1: #141e30;
-  --grad-clr2: #243b55;
+  --grad-clr1: #f8ff38;
+  --grad-clr2: #f0ff50;
 }
 
 body {
@@ -24,7 +24,7 @@ body {
   width: 850px;
   height: 500px;
   background-color: #fff;
-  box-shadow: 25px 30px 55px #5577;
+  box-shadow: 25px 30px 55px #f2ff6777;
   border-radius: 13px;
   overflow: hidden;
 }
@@ -42,6 +42,33 @@ body {
 }
 .sign-in-container {
   z-index: 2;
+  background-color: #f0ff50; /* Màu vàng */
+  border-radius: 13px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sign-in-container h1 {
+  color: #333; /* Màu chữ */
+}
+
+.sign-in-container input {
+  background-color: #fff; /* Màu nền của input */
+  border: 1px solid #ccc; /* Viền của input */
+}
+
+.sign-in-container input:focus {
+  border-color: #f0ff50; /* Viền khi focus */
+}
+
+.sign-in-container .btn-submit {
+  background-color: #333; /* Màu nền của nút submit */
+  color: #fff; /* Màu chữ của nút submit */
+}
+
+.sign-in-container .btn-submit:hover {
+  background-color: #575757; /* Màu nền khi hover */
+  color: #fff; /* Màu chữ khi hover */
 }
 
 form {
@@ -334,3 +361,4 @@ footer a {
   color: rgb(255, 69, 69);
   font-size: small;
 }
+

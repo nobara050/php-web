@@ -62,13 +62,6 @@
 <!--                          Kết thúc phần header                                  -->
 <!-- ============================================================================== -->
 
-
-
-
-
-
-
-
 <!-- ============================================================================== -->
 <!--                  Xử lý khi nhận được submit đăng ký                            -->
 <!-- ============================================================================== -->
@@ -77,7 +70,6 @@
       $insertCustomer = $cs->insert_customer($_POST);
   }
 ?>
-
 
 <!-- ============================================================================== -->
 <!--                  Xử lý khi nhận được submit đăng nhập                          -->
@@ -88,7 +80,59 @@
   }
 ?>
   <body>
-      <div class="container" id="container">
+  <nav id = "login-nav">
+    <ul>
+      <li><a href="index.php">Trang chủ</a></li>
+    </ul>
+  </nav>
+  <div class="container" id="container">
+  <style>
+
+   /* thanh nav */
+#login-nav {
+  background-color: ; /* Màu vàng để match với form đăng nhập */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 13px; /* Bo tròn các góc để phù hợp với form */
+  margin-bottom: 20px; /* Khoảng cách dưới để tách biệt với form */
+}
+
+#login-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#login-nav ul li {
+  margin: 0 10px;
+}
+
+#login-nav ul li a {
+  display: block;
+  color: #333; /* Màu chữ đậm để tương phản với nền vàng */
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 4px;
+}
+
+#login-nav ul li a:hover {
+  background-color: #575757;
+  color: #fff;
+}
+
+#login-nav ul li a.active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng */
+    transform: scale(1.05); /* Tăng kích thước nhẹ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+  </style>
+ 
+    
         <?php 
         
         ?>
