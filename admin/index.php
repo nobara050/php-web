@@ -16,7 +16,6 @@
   }
 </style>
       <h1 class="dashboard-title">Dashboard</h1>
-      <p>Chào mừng bạn đến với trang quản trị!</p>
       <div class="chart-container">
         <div class="chart">
           <p>Thống kê năm và tổng số tiền:</p>

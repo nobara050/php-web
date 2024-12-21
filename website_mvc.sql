@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 12, 2024 lúc 11:22 AM
+-- Thời gian đã tạo: Th12 20, 2024 lúc 06:07 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -31,7 +31,7 @@ CREATE TABLE `district` (
   `district_id` int(11) NOT NULL,
   `province_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Quận huyện';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Quận huyện';
 
 --
 -- Đang đổ dữ liệu cho bảng `district`
@@ -753,7 +753,7 @@ INSERT INTO `district` (`district_id`, `province_id`, `name`) VALUES
 CREATE TABLE `province` (
   `province_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tỉnh thành';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Tỉnh thành';
 
 --
 -- Đang đổ dữ liệu cho bảng `province`
@@ -837,7 +837,6 @@ CREATE TABLE `tbl_admin` (
   `adminUser` varchar(255) NOT NULL,
   `adminPass` varchar(255) NOT NULL,
   `adminPhone` varchar(15) NOT NULL,
-  `adminAvatar` varchar(255) DEFAULT NULL,
   `province` varchar(255) NOT NULL,
   `district` varchar(255) NOT NULL,
   `wards` varchar(255) NOT NULL,
@@ -849,8 +848,8 @@ CREATE TABLE `tbl_admin` (
 -- Đang đổ dữ liệu cho bảng `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminEmail`, `adminUser`, `adminPass`, `adminPhone`, `adminAvatar`, `province`, `district`, `wards`, `level`, `lastLogin`) VALUES
-(4, 'Nguyễn Tiến Đạt', 'nguyentiendat050@gmail.com', 'admin', '1', '374242682', NULL, '0', '', '', 0, '2024-12-11 20:08:09');
+INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminEmail`, `adminUser`, `adminPass`, `adminPhone`, `province`, `district`, `wards`, `level`, `lastLogin`) VALUES
+(4, 'Nguyễn Tiến Đạt', 'nguyentiendat050@gmail.com', 'admin', '1', '374242682', '50', '568', '8941', 0, '2024-12-20 21:39:40');
 
 -- --------------------------------------------------------
 
@@ -898,9 +897,7 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`cartId`, `productId`, `customerId`, `productName`, `productPrice`, `quantity`, `image`, `subtotal`) VALUES
-(127, 14, 0, 'Laptop Gaming Acer Nitro 5 ', 13990000, 5, '5b03ecc2f5.png', 0),
-(128, 11, 0, 'Chuột gaming ASUS ROG Gladius III ', 2490000, 2, 'effd5f0bc5.jpg', 0),
-(132, 13, 0, 'Card màn hình ASUS Dual Radeon RX 6500', 3790000, 2, '7f1ecef431.png', 0);
+(144, 11, 3, 'Chuột gaming ASUS ROG Gladius III ', 2490000, 2, 'effd5f0bc5.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -922,6 +919,7 @@ INSERT INTO `tbl_category` (`catId`, `catName`) VALUES
 (5, 'Case'),
 (12, 'Chuột'),
 (3, 'CPU'),
+(4, 'GPU'),
 (1, 'Laptop'),
 (10, 'Loa'),
 (2, 'Main'),
@@ -929,8 +927,7 @@ INSERT INTO `tbl_category` (`catId`, `catName`) VALUES
 (6, 'Nguồn'),
 (8, 'Ổ cứng'),
 (9, 'Ram'),
-(7, 'Tản'),
-(4, 'VGA');
+(7, 'Tản');
 
 -- --------------------------------------------------------
 
@@ -955,8 +952,12 @@ CREATE TABLE `tbl_customer` (
 --
 
 INSERT INTO `tbl_customer` (`id`, `name`, `address`, `province`, `district`, `wards`, `phone`, `email`, `password`) VALUES
-(3, 'Nguyễn Tiến Đạt', '158 ấp Tân Thới 1 xã Tân Hiệp huyện Hóc Môn', 'TP. Hồ Chí Minh', 'Vietnam', '', '0374242682', 'nguyentiendat050@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(7, 'Duy Linh', 'Long Ann', 'Long An', 'Việt Nam', '', '0123456789', 'duylinh050@gmail.com', '123456789');
+(3, 'Nguyễn Tiến Đạt', '158 ấp Tân Thới 1 xã Tân Hiệp huyện Hóc Môn', '50', '568', '8941', '0374242682', 'nguyentiendat050@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(8, 'Nguyen Van A', '123 Đường ABC, Phường DEF', '49', '543', '8607', '0901234567', 'nguyenvana@example.com', '123456'),
+(9, 'Tran Thi B', '456 Đường GHI, Phường JKL', '49', '543', '8607', '0902345678', 'tranthib@example.com', 'password'),
+(10, 'Le Van C', '789 Đường MNO, Phường PQR', '49', '543', '8607', '0903456789', 'levanc@example.com', 'abc123'),
+(11, 'Pham Thi D', '321 Đường STU, Phường VWX', '49', '543', '8607', '0904567890', 'phamthid@example.com', 'demo123'),
+(12, 'Hoang Van E', '654 Đường YZ, Phường XYZ', '49', '543', '8607', '0905678901', 'hoangvane@example.com', 'simplepwd');
 
 -- --------------------------------------------------------
 
@@ -982,20 +983,20 @@ INSERT INTO `tbl_measure` (`measureId`, `productId`, `measureName`, `measureValu
 (71, 10, 'CPU', 'i5'),
 (72, 10, 'RAM', '16GB'),
 (73, 10, 'SSD', '556GB'),
-(74, 11, 'DPI', '36.000'),
-(75, 11, 'Trọng lượng', '75g'),
 (76, 9, 'CPU', 'i5'),
 (77, 9, 'RAM', '16GB'),
 (78, 9, 'SSD', '556GB'),
-(79, 14, 'CPU', 'AMD R5'),
-(80, 14, 'RAM', '8GB'),
-(81, 14, 'SSD', '512GB'),
 (91, 13, 'Chipset', 'Radeon RX 6500 XT'),
 (92, 13, 'Nhân xử lý', '1024'),
 (93, 13, 'Dung lượng', '4GB'),
-(98, 15, 'CPU', 'i3'),
-(99, 15, 'RAM', '8GB'),
-(100, 15, 'SSD', '512GB');
+(112, 11, 'DPI', '36.000'),
+(113, 11, 'Trọng lượng', '75g'),
+(117, 15, 'CPU', 'i3'),
+(118, 15, 'RAM', '8GB'),
+(119, 15, 'SSD', '512GB'),
+(120, 14, 'CPU', 'AMD R5'),
+(121, 14, 'RAM', '8GB'),
+(122, 14, 'SSD', '512GB');
 
 -- --------------------------------------------------------
 
@@ -1022,7 +1023,8 @@ CREATE TABLE `tbl_order` (
 --
 
 INSERT INTO `tbl_order` (`orderId`, `customerId`, `orderDate`, `shippingAddress`, `paymentMethod`, `paymentStatus`, `totalAmount`, `status`, `notes`, `receiverName`, `receiverPhone`) VALUES
-(1, 3, '2024-12-11', '158 ấp Tân Thới 1 xã Tân Hiệp huyện Hóc Môn', 'direct', 'pending', '4980000', 'cancelled', 'Đóng gói sản phẩm kĩ kĩ giúp em nha anh ơi!', 'Nguyễn Tiến Đạt', '0374242682');
+(1, 3, '2024-12-11', '158 ấp Tân Thới 1 xã Tân Hiệp huyện Hóc Môn', 'direct', 'pending', '4980000', 'cancelled', 'Đóng gói sản phẩm kĩ kĩ giúp em nha anh ơi!', 'Nguyễn Tiến Đạt', '0374242682'),
+(2, 3, '2024-12-20', '158 ấp Tân Thới 1 xã Tân Hiệp huyện Hóc Môn', 'direct', 'pending', '2490000', 'pending', 'Đóng gói sản phẩm kĩ kĩ giúp em nha anh ơi!', 'Nguyễn Tiến Đạt', '0374242682');
 
 -- --------------------------------------------------------
 
@@ -1044,7 +1046,8 @@ CREATE TABLE `tbl_order_details` (
 --
 
 INSERT INTO `tbl_order_details` (`orderDetailId`, `orderId`, `productId`, `quantity`, `unitPrice`, `totalPrice`) VALUES
-(1, 1, 11, 2, '2490000', '4980000');
+(1, 1, 11, 2, '2490000', '4980000'),
+(2, 2, 11, 1, '2490000', '2490000');
 
 -- --------------------------------------------------------
 
@@ -1073,7 +1076,7 @@ INSERT INTO `tbl_product` (`productId`, `productName`, `catId`, `brandId`, `prod
 (11, 'Chuột gaming ASUS ROG Gladius III ', 12, 8, 'Đánh giá chi tiết chuột Gaming ASUS ROG Gladius II Core\r\nGladius II Core là một phần trong của hệ sinh thái ROG của Asus. Đây là một mẫu chuột máy tính đa năng, dễ cầm, dễ làm quen, phù hợp với nhiều kiểm cầm và nhiều dòng game khác nhau. Đặc biệt, nếu bạn đã là fan Asus mà lại còn thích LED RGB thì chắc chắn mẫu chuột này sẽ cực kỳ đáng mua.\r\n</br>\r\n</br>\r\nThiết kế đẹp mắt\r\nMang trên mình thương hiệu ROG đầy tự hào của Asus, Gladius II Core được chăm chút rất kỹ về mặt thiết kế. Nó uyển chuyển với thiết kế tổng thể mềm mại nhưng cũng cực kỳ mạnh mẽ với những chi tiết xẻ rãnh trên hông và mũi chuột. Thiết kế chuột này rất đồng điệu với phong cách thường thấy của các dòng sản phẩm mang thương hiệu ROG. Dây cáp chuột có thể tháo rời giúp bạn quấn dây gọn gàng để mang chuột đến mọi nơi.\r\n</br>\r\n</br>\r\nĐộ bền vượt trội\r\nSwitch chuột được sử dụng trên Gladius II Core là loại có độ bền lên đến 50 triệu lượt nhất của Omron giúp bạn thoải mái chơi game, tạm biệt nỗi lo về double click. Thân chuột cũng được hòa thiện chắc chắn cho bạn cảm giác tự tin khi sử dụng. Hứa hẹn đây sẽ là một trong những dòng chuột gaming dưới 1 triệu rất đáng trải nghiệm.', 2490000, 'effd5f0bc5.jpg', 1),
 (12, 'Chuột Bluetooth Silent Logitech M240', 12, 9, '    <h2>Chuột Bluetooth Silent Logitech M240</h2>\r\n    <p>\r\n        Với kiểu dáng gọn gàng, gam màu đẹp mắt, kích thước vừa vặn tay cầm, kết nối ổn định cùng độ nhạy khá cao, \r\n        hứa hẹn mang đến cho bạn những trải nghiệm tuyệt vời.\r\n    </p>\r\n    <ul>\r\n        <li>\r\n            <strong>Màu sắc thanh lịch:</strong> Khối lượng siêu gọn nhẹ, không chiếm quá nhiều diện tích không gian, \r\n            tiện lợi bỏ vào balo hay túi xách mang theo bất cứ đâu.\r\n        </li>\r\n        <li>\r\n            <strong>Thiết kế sắc sảo:</strong> Chuột với đường nét sắc sảo đến từng chi tiết đem đến cho người dùng cảm giác êm tay \r\n            trong quá trình sử dụng, hạn chế mỏi tay khi dùng trong thời gian dài.\r\n        </li>\r\n        <li>\r\n            <strong>Tốc độ di chuyển cao:</strong> Trang bị tốc độ di chuyển khá nhanh và phản hồi cao nhờ độ phân giải lên đến 4000 DPI. \r\n            Bạn có thể điều chỉnh mức DPI phù hợp cho từng loại tác vụ, tối ưu trải nghiệm sử dụng.\r\n        </li>\r\n        <li>\r\n            <strong>Kết nối dễ dàng:</strong> Bạn có thể dễ dàng kết nối với các thiết bị thông qua Bluetooth trong vòng 10 m, \r\n            đường truyền ổn định và mượt mà.\r\n        </li>\r\n        <li>\r\n            <strong>Pin tiện lợi:</strong> Chuột Logitech sử dụng viên pin AA giúp bạn có thể yên tâm dùng trong thời gian khá lâu mà không lo gián đoạn, \r\n            dễ dàng thay thế khi hết pin.\r\n        </li>\r\n    </ul>', 320000, '01be65bf1e.jpg', 0),
 (13, 'Card màn hình ASUS Dual Radeon RX 6500', 4, 8, '', 3790000, '7f1ecef431.png', 1),
-(14, 'Laptop Gaming Acer Nitro 5 ', 1, 10, 'Đánh giá chi tiết laptop gaming Acer Nitro 5 AN515-45 R6EV\r\nAcer vừa ra mắt phiên bản mới nhất của dòng máy gaming Nitro 5 - Nitro 5 AN515-45 R6EV được trang bị bộ vi xử lý AMD Ryzen 5 5600H, card đồ họa Geforce GTX 1650 4GB và tốc độ làm mới 144Hz cho hiệu năng xử lí mạnh mẽ cùng với hỗ trợ bàn phím RGB cá tính giúp mang lại trải nghiệm chơi game tốt nhất.\r\n<br>\r\n<br>\r\nCông nghệ dẫn đầu\r\nNitro 5 AN515-45 tích hợp những “vũ khí” mới nhất. Với sự kết hợp từ CPU AMD Ryzen 5 5600H và VGA NVIDIA GeForce GTX 1650, AN515-45 sẽ cho hiệu năng xử lý mạnh mẽ để xử lý tốt các công việc đồ họa đơn giản trên các phần mềm chuyên dụng, tốc độ xử lý thông tin cũng tương đối nhanh và mượt mà.', 13990000, '5b03ecc2f5.png', 1),
+(14, 'Laptop Gaming Acer Nitro 5', 1, 10, 'Đánh giá chi tiết laptop gaming Acer Nitro 5 AN515-45 R6EV\r\nAcer vừa ra mắt phiên bản mới nhất của dòng máy gaming Nitro 5 - Nitro 5 AN515-45 R6EV được trang bị bộ vi xử lý AMD Ryzen 5 5600H, card đồ họa Geforce GTX 1650 4GB và tốc độ làm mới 144Hz cho hiệu năng xử lí mạnh mẽ cùng với hỗ trợ bàn phím RGB cá tính giúp mang lại trải nghiệm chơi game tốt nhất.\r\n<br>\r\n<br>\r\nCông nghệ dẫn đầu\r\nNitro 5 AN515-45 tích hợp những “vũ khí” mới nhất. Với sự kết hợp từ CPU AMD Ryzen 5 5600H và VGA NVIDIA GeForce GTX 1650, AN515-45 sẽ cho hiệu năng xử lý mạnh mẽ để xử lý tốt các công việc đồ họa đơn giản trên các phần mềm chuyên dụng, tốc độ xử lý thông tin cũng tương đối nhanh và mượt mà.', 13990000, '5b03ecc2f5.png', 1),
 (15, 'Laptop Lenovo V14 G4', 1, 4, '   <h2>Đánh giá chi tiết Laptop Lenovo V14 G4 IRU 83A0000TVN</h2>\r\n    <p>\r\n        Lenovo V14 G4 IRU 83A0000TVN là dòng laptop văn phòng giá rẻ hướng đến sinh viên, dân văn phòng và bất kỳ ai tìm kiếm \r\n        một thiết bị nhẹ và di động cho các tác vụ hàng ngày. \r\n    </p>', 10490000, '1e2c5dfced.jpg', 1);
 
 -- --------------------------------------------------------
@@ -1086,7 +1089,7 @@ CREATE TABLE `wards` (
   `wards_id` int(11) NOT NULL,
   `district_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Xã Phường';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Xã Phường';
 
 --
 -- Đang đổ dữ liệu cho bảng `wards`
@@ -11793,7 +11796,7 @@ ALTER TABLE `tbl_brand`
 -- AUTO_INCREMENT cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`
@@ -11805,25 +11808,25 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT cho bảng `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_measure`
 --
 ALTER TABLE `tbl_measure`
-  MODIFY `measureId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `measureId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_order_details`
 --
 ALTER TABLE `tbl_order_details`
-  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orderDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_product`

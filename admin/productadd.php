@@ -85,7 +85,11 @@
 
                 <tr>
                     <td><label for="productPrice">Giá</label></td>
-                    <td><input type="text" id="productPrice" name="productPrice" placeholder="Nhập giá..." class="input-field"></td>
+                    <td><input type="number" id="productPrice" name="productPrice" placeholder="Nhập giá..." class="input-field"></td>
+                </tr>
+                <tr>
+                    <td><label for="productQuantity">Số lượng</label></td>
+                    <td><input type="number" id="productQuantity" name="productQuantity" step="1" min="0" placeholder="Nhập số lượng..." class="input-field"></td>
                 </tr>
                 <!-- ============================================== -->
                 <tr>

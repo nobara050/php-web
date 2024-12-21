@@ -19,6 +19,7 @@
         // ================================================
         public function insert_product($data,$files) {
             $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
+            $productQuantity = mysqli_real_escape_string($this->db->link, $data['productQuantity']);
             $category = mysqli_real_escape_string($this->db->link, $data['category']);
             $brand = mysqli_real_escape_string($this->db->link, $data['brand']);
             $productDesc = mysqli_real_escape_string($this->db->link, $data['productDesc']);
@@ -34,14 +35,14 @@
             $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
             $uploaded_image = "./upload/" . $unique_image;
 
-            if($productName =="" || $category =="" || $brand =="" || 
+            if($productName =="" || $category =="" || $brand =="" || $productQuantity =="" || 
                $productPrice =="" || $type =="" || $file_name = "" ) {
                 $alert = "<span class='error'>Không được để trống thông tin</span>";
                 return $alert;
             } else {
                 move_uploaded_file($file_temp,$uploaded_image);
-                $query = "INSERT INTO tbl_product(productName,catID,brandId,productDesc,productPrice,type, image) 
-                VALUES('$productName','$category','$brand','$productDesc','$productPrice','$type','$unique_image')";
+                $query = "INSERT INTO tbl_product(productName,productQuantity,catID,brandId,productDesc,productPrice,type, image) 
+                VALUES('$productName','$productQuantity','$category','$brand','$productDesc','$productPrice','$type','$unique_image')";
                 $result =$this->db->insert($query);
                 
 
@@ -110,6 +111,7 @@
         // ================================================
         public function update_product($data, $files, $id) {
             $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
+            $productQuantity = mysqli_real_escape_string($this->db->link, $data['productQuantity']);
             $category = mysqli_real_escape_string($this->db->link, $data['category']);
             $brand = mysqli_real_escape_string($this->db->link, $data['brand']);
             $productDesc = mysqli_real_escape_string($this->db->link, $data['productDesc']);
@@ -128,7 +130,7 @@
             }
         
             // Kiểm tra các trường bắt buộc (trừ productDesc)
-            if ($productName == "" || $category == "" || $brand == "" || $productPrice == "" || $type == "") {
+            if ($productName == "" || $category == "" || $brand == "" || $productPrice == "" || $type == "" || $productQuantity == "") {
                 $alert = "<span class='error'>Không được để trống thông tin</span>";
                 return $alert;
             } else {
@@ -162,6 +164,7 @@
                     $query = "UPDATE tbl_product 
                               SET 
                                 productName = '$productName',
+                                productQuantity = '$productQuantity',
                                 catId = '$category',
                                 brandId = '$brand',
                                 productDesc = '$productDesc',
@@ -174,6 +177,7 @@
                     $query = "UPDATE tbl_product 
                               SET 
                                 productName = '$productName',
+                                productQuantity = '$productQuantity',
                                 catId = '$category',
                                 brandId = '$brand',
                                 productDesc = '$productDesc',
@@ -278,7 +282,7 @@
         }
 
         // ================================================
-        //    Hiển thị sản phẩm mới trên front end
+        //     Hiển thị sản phẩm mới trên front end
         // ================================================
         public function getproduct_new($limit = 5) {
             $query = "SELECT * FROM tbl_product ORDER BY productId DESC LIMIT $limit";
@@ -287,7 +291,7 @@
         }
     
         // ================================================
-        //           Hiển thị chi tiết sản phẩm 
+        //        Hiển thị chi tiết sản phẩm measure
         // ================================================
         public function get_details($id) {
             $query = "SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName

@@ -36,7 +36,7 @@
                             <th>Danh mục</th>
                             <th>Thương hiệu</th>
                             <th>Độ đo</th>
-                            <th>Trưng bày</th>
+                            <th>Tồn kho</th>
                             <th>Tùy chỉnh</th>
                         </tr>
                     </thead>
@@ -76,12 +76,9 @@
 
                             <td>
                               <?php 
-                              if($result['type'] == 1) {
-                                echo 'Có';
-                              } else {
-                                echo 'Không';
-                              }
-                              ?></td>
+                               echo $result['productQuantity'];
+                              ?>
+                            </td>
                             <td>
                               <a href="productedit.php?productid=<?php echo $result['productId'] ?>">Edit</a> 
                               | 

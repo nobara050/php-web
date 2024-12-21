@@ -60,6 +60,7 @@
           <li><a href="#">Slider</a></li>
           <li><a href="adminlist.php">Nội bộ</a></li>
           <li><a href="customerlist.php">Khách hàng</a></li>
+          <li><a href="customerlist.php">Đơn đặt hàng</a></li>
         </ul>
       </div>
     </div>

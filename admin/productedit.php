@@ -21,7 +21,7 @@
  
   <link rel="stylesheet" href="./css/productadd.css">
     <div class="product-form-container">
-        <h1 class="form-title">Sửa Sản Phẩm</h1>
+        <h1 class="form-title">Sửa Thông Tin Sản Phẩm</h1>
         <?php
             $get_product_by_id = $pd->getproductbyId($id);
             $get_measures_by_product = $pd->get_measures_by_product($id);
@@ -130,6 +130,11 @@
                 <tr>
                     <td><label for="productPrice">Giá</label></td>
                     <td><input type="text" id="productPrice" name="productPrice" value="<?php echo $result_product['productPrice'] ?>" class="input-field"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="productQuantity">Số lượng</label></td>
+                    <td><input type="number" id="productQuantity" name="productQuantity" step="1" min="0" placeholder="Nhập số lượng..." value="<?php echo $result_product['productQuantity'] ?>" class="input-field"></td>
                 </tr>
                 <!-- ============================================== -->
                 <tr>
