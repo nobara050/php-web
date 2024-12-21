@@ -1,24 +1,26 @@
 <?php
 include 'inc/header.php';
 
-// Xử lý khi nhận được productid từ các card sản phẩm, nếu không có productid thì trả về 404
-if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
-    echo "<script>window.location = 'page404.php'</script>";
-} else {
-    $id = $_GET['proid'];
-}
-
-// Xử lý submit form từ nút Buy now và Add to cart
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $login_check = Session::get('customer_login');
-    if ($login_check == false) {
-        header('Location: login.php');
+<?php
+    // Xử lý khi nhận được productid từ các card sản phẩm, nếu không có productid thì trả về 404
+    if (!isset($_GET['proid']) || $_GET['proid'] == NULL) {
+        echo "<script>window.location = 'page404.php'</script>";
+    } else {
+        $id = $_GET['proid'];
     }
-    $quantity = $_POST['quantity'];
-    // Nếu chọn Buy now thì trong hàm add_to_cart của class cart khi kết thúc sẽ chuyển hướng đến giỏ hàng còn nút Add to cart thì không
-    $buy_now = ($_POST['submit'] == 'Buy Now') ? true : false; 
-    $AddToCart = $ct->add_to_cart($quantity, $id, $buy_now);
-}
+
+    // Xử lý submit form từ nút Buy now và Add to cart
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+        $login_check = Session::get('customer_login');
+        if ($login_check == false) {
+            header('Location: login.php');
+        }
+        $quantity = $_POST['quantity'];
+        // Nếu chọn Buy now thì trong hàm add_to_cart của class cart khi kết thúc sẽ chuyển hướng đến giỏ hàng còn nút Add to cart thì không
+        $buy_now = ($_POST['submit'] == 'Buy Now') ? true : false; 
+        $AddToCart = $ct->add_to_cart($quantity, $id, $buy_now);
+    }
+
 ?>
 
 <link rel="stylesheet" href="css/detail.css">

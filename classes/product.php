@@ -323,5 +323,33 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+
+        // ================================================
+        //           Hiển thị sản phẩm theo search
+        // ================================================
+        public function get_product_by_search($search_name, $danhmuc){
+            $search_name = "%" . $search_name . "%";
+            $danhmuc = "%" . $danhmuc . "%";
+            $query = "SELECT distinct tbl_product.productId, tbl_product.productName, tbl_product.catId, 
+                                        tbl_product.brandId, tbl_product.productPrice, tbl_product.image, tbl_product.type   
+                        FROM tbl_product 
+                        WHERE tbl_product.productId IN (
+                            SELECT distinct tbl_product.productId 
+                            FROM tbl_product 
+                            JOIN tbl_category ON tbl_product.catID = tbl_category.catID
+                            JOIN tbl_brand ON tbl_product.brandID = tbl_brand.brandID
+                            JOIN tbl_measure ON tbl_product.productID = tbl_measure.productID
+                            WHERE (tbl_product.productName LIKE '$search_name' 
+                            OR tbl_category.catName LIKE '$search_name' 
+                            OR tbl_brand.brandName LIKE '$search_name' 
+                            OR tbl_measure.measureName LIKE '$search_name')
+                            AND tbl_category.catName LIKE '$danhmuc')
+                        
+                        ";
+            $result = $this->db->select($query);
+
+            return $result;
+        }
     }
  ?>
